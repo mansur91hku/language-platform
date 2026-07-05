@@ -130,30 +130,41 @@ export default function AISCourseSelection() {
             </p>
 
             <button
-                className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    min-w-[220px]
-                    px-10
-                    py-5
-                    rounded-[32px]
-                    bg-gradient-to-b
-                    from-blue-50
-                    to-indigo-100
-                    border
-                    border-blue-200
-                    text-blue-700
-                    text-lg
-                    font-semibold
-                    shadow-md
-                    hover:shadow-2xl
-                    hover:-translate-y-2
-                    transition-all
-                    duration-300
-                "
+              onClick={() => {
+                setExitDirection("up");
+
+                setTimeout(() => {
+                  navigate("/english/pathway1/ais/isd", {
+                    state: {
+                      direction: "up",
+                    },
+                  });
+                }, 300);
+              }}
+              className="
+                inline-flex
+                items-center
+                justify-center
+                min-w-[220px]
+                px-10
+                py-5
+                rounded-[32px]
+                bg-gradient-to-b
+                from-blue-50
+                to-indigo-100
+                border
+                border-blue-200
+                text-blue-700
+                text-lg
+                font-semibold
+                shadow-md
+                hover:shadow-2xl
+                hover:-translate-y-2
+                transition-all
+                duration-300
+              "
             >
-                Continue
+              Continue
             </button>
         </section>
       </main>

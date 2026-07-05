@@ -11,6 +11,13 @@ import EngineeringCourseSelection from "./EngineeringCourseSelection";
 import BusinessCourseSelection from "./BusinessCourseSelection";
 import HumanitiesCourseSelection from "./HumanitiesCourseSelection";
 import AISCourseSelection from "./AISCourseSelection";
+import OSTQuestion from "./OSTQuestion";
+import OSTCourseSelection from "./OSTCourseSelection";
+import IREQuestion from "./IREQuestion";
+import IRECourseSelection from "./IRECourseSelection";
+import AdvancedCommunicationCourses from "./AdvancedCommunicationCourses";
+import ISDQuestion from "./ISDQuestion";
+import ISDCourseSelection from "./ISDCourseSelection";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -28,6 +35,13 @@ function AnimatedRoutes() {
         <Route path="/english/pathway1/business" element={<BusinessCourseSelection />} />
         <Route path="/english/pathway1/humanities" element={<HumanitiesCourseSelection />} />
         <Route path="/english/pathway1/ais" element={<AISCourseSelection />} />
+        <Route path="/english/pathway1/science/ost" element={<OSTQuestion />} />
+        <Route path="/english/pathway1/science/ost/yes" element={<OSTCourseSelection />} />
+        <Route path="/english/pathway1/science/ost/no" element={<IREQuestion />} />
+        <Route path="/english/pathway1/science/ost/no/yes" element={<IRECourseSelection />} />
+        <Route path="/english/pathway1/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/pathway1/ais/isd" element={<ISDQuestion />} />
+        <Route path="/english/pathway1/ais/isd/yes" element={<ISDCourseSelection />} />
       </Routes>
     </AnimatePresence>
   );

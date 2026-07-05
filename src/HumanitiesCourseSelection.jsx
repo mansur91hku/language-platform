@@ -5,6 +5,12 @@ import { useState } from "react";
 export default function HumanitiesCourseSelection() {
   const navigate = useNavigate();
   const location = useLocation();
+  const previousPage =
+    location.state?.previousPage ||
+    "/english/pathway1/school";
+
+  const schoolSelectionPreviousPage =
+    location.state?.schoolSelectionPreviousPage;
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -33,9 +39,10 @@ export default function HumanitiesCourseSelection() {
               setExitDirection("down");
 
               setTimeout(() => {
-                navigate("/english/pathway1/school", {
+                navigate(previousPage, {
                   state: {
                     direction: "down",
+                    previousPage: schoolSelectionPreviousPage,
                   },
                 });
               }, 300);
@@ -112,6 +119,18 @@ export default function HumanitiesCourseSelection() {
           </p>
 
           <button
+          onClick={() => {
+            setExitDirection("up");
+
+            setTimeout(() => {
+              navigate("/english/pathway1/science/advanced-communication", {
+                state: {
+                  direction: "up",
+                  previousPage: "/english/pathway1/humanities",
+                },
+              });
+            }, 300);
+          }}
             className="
               inline-flex
               items-center

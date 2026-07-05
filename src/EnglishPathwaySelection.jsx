@@ -110,7 +110,8 @@ export default function EnglishPathwaySelection() {
                     navigate("/english/pathway1", {
                         state: {
                             direction: "up",
-                        }
+                            previousPage: "/english/pathway1",
+                        },
                     });
                 }, 300);
             }}
@@ -141,6 +142,18 @@ export default function EnglishPathwaySelection() {
           </button>
 
           <button
+            onClick={() => {
+              setExitDirection("up");
+
+              setTimeout(() => {
+                navigate("/english/pathway1/school", {
+                  state: {
+                    direction: "up",
+                    previousPage: "/english/pathways",
+                  },
+                });
+              }, 300);
+            }}
             className="
               group
               bg-gradient-to-b

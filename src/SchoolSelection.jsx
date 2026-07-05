@@ -5,6 +5,9 @@ import { useState } from "react";
 export default function SchoolSelection() {
   const navigate = useNavigate();
   const location = useLocation();
+  const previousPage =
+    location.state?.previousPage ||
+    "/english/pathways";
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -60,7 +63,7 @@ export default function SchoolSelection() {
               setExitDirection("down");
 
               setTimeout(() => {
-                navigate("/english/pathway1", {
+                navigate(previousPage, {
                   state: {
                     direction: "down",
                   },
@@ -106,24 +109,53 @@ export default function SchoolSelection() {
 
                 setTimeout(() => {
                     if (school.name === "School of Science (SSCI)") {
-                        navigate("/english/pathway1/science");
+                        navigate("/english/pathway1/science", {
+                          state: {
+                            direction: "up",
+                            previousPage: "/english/pathway1/school",
+                            schoolSelectionPreviousPage: previousPage,
+                          },
+                        });
                     }
 
                     if (school.name === "School of Engineering (SENG)") {
-                        navigate("/english/pathway1/engineering");
+                        navigate("/english/pathway1/engineering", {
+                          state: {
+                            direction: "up",
+                            previousPage: location.pathname,
+                            schoolSelectionPreviousPage: previousPage,
+                          },
+                        });
                     }
                     
                     if (school.name === "School of Business and Management (SBM)") {
-                        navigate("/english/pathway1/business");
+                        navigate("/english/pathway1/business", {
+                          state: {
+                            direction: "up",
+                              previousPage: location.pathname,
+                              schoolSelectionPreviousPage: previousPage,
+                          },
+                        });
                     }
 
                     if (school.name === "School of Humanities and Social Science (SHSS)") {
-                        navigate("/english/pathway1/humanities");
+                        navigate("/english/pathway1/humanities", {
+                          state: {
+                            direction: "up",
+                            previousPage: location.pathname,
+                            schoolSelectionPreviousPage: previousPage,
+                          },
+                        });
                     }
                     if (school.name === "Academy of Interdisciplinary Studies (AIS)") {
-                        navigate("/english/pathway1/ais");
+                        navigate("/english/pathway1/ais", {
+                          state: {
+                            direction: "up",
+                            previousPage: location.pathname,
+                            schoolSelectionPreviousPage: previousPage,
+                          },
+                        });
                     }
-
                 }, 300);
               }}
 

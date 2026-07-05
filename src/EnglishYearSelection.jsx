@@ -34,7 +34,11 @@ export default function EnglishYearSelection() {
               setExitDirection("down");
 
               setTimeout(() => {
-                navigate("/");
+                navigate("/", {
+                  state: {
+                    direction: "down",
+                  },
+                });
               }, 300);
             }}
             className="
@@ -76,7 +80,12 @@ export default function EnglishYearSelection() {
 
                 setTimeout(() => {
                   if (year === "2025" || year === "2026") {
-                    navigate("/english/pathways");
+                    navigate("/english/pathways", {
+                      state: {
+                        direction: "up",
+                        previousPage: "/english",
+                      },
+                    });
                   }
                 }, 300);
               }}

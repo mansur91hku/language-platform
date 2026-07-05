@@ -2,9 +2,12 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-export default function EnglishPathway1() {
+export default function ISDQuestion() {
   const navigate = useNavigate();
   const location = useLocation();
+  const previousPage =
+    location.state?.previousPage ||
+    "/english/pathway1/ais";
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -26,14 +29,14 @@ export default function EnglishPathway1() {
         ease: "easeInOut",
       }}
     >
-      <main className="max-w-6xl mx-auto px-6 pt-4">
+      <main className="max-w-5xl mx-auto px-6 pt-4">
         <div className="pt-2">
           <button
             onClick={() => {
               setExitDirection("down");
 
               setTimeout(() => {
-                navigate("/english/pathways", {
+                navigate(previousPage, {
                   state: {
                     direction: "down",
                   },
@@ -60,31 +63,43 @@ export default function EnglishPathway1() {
           </button>
         </div>
 
-        <section className="text-center py-10">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            Pathway 1
+        <section className="text-center py-16">
+          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-8">
+            Academy of Interdisciplinary Studies
           </h2>
 
-          <p className="text-xl text-gray-600">
-            Required course
+          <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
+            Are you in the{" "}
+            <span className="font-bold text-gray-800">
+              Innovation, Design and Technology (ISD)
+            </span>{" "}
+            program?
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto">
-          <a
-            href="https://cle.hkust.edu.hk/courses/lang1402"
-            target="_blank"
-            rel="noopener noreferrer"
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <button
+            onClick={() => {
+                setExitDirection("up");
+
+                setTimeout(() => {
+                    navigate("/english/pathway1/ais/isd/yes", {
+                      state: {
+                        direction: "up",
+                        previousPage: "/english/pathway1/ais/isd",
+                      },
+                    });
+                }, 300);
+            }}
             className="
-              block
               bg-gradient-to-b
-              from-blue-50
-              to-indigo-100
+              from-teal-50
+              to-cyan-100
               border
-              border-blue-200
+              border-cyan-200
               rounded-[32px]
               p-10
-              text-left
+              text-center
               shadow-md
               hover:shadow-2xl
               hover:-translate-y-2
@@ -92,51 +107,33 @@ export default function EnglishPathway1() {
               duration-300
             "
           >
-            <h3 className="text-4xl font-semibold mb-4">
-              LANG 1402
+            <h3 className="text-4xl font-semibold">
+              Yes
             </h3>
-
-            <p className="text-gray-700 text-lg mb-4">
-              English for University Studies
-            </p>
-
-            <span className="text-blue-600 font-medium">
-              View Course Details
-            </span>
-          </a>
-        </section>
-        <section className="text-center mt-10">
-          <p className="text-lg text-gray-600 mb-6">
-            Click on the button below to see what's next after this course.
-          </p>
+          </button>
 
           <button
             onClick={() => {
-              setExitDirection("up");
+                setExitDirection("up");
 
-              setTimeout(() => {
-                navigate("/english/pathway1/school", {
-                  state: {
-                    direction: "up",
-                      previousPage: "/english/pathway1",
-                  },
-                });
-              }, 300);
+                setTimeout(() => {
+                    navigate("/english/pathway1/science/advanced-communication", {
+                        state: {
+                            direction: "up",
+                            previousPage: "/english/pathway1/ais/isd",
+                        },
+                    });
+                }, 300);
             }}
             className="
-              inline-flex
-              items-center
-              justify-center
-              px-10
-              py-4
-              rounded-[28px]
               bg-gradient-to-b
-              from-blue-50
-              to-indigo-100
+              from-teal-50
+              to-cyan-100
               border
-              border-blue-200
-              text-blue-700
-              font-semibold
+              border-cyan-200
+              rounded-[32px]
+              p-10
+              text-center
               shadow-md
               hover:shadow-2xl
               hover:-translate-y-2
@@ -144,7 +141,9 @@ export default function EnglishPathway1() {
               duration-300
             "
           >
-            Continue
+            <h3 className="text-4xl font-semibold">
+              No
+            </h3>
           </button>
         </section>
       </main>
