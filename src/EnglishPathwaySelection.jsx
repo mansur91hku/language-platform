@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function EnglishPathwaySelection() {
   const navigate = useNavigate();
@@ -11,6 +11,10 @@ export default function EnglishPathwaySelection() {
         : "100%";
 
   const [exitDirection, setExitDirection] = useState("up");
+
+  useEffect(() => {
+    sessionStorage.removeItem("pathwayOrigin");
+  }, []);
 
   return (
     <motion.div
@@ -110,7 +114,6 @@ export default function EnglishPathwaySelection() {
                     navigate("/english/pathway1", {
                         state: {
                             direction: "up",
-                            previousPage: "/english/pathway1",
                         },
                     });
                 }, 300);
@@ -146,10 +149,9 @@ export default function EnglishPathwaySelection() {
               setExitDirection("up");
 
               setTimeout(() => {
-                navigate("/english/pathway1/school", {
+                navigate("/english/pathway2", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/pathways",
                   },
                 });
               }, 300);

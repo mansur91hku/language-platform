@@ -5,6 +5,7 @@ import LanguageHomePage from "./HomePage";
 import EnglishYearSelection from "./EnglishYearSelection";
 import EnglishPathwaySelection from "./EnglishPathwaySelection";
 import EnglishPathway1 from "./EnglishPathway1";
+import EnglishPathway2 from "./EnglishPathway2";
 import SchoolSelection from "./SchoolSelection";
 import ScienceCourseSelection from "./ScienceCourseSelection";
 import EngineeringCourseSelection from "./EngineeringCourseSelection";
@@ -29,6 +30,7 @@ function AnimatedRoutes() {
         <Route path="/english" element={<EnglishYearSelection />} />
         <Route path="/english/pathways" element={<EnglishPathwaySelection />} />
         <Route path="/english/pathway1" element={<EnglishPathway1 />} />
+        <Route path="/english/pathway2" element={<EnglishPathway2 />} />
         <Route path="/english/pathway1/school" element={<SchoolSelection />} />
         <Route path="/english/pathway1/science" element={<ScienceCourseSelection />} />
         <Route path="/english/pathway1/engineering" element={<EngineeringCourseSelection />} />

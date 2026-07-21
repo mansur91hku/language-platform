@@ -8,7 +8,6 @@ export default function ScienceCourseSelection() {
   const previousPage =
     location.state?.previousPage ||
     "/english/pathway1/school";
-
   const schoolSelectionPreviousPage =
     location.state?.schoolSelectionPreviousPage;
 

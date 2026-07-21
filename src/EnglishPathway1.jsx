@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function EnglishPathway1() {
   const navigate = useNavigate();
   const location = useLocation();
 
   const [exitDirection, setExitDirection] = useState("up");
+
+  useEffect(() => {
+    sessionStorage.setItem("pathwayOrigin", "pathway1");
+  }, []);
 
   const initialDirection =
     location.state?.direction === "down"
