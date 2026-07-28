@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
-const previousPage =
-  location.state?.previousPage ||
-  "/english/pathway1/science/ost";
 
 export default function IREQuestion() {
   const navigate = useNavigate();
   const location = useLocation();
+  const previousPage =
+    location.state?.previousPage ||
+    "/english/pathway1/science/ost";
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -30,7 +30,7 @@ export default function IREQuestion() {
       }}
     >
       <main className="max-w-5xl mx-auto px-6 pt-4">
-        <div className="pt-2">
+        <div className="pt-2 flex items-center justify-between">
           <button
             onClick={() => {
               setExitDirection("down");
@@ -61,6 +61,34 @@ export default function IREQuestion() {
           >
             Back
           </button>
+          <button
+            onClick={() => {
+              setExitDirection("down");
+
+              setTimeout(() => {
+                navigate("/", {
+                  state: { direction: "down" },
+                });
+              }, 300);
+            }}
+            className="
+              inline-flex
+              items-center
+              px-6
+              py-3
+              rounded-full
+              bg-gray-100
+              text-gray-800
+              font-medium
+              shadow-sm
+              hover:bg-gray-200
+              hover:shadow-md
+              transition-all
+              duration-300
+            "
+          >
+            Home
+          </button>
         </div>
 
         <section className="text-center py-16">
@@ -80,16 +108,16 @@ export default function IREQuestion() {
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <button
             onClick={() => {
-                setExitDirection("up");
-                
-                setTimeout(() => {
-                    navigate("/english/pathway1/science/ost/no/yes", {
-                      state: {
-                        direction: "up",
-                        previousPage: "/english/pathway1/science/ost/no",
-                      },
-                    });
-                }, 300);
+              setExitDirection("up");
+
+              setTimeout(() => {
+                navigate("/english/pathway1/science/ost/no/yes", {
+                  state: {
+                    direction: "up",
+                    previousPage: "/english/pathway1/science/ost/no",
+                  },
+                });
+              }, 300);
             }}
             className="
               bg-gradient-to-b
@@ -113,17 +141,17 @@ export default function IREQuestion() {
           </button>
 
           <button
-          onClick={() => {
-                setExitDirection("up");
-                
-                setTimeout(() => {
-                    navigate("/english/pathway1/science/advanced-communication", {
-                        state: {
-                            direction: "up",
-                            previousPage: "/english/pathway1/science/ost/no",
-                        },
-                    });
-                }, 300);
+            onClick={() => {
+              setExitDirection("up");
+
+              setTimeout(() => {
+                navigate("/english/pathway1/science/advanced-communication", {
+                  state: {
+                    direction: "up",
+                    previousPage: "/english/pathway1/science/ost/no",
+                  },
+                });
+              }, 300);
             }}
             className="
               bg-gradient-to-b

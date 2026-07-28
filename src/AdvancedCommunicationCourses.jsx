@@ -76,7 +76,7 @@ export default function AdvancedCommunicationCourses() {
       }}
     >
       <main className="max-w-7xl mx-auto px-6 pt-4">
-        <div className="pt-2">
+        <div className="pt-2 flex items-center justify-between">
           <button
             onClick={() => {
               setExitDirection("down");
@@ -106,6 +106,34 @@ export default function AdvancedCommunicationCourses() {
             "
           >
             Back
+          </button>
+          <button
+            onClick={() => {
+              setExitDirection("down");
+
+              setTimeout(() => {
+                navigate("/", {
+                  state: { direction: "down" },
+                });
+              }, 300);
+            }}
+            className="
+              inline-flex
+              items-center
+              px-6
+              py-3
+              rounded-full
+              bg-gray-100
+              text-gray-800
+              font-medium
+              shadow-sm
+              hover:bg-gray-200
+              hover:shadow-md
+              transition-all
+              duration-300
+            "
+          >
+            Home
           </button>
         </div>
 

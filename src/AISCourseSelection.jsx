@@ -58,7 +58,7 @@ export default function AISCourseSelection() {
       }}
     >
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <div className="pt-2">
+        <div className="pt-2 flex items-center justify-between">
           <button
             onClick={() => {
               setExitDirection("down");
@@ -88,6 +88,34 @@ export default function AISCourseSelection() {
             "
           >
             Back
+          </button>
+          <button
+            onClick={() => {
+              setExitDirection("down");
+
+              setTimeout(() => {
+                navigate("/", {
+                  state: { direction: "down" },
+                });
+              }, 300);
+            }}
+            className="
+              inline-flex
+              items-center
+              px-6
+              py-3
+              rounded-full
+              bg-gray-100
+              text-gray-800
+              font-medium
+              shadow-sm
+              hover:bg-gray-200
+              hover:shadow-md
+              transition-all
+              duration-300
+            "
+          >
+            Home
           </button>
         </div>
 
@@ -124,7 +152,7 @@ export default function AISCourseSelection() {
                 </a>
             ))}
         </section>
-        <section className="text-center mt-10">
+        <section className="text-center mt-10 pb-16">
             <p className="text-lg text-gray-600 mb-6">
                 Click on the button below to see what's next after this course.
             </p>

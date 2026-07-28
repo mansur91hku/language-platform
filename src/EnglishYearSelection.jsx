@@ -28,7 +28,7 @@ export default function EnglishYearSelection() {
     >
       
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <div className="pt-4">
+        <div className="pt-2 flex items-center justify-between">
           <button
             onClick={() => {
               setExitDirection("down");
@@ -59,6 +59,36 @@ export default function EnglishYearSelection() {
           >
             Back
           </button>
+          <button
+            onClick={() => {
+              setExitDirection("down");
+
+              setTimeout(() => {
+                navigate("/", {
+                  state: {
+                    direction: "down",
+                  },
+                });
+              }, 300);
+            }}
+            className="
+              inline-flex
+              items-center
+              px-6
+              py-3
+              rounded-full
+              bg-gray-100
+              text-gray-800
+              font-medium
+              shadow-sm
+              hover:bg-gray-200
+              hover:shadow-md
+              transition-all
+              duration-300
+            "
+          >
+            Home
+          </button>
         </div>
 
         <section className="flex flex-col items-center justify-center text-center py-10 md:py-14">
@@ -79,7 +109,14 @@ export default function EnglishYearSelection() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                  if (year === "2025" || year === "2026") {
+                  if (year === "2023") {
+                    navigate("/english/2023/pathways", {
+                      state: {
+                        direction: "up",
+                        previousPage: "/english",
+                      },
+                    });
+                  } else if (year === "2024" || year === "2025" || year === "2026") {
                     navigate("/english/pathways", {
                       state: {
                         direction: "up",

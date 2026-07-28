@@ -31,7 +31,7 @@ export default function EnglishPathway1() {
       }}
     >
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <div className="pt-2">
+        <div className="pt-2 flex items-center justify-between">
           <button
             onClick={() => {
               setExitDirection("down");
@@ -61,6 +61,34 @@ export default function EnglishPathway1() {
             "
           >
             Back
+          </button>
+          <button
+            onClick={() => {
+              setExitDirection("down");
+
+              setTimeout(() => {
+                navigate("/", {
+                  state: { direction: "down" },
+                });
+              }, 300);
+            }}
+            className="
+              inline-flex
+              items-center
+              px-6
+              py-3
+              rounded-full
+              bg-gray-100
+              text-gray-800
+              font-medium
+              shadow-sm
+              hover:bg-gray-200
+              hover:shadow-md
+              transition-all
+              duration-300
+            "
+          >
+            Home
           </button>
         </div>
 
@@ -131,15 +159,17 @@ export default function EnglishPathway1() {
               inline-flex
               items-center
               justify-center
+              min-w-[220px]
               px-10
-              py-4
-              rounded-[28px]
+              py-5
+              rounded-[32px]
               bg-gradient-to-b
               from-blue-50
               to-indigo-100
               border
               border-blue-200
               text-blue-700
+              text-lg
               font-semibold
               shadow-md
               hover:shadow-2xl
