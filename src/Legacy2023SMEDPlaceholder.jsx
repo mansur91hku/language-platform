@@ -2,23 +2,15 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-export default function Legacy2023AISQuestion() {
+export default function Legacy2023SMEDPlaceholder() {
   const navigate = useNavigate();
   const location = useLocation();
   const previousPage =
     location.state?.previousPage || "/english/2023/school";
-
-  const [exitDirection, setExitDirection] = useState("up");
-
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
 
-  const options = [
-    { label: "SENG (School of Engineering)", affiliation: "SENG" },
-    { label: "SHSS (School of Humanities and Social Science)", affiliation: "SHSS" },
-    { label: "SSCI (School of Science)", affiliation: "SSCI" },
-    { label: "None of the above", affiliation: "none" },
-  ];
+  const [exitDirection, setExitDirection] = useState("up");
 
   return (
     <motion.div
@@ -62,41 +54,16 @@ export default function Legacy2023AISQuestion() {
           </button>
         </div>
 
-        <section className="text-center py-12">
+        <section className="flex flex-col items-center justify-center text-center py-24">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-8">
-            Academy of Interdisciplinary Studies
+            School of Medicine
           </h2>
-          <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
-            Which school is your program affiliated with?
+          <p className="text-2xl text-gray-500 max-w-2xl mb-6">
+            Course pathway information for SMED students is not yet available on this platform.
           </p>
-        </section>
-
-        <section className="grid grid-cols-1 gap-6 max-w-3xl mx-auto pb-16">
-          {options.map((option) => (
-            <button
-              key={option.affiliation}
-              onClick={() => {
-                setExitDirection("up");
-                setTimeout(() => {
-                  navigate("/english/2023/ais/isd-question", {
-                    state: {
-                      direction: "up",
-                      previousPage: "/english/2023/ais",
-                      affiliation: option.affiliation,
-                    },
-                  });
-                }, 300);
-              }}
-              className="
-                bg-gradient-to-b from-teal-50 to-cyan-100
-                border border-cyan-200 rounded-[32px] px-10 py-8
-                text-center shadow-md hover:shadow-2xl hover:-translate-y-2
-                transition-all duration-300
-              "
-            >
-              <h3 className="text-2xl font-semibold">{option.label}</h3>
-            </button>
-          ))}
+          <p className="text-lg text-gray-400">
+            Please contact an advisor for guidance on your English course requirements.
+          </p>
         </section>
       </main>
     </motion.div>

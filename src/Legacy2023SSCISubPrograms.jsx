@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-// Shared single-extra-course page for OST, IRE and BTB
+const advCommRoute = "/english/pathway1/science/advanced-communication";
+
+// ─── Shared single-extra-course page for OST, IRE and BTB ────────────────────
 function SingleExtraCourse({ title, courseCode, courseTitle, courseUrl, textColorClass, gradientClass, borderClass, selfRoute }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -70,7 +72,7 @@ function SingleExtraCourse({ title, courseCode, courseTitle, courseUrl, textColo
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/science/advanced-communication", {
+                navigate(advCommRoute, {
                   state: { direction: "up", previousPage: selfRoute },
                 });
               }, 300);
@@ -85,6 +87,7 @@ function SingleExtraCourse({ title, courseCode, courseTitle, courseUrl, textColo
   );
 }
 
+// ─── OST ─────────────────────────────────────────────────────────────────────
 export function Legacy2023SSCIOSTProg() {
   return (
     <SingleExtraCourse
@@ -100,6 +103,7 @@ export function Legacy2023SSCIOSTProg() {
   );
 }
 
+// ─── IRE ─────────────────────────────────────────────────────────────────────
 export function Legacy2023SSCIIREProg() {
   return (
     <SingleExtraCourse
@@ -115,6 +119,7 @@ export function Legacy2023SSCIIREProg() {
   );
 }
 
+// ─── BTB ─────────────────────────────────────────────────────────────────────
 export function Legacy2023SSCIBTBProg() {
   return (
     <SingleExtraCourse
@@ -130,7 +135,7 @@ export function Legacy2023SSCIBTBProg() {
   );
 }
 
-// MAEC needs LANG 2062 + choice of LANG 2061 or LANG 3060
+// ─── MAEC page 1: LANG 2062 only ─────────────────────────────────────────────
 export function Legacy2023SSCIMAECProg() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -173,11 +178,13 @@ export function Legacy2023SSCIMAECProg() {
             School of Science
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Since you are on the <span className="font-bold text-gray-800">Marine Environmental Chemistry (MAEC)</span> program, you are required to take the following additional courses (6 credits):
+            Since you are on the{" "}
+            <span className="font-bold text-gray-800">Marine Environmental Chemistry (MAEC)</span>{" "}
+            program, you are required to take the following additional course (3 credits):
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto space-y-8">
+        <section className="max-w-4xl mx-auto">
           <a
             href="https://cle.hkust.edu.hk/courses/lang2062"
             target="_blank"
@@ -188,34 +195,104 @@ export function Legacy2023SSCIMAECProg() {
             <p className="text-gray-700 text-lg mb-4">Required course (3 credits)</p>
             <span className="text-blue-700 font-medium">View Course Details</span>
           </a>
+        </section>
 
-          <div>
-            <p className="text-center text-lg text-gray-600 mb-6">
-              Plus <span className="font-semibold text-gray-800">one</span> of the following (3 credits):
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <a
-                href="https://cle.hkust.edu.hk/courses/lang2061"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-gradient-to-b from-sky-50 to-blue-100 border border-blue-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-              >
-                <h3 className="text-4xl font-semibold mb-4">LANG 2061</h3>
-                <p className="text-gray-700 text-lg mb-4">English for Science Communication (3 credits)</p>
-                <span className="text-blue-700 font-medium">View Course Details</span>
-              </a>
-              <a
-                href="https://cle.hkust.edu.hk/courses/lang3060"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-gradient-to-b from-sky-50 to-blue-100 border border-blue-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-              >
-                <h3 className="text-4xl font-semibold mb-4">LANG 3060</h3>
-                <p className="text-gray-700 text-lg mb-4">Advanced Science Communication (3 credits)</p>
-                <span className="text-blue-700 font-medium">View Course Details</span>
-              </a>
-            </div>
-          </div>
+        <section className="text-center mt-10 pb-16">
+          <p className="text-lg text-gray-600 mb-6">
+            Click the button below to see what comes next.
+          </p>
+          <button
+            onClick={() => {
+              setExitDirection("up");
+              setTimeout(() => {
+                navigate("/english/2023/ssci/maec/choice", {
+                  state: {
+                    direction: "up",
+                    previousPage: "/english/2023/ssci/maec",
+                  },
+                });
+              }, 300);
+            }}
+            className="inline-flex items-center justify-center min-w-[220px] px-10 py-5 rounded-[32px] bg-gradient-to-b from-blue-50 to-indigo-100 border border-blue-200 text-blue-700 text-lg font-semibold shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+          >
+            Continue
+          </button>
+        </section>
+      </main>
+    </motion.div>
+  );
+}
+
+// ─── MAEC page 2: LANG 2061 / LANG 3060 choice ───────────────────────────────
+export function Legacy2023SSCIMAECChoice() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const previousPage = location.state?.previousPage || "/english/2023/ssci/maec";
+  const initialDirection = location.state?.direction === "down" ? "-100%" : "100%";
+  const [exitDirection, setExitDirection] = useState("up");
+
+  return (
+    <motion.div
+      className="min-h-screen bg-white text-black"
+      initial={{ y: initialDirection }}
+      animate={{ y: 0 }}
+      exit={{ y: exitDirection === "up" ? "-100%" : "100%" }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+    >
+      <main className="max-w-6xl mx-auto px-6 pt-4">
+        <div className="pt-2 flex items-center justify-between">
+          <button
+            onClick={() => {
+              setExitDirection("down");
+              setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300);
+            }}
+            className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300"
+          >
+            Back
+          </button>
+          <button
+            onClick={() => {
+              setExitDirection("down");
+              setTimeout(() => navigate("/", { state: { direction: "down" } }), 300);
+            }}
+            className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300"
+          >
+            Home
+          </button>
+        </div>
+
+        <section className="text-center py-10">
+          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
+            School of Science
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            After <span className="font-bold text-gray-800">LANG 2062</span>, you are required
+            to take <span className="font-bold text-gray-800">one</span> of the following
+            courses (3 credits):
+          </p>
+        </section>
+
+        <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <a
+            href="https://cle.hkust.edu.hk/courses/lang2061"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-gradient-to-b from-sky-50 to-blue-100 border border-blue-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+          >
+            <h3 className="text-4xl font-semibold mb-4">LANG 2061</h3>
+            <p className="text-gray-700 text-lg mb-4">English for Science Communication (3 credits)</p>
+            <span className="text-blue-700 font-medium">View Course Details</span>
+          </a>
+          <a
+            href="https://cle.hkust.edu.hk/courses/lang3060"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-gradient-to-b from-sky-50 to-blue-100 border border-blue-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+          >
+            <h3 className="text-4xl font-semibold mb-4">LANG 3060</h3>
+            <p className="text-gray-700 text-lg mb-4">Advanced Science Communication (3 credits)</p>
+            <span className="text-blue-700 font-medium">View Course Details</span>
+          </a>
         </section>
 
         <section className="text-center mt-10 pb-16">
@@ -226,8 +303,8 @@ export function Legacy2023SSCIMAECProg() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/science/advanced-communication", {
-                  state: { direction: "up", previousPage: "/english/2023/ssci/maec" },
+                navigate(advCommRoute, {
+                  state: { direction: "up", previousPage: "/english/2023/ssci/maec/choice" },
                 });
               }, 300);
             }}

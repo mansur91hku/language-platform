@@ -2,13 +2,16 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-export default function Legacy2023Pathway2() {
+export default function Legacy2023SBMRMBICourses2() {
   const navigate = useNavigate();
   const location = useLocation();
-  const initialDirection =
-    location.state?.direction === "down" ? "-100%" : "100%";
+  const previousPage =
+    location.state?.previousPage || "/english/2023/sbm/rmbi";
 
   const [exitDirection, setExitDirection] = useState("up");
+
+  const initialDirection =
+    location.state?.direction === "down" ? "-100%" : "100%";
 
   return (
     <motion.div
@@ -24,9 +27,7 @@ export default function Legacy2023Pathway2() {
             onClick={() => {
               setExitDirection("down");
               setTimeout(() => {
-                navigate("/english/2023/pathways", {
-                  state: { direction: "down" },
-                });
+                navigate(previousPage, { state: { direction: "down" } });
               }, 300);
             }}
             className="
@@ -56,61 +57,46 @@ export default function Legacy2023Pathway2() {
 
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            Pathway 2
+            School of Business and Management
           </h2>
-          <p className="text-xl text-gray-600">
-            Required Common Core courses (3 credits each)
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            After <span className="font-bold text-gray-800">LABU 2051</span>, you
+            are also required to take the following course (3 credits):
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="max-w-4xl mx-auto">
           <a
-            href="https://cle.hkust.edu.hk/courses/lang1403"
+            href="https://cle.hkust.edu.hk/courses/labu2052"
             target="_blank"
             rel="noopener noreferrer"
             className="
-              block bg-gradient-to-b from-blue-50 to-indigo-100
-              border border-blue-200 rounded-[32px] p-10 text-left
+              block bg-gradient-to-b from-emerald-50 to-green-100
+              border border-green-200 rounded-[32px] p-10 text-left
               shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
             "
           >
-            <h3 className="text-4xl font-semibold mb-4">LANG 1403</h3>
+            <h3 className="text-4xl font-semibold mb-4">LABU 2052</h3>
             <p className="text-gray-700 text-lg mb-4">
-              English for Professional Communication (3 credits)
+              Business Communication II (3 credits)
             </p>
-            <span className="text-blue-600 font-medium">View Course Details</span>
-          </a>
-
-          <a
-            href="https://cle.hkust.edu.hk/courses/lang1404"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              block bg-gradient-to-b from-blue-50 to-indigo-100
-              border border-blue-200 rounded-[32px] p-10 text-left
-              shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
-            "
-          >
-            <h3 className="text-4xl font-semibold mb-4">LANG 1404</h3>
-            <p className="text-gray-700 text-lg mb-4">
-              English for University Studies III (3 credits)
-            </p>
-            <span className="text-blue-600 font-medium">View Course Details</span>
+            <span className="text-green-700 font-medium">View Course Details</span>
           </a>
         </section>
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">
-            Click the button below to select your school and see what's required next.
+            After completing these courses, you may also take Advanced
+            Communication courses.
           </p>
           <button
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/2023/school", {
+                navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/2023/pathway2",
+                    previousPage: "/english/2023/sbm/rmbi/2",
                   },
                 });
               }, 300);

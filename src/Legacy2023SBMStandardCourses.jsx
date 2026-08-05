@@ -60,11 +60,11 @@ export default function Legacy2023SBMStandardCourses() {
             School of Business and Management
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            You are required to take the following school-required courses (6 credits):
+            You are required to take the following school-required course (3 credits):
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto space-y-8">
+        <section className="max-w-4xl mx-auto">
           <a
             href="https://cle.hkust.edu.hk/courses/lang2062"
             target="_blank"
@@ -81,59 +81,17 @@ export default function Legacy2023SBMStandardCourses() {
             </p>
             <span className="text-green-700 font-medium">View Course Details</span>
           </a>
-
-          <div>
-            <p className="text-center text-lg text-gray-600 mb-6">
-              Plus <span className="font-semibold text-gray-800">one</span> of the following (3 credits):
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <a
-                href="https://cle.hkust.edu.hk/courses/lang2061"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  block bg-gradient-to-b from-emerald-50 to-green-100
-                  border border-green-200 rounded-[32px] p-10 text-left
-                  shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
-                "
-              >
-                <h3 className="text-4xl font-semibold mb-4">LANG 2061</h3>
-                <p className="text-gray-700 text-lg mb-4">
-                  English for Business Communication (3 credits)
-                </p>
-                <span className="text-green-700 font-medium">View Course Details</span>
-              </a>
-
-              <a
-                href="https://cle.hkust.edu.hk/courses/lang3060"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  block bg-gradient-to-b from-emerald-50 to-green-100
-                  border border-green-200 rounded-[32px] p-10 text-left
-                  shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
-                "
-              >
-                <h3 className="text-4xl font-semibold mb-4">LANG 3060</h3>
-                <p className="text-gray-700 text-lg mb-4">
-                  Advanced Business Communication (3 credits)
-                </p>
-                <span className="text-green-700 font-medium">View Course Details</span>
-              </a>
-            </div>
-          </div>
         </section>
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">
-            After completing these courses, you may also take Advanced
-            Communication courses.
+            Click the button below to see what comes next.
           </p>
           <button
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/science/advanced-communication", {
+                navigate("/english/2023/sbm/standard/choice", {
                   state: {
                     direction: "up",
                     previousPage: "/english/2023/sbm/standard",

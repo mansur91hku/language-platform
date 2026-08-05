@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 
-export default function Legacy2023Pathway2() {
+export default function Legacy2023Pathway1LANG1403() {
   const navigate = useNavigate();
   const location = useLocation();
   const initialDirection =
@@ -24,7 +24,7 @@ export default function Legacy2023Pathway2() {
             onClick={() => {
               setExitDirection("down");
               setTimeout(() => {
-                navigate("/english/2023/pathways", {
+                navigate("/english/2023/pathway1", {
                   state: { direction: "down" },
                 });
               }, 300);
@@ -55,15 +55,15 @@ export default function Legacy2023Pathway2() {
         </div>
 
         <section className="text-center py-10">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            Pathway 2
+          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-4">
+            Pathway 1
           </h2>
           <p className="text-xl text-gray-600">
-            Required Common Core courses (3 credits each)
+            You are also required to take the following course (3 credits):
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="max-w-4xl mx-auto">
           <a
             href="https://cle.hkust.edu.hk/courses/lang1403"
             target="_blank"
@@ -80,23 +80,6 @@ export default function Legacy2023Pathway2() {
             </p>
             <span className="text-blue-600 font-medium">View Course Details</span>
           </a>
-
-          <a
-            href="https://cle.hkust.edu.hk/courses/lang1404"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              block bg-gradient-to-b from-blue-50 to-indigo-100
-              border border-blue-200 rounded-[32px] p-10 text-left
-              shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
-            "
-          >
-            <h3 className="text-4xl font-semibold mb-4">LANG 1404</h3>
-            <p className="text-gray-700 text-lg mb-4">
-              English for University Studies III (3 credits)
-            </p>
-            <span className="text-blue-600 font-medium">View Course Details</span>
-          </a>
         </section>
 
         <section className="text-center mt-10 pb-16">
@@ -110,7 +93,7 @@ export default function Legacy2023Pathway2() {
                 navigate("/english/2023/school", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/2023/pathway2",
+                    previousPage: "/english/2023/pathway1/lang1403",
                   },
                 });
               }, 300);

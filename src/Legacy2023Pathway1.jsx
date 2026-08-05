@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Legacy2023Pathway1() {
   const navigate = useNavigate();
@@ -9,10 +9,6 @@ export default function Legacy2023Pathway1() {
     location.state?.direction === "down" ? "-100%" : "100%";
 
   const [exitDirection, setExitDirection] = useState("up");
-
-  useEffect(() => {
-    sessionStorage.setItem("legacy2023PathwayOrigin", "pathway1");
-  }, []);
 
   return (
     <motion.div
@@ -63,7 +59,7 @@ export default function Legacy2023Pathway1() {
             Pathway 1
           </h2>
           <p className="text-xl text-gray-600">
-            Required Common Core courses (6 credits)
+            Select your required Common Core course (3 credits)
           </p>
         </section>
 
@@ -78,15 +74,15 @@ export default function Legacy2023Pathway1() {
               shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
             "
           >
-            <h3 className="text-4xl font-semibold mb-4">LANG 1401 / 1402</h3>
+            <h3 className="text-4xl font-semibold mb-4">LANG 1401</h3>
             <p className="text-gray-700 text-lg mb-4">
-              English for University Studies (3 credits)
+              English for University Studies I (3 credits)
             </p>
             <span className="text-blue-600 font-medium">View Course Details</span>
           </a>
 
           <a
-            href="https://cle.hkust.edu.hk/courses/lang1403"
+            href="https://cle.hkust.edu.hk/courses/lang1402"
             target="_blank"
             rel="noopener noreferrer"
             className="
@@ -95,9 +91,9 @@ export default function Legacy2023Pathway1() {
               shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
             "
           >
-            <h3 className="text-4xl font-semibold mb-4">LANG 1403</h3>
+            <h3 className="text-4xl font-semibold mb-4">LANG 1402</h3>
             <p className="text-gray-700 text-lg mb-4">
-              English for Professional Communication (3 credits)
+              English for University Studies II (3 credits)
             </p>
             <span className="text-blue-600 font-medium">View Course Details</span>
           </a>
@@ -105,17 +101,14 @@ export default function Legacy2023Pathway1() {
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">
-            Click on the button below to see what's next after these courses.
+            Click the button below to see what comes next.
           </p>
           <button
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/2023/school", {
-                  state: {
-                    direction: "up",
-                    previousPage: "/english/2023/pathway1",
-                  },
+                navigate("/english/2023/pathway1/lang1403", {
+                  state: { direction: "up" },
                 });
               }, 300);
             }}

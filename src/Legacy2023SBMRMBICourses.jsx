@@ -62,11 +62,11 @@ export default function Legacy2023SBMRMBICourses() {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Since you are on the{" "}
             <span className="font-bold text-gray-800">RMBI</span> program, you
-            are required to take the following school-required courses (6 credits):
+            are required to take the following school-required course (3 credits):
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="max-w-4xl mx-auto">
           <a
             href="https://cle.hkust.edu.hk/courses/labu2051"
             target="_blank"
@@ -83,35 +83,17 @@ export default function Legacy2023SBMRMBICourses() {
             </p>
             <span className="text-green-700 font-medium">View Course Details</span>
           </a>
-
-          <a
-            href="https://cle.hkust.edu.hk/courses/labu2052"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              block bg-gradient-to-b from-emerald-50 to-green-100
-              border border-green-200 rounded-[32px] p-10 text-left
-              shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
-            "
-          >
-            <h3 className="text-4xl font-semibold mb-4">LABU 2052</h3>
-            <p className="text-gray-700 text-lg mb-4">
-              Business Communication II (3 credits)
-            </p>
-            <span className="text-green-700 font-medium">View Course Details</span>
-          </a>
         </section>
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">
-            After completing these courses, you may also take Advanced
-            Communication courses.
+            Click the button below to see what comes next.
           </p>
           <button
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/science/advanced-communication", {
+                navigate("/english/2023/sbm/rmbi/2", {
                   state: {
                     direction: "up",
                     previousPage: "/english/2023/sbm/rmbi",

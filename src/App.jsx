@@ -23,13 +23,23 @@ import ISDCourseSelection from "./ISDCourseSelection";
 // ── 2023-intake legacy flow ──────────────────────────────────────────────────
 import Legacy2023PathwaySelection from "./Legacy2023PathwaySelection";
 import Legacy2023Pathway1 from "./Legacy2023Pathway1";
+import Legacy2023Pathway1LANG1403 from "./Legacy2023Pathway1LANG1403";
 import Legacy2023Pathway2 from "./Legacy2023Pathway2";
 import Legacy2023SchoolSelection from "./Legacy2023SchoolSelection";
+import Legacy2023SMEDPlaceholder from "./Legacy2023SMEDPlaceholder";
+
+// SBM
 import Legacy2023SBMQuestion from "./Legacy2023SBMQuestion";
 import Legacy2023SBMRMBICourses from "./Legacy2023SBMRMBICourses";
+import Legacy2023SBMRMBICourses2 from "./Legacy2023SBMRMBICourses2";
 import Legacy2023SBMStandardCourses from "./Legacy2023SBMStandardCourses";
+import Legacy2023SBMChoiceCourses from "./Legacy2023SBMChoiceCourses";
+
+// SENG / SHSS
 import Legacy2023SENGCourses from "./Legacy2023SENGCourses";
 import Legacy2023SHSSCourses from "./Legacy2023SHSSCourses";
+
+// SSCI
 import Legacy2023SSCICourses from "./Legacy2023SSCICourses";
 import Legacy2023SSCIProgramQuestion from "./Legacy2023SSCIProgramQuestion";
 import {
@@ -37,13 +47,16 @@ import {
   Legacy2023SSCIIREProg,
   Legacy2023SSCIBTBProg,
   Legacy2023SSCIMAECProg,
+  Legacy2023SSCIMAECChoice,
 } from "./Legacy2023SSCISubPrograms";
+
+// AIS
 import Legacy2023AISQuestion from "./Legacy2023AISQuestion";
+import Legacy2023AISISDQuestion from "./Legacy2023AISISDQuestion";
 import {
-  Legacy2023AISSENGCourses,
-  Legacy2023AISSHSSCourses,
-  Legacy2023AISSSCICourses,
-  Legacy2023AISMAECCourses,
+  Legacy2023AISCoreChoice,
+  Legacy2023AISLANG2062,
+  Legacy2023AISChoiceCourses,
   Legacy2023AISISDCourses,
 } from "./Legacy2023AISSubPrograms";
 
@@ -80,13 +93,17 @@ function AnimatedRoutes() {
         {/* ── 2023 legacy flow ── */}
         <Route path="/english/2023/pathways" element={<Legacy2023PathwaySelection />} />
         <Route path="/english/2023/pathway1" element={<Legacy2023Pathway1 />} />
+        <Route path="/english/2023/pathway1/lang1403" element={<Legacy2023Pathway1LANG1403 />} />
         <Route path="/english/2023/pathway2" element={<Legacy2023Pathway2 />} />
         <Route path="/english/2023/school" element={<Legacy2023SchoolSelection />} />
+        <Route path="/english/2023/smed" element={<Legacy2023SMEDPlaceholder />} />
 
         {/* SBM */}
         <Route path="/english/2023/sbm" element={<Legacy2023SBMQuestion />} />
         <Route path="/english/2023/sbm/rmbi" element={<Legacy2023SBMRMBICourses />} />
+        <Route path="/english/2023/sbm/rmbi/2" element={<Legacy2023SBMRMBICourses2 />} />
         <Route path="/english/2023/sbm/standard" element={<Legacy2023SBMStandardCourses />} />
+        <Route path="/english/2023/sbm/standard/choice" element={<Legacy2023SBMChoiceCourses />} />
 
         {/* SENG & SHSS */}
         <Route path="/english/2023/seng" element={<Legacy2023SENGCourses />} />
@@ -99,13 +116,14 @@ function AnimatedRoutes() {
         <Route path="/english/2023/ssci/ire" element={<Legacy2023SSCIIREProg />} />
         <Route path="/english/2023/ssci/btb" element={<Legacy2023SSCIBTBProg />} />
         <Route path="/english/2023/ssci/maec" element={<Legacy2023SSCIMAECProg />} />
+        <Route path="/english/2023/ssci/maec/choice" element={<Legacy2023SSCIMAECChoice />} />
 
         {/* AIS */}
         <Route path="/english/2023/ais" element={<Legacy2023AISQuestion />} />
-        <Route path="/english/2023/ais/seng" element={<Legacy2023AISSENGCourses />} />
-        <Route path="/english/2023/ais/shss" element={<Legacy2023AISSHSSCourses />} />
-        <Route path="/english/2023/ais/ssci" element={<Legacy2023AISSSCICourses />} />
-        <Route path="/english/2023/ais/maec" element={<Legacy2023AISMAECCourses />} />
+        <Route path="/english/2023/ais/isd-question" element={<Legacy2023AISISDQuestion />} />
+        <Route path="/english/2023/ais/core-choice" element={<Legacy2023AISCoreChoice />} />
+        <Route path="/english/2023/ais/lang2062" element={<Legacy2023AISLANG2062 />} />
+        <Route path="/english/2023/ais/choice" element={<Legacy2023AISChoiceCourses />} />
         <Route path="/english/2023/ais/isd" element={<Legacy2023AISISDCourses />} />
       </Routes>
     </AnimatePresence>
