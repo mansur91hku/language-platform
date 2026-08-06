@@ -7,11 +7,11 @@ const advCommRoute = "/english/pathway1/science/advanced-communication";
 // ─── Nav bar helper ───────────────────────────────────────────────────────────
 function NavBar({ onBack, onHome }) {
   return (
-    <div className="pt-2 flex items-center justify-between">
-      <button onClick={onBack} className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300">
+    <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
+      <button onClick={onBack} className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto">
         Back
       </button>
-      <button onClick={onHome} className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300">
+      <button onClick={onHome} className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto">
         Home
       </button>
     </div>
@@ -19,7 +19,7 @@ function NavBar({ onBack, onHome }) {
 }
 
 // ─── AIS Core Choice: LANG 2010 / LANG 2030 / LANG 2070 ──────────────────────
-// Shown when affiliation is SENG, SHSS or SSCI and user is NOT on ISD
+// Shown when affiliation is SENG, SHSS or SSCI and user is NOT on ISD/MAEC
 export function Legacy2023AISCoreChoice() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,18 +29,18 @@ export function Legacy2023AISCoreChoice() {
   const [exitDirection, setExitDirection] = useState("up");
 
   const coreCourses = [
-    { code: "LANG 2010", title: "English for Science (3 credits)", url: "https://cle.hkust.edu.hk/courses/lang2010", forSchool: "SSCI" },
-    { code: "LANG 2030", title: "Technical Communication in English (3 credits)", url: "https://cle.hkust.edu.hk/courses/lang2030", forSchool: "SENG" },
-    { code: "LANG 2070", title: "English for Humanities and Social Sciences (3 credits)", url: "https://cle.hkust.edu.hk/courses/lang2070", forSchool: "SHSS" },
+    { code: "LANG 2010", title: "English for Science I (3 credits)", url: "https://cle.hkust.edu.hk/courses/lang2010", forSchool: "SSCI" },
+    { code: "LANG 2030", title: "Technical Communication I (3 credits)", url: "https://cle.hkust.edu.hk/courses/lang2030", forSchool: "SENG" },
+    { code: "LANG 2070", title: "English Communication for Humanities and Social Science Studies I (3 credits)", url: "https://cle.hkust.edu.hk/courses/lang2070", forSchool: "SHSS" },
   ];
 
   return (
     <motion.div className="min-h-screen bg-white text-black" initial={{ y: initialDirection }} animate={{ y: 0 }} exit={{ y: exitDirection === "up" ? "-100%" : "100%" }} transition={{ duration: 0.6, ease: "easeInOut" }}>
+      <NavBar
+        onBack={() => { setExitDirection("down"); setTimeout(() => navigate(previousPage, { state: { direction: "down", affiliation } }), 300); }}
+        onHome={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
+      />
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <NavBar
-          onBack={() => { setExitDirection("down"); setTimeout(() => navigate(previousPage, { state: { direction: "down", affiliation } }), 300); }}
-          onHome={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
-        />
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">Academy of Interdisciplinary Studies</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -82,11 +82,11 @@ export function Legacy2023AISLANG2062() {
 
   return (
     <motion.div className="min-h-screen bg-white text-black" initial={{ y: initialDirection }} animate={{ y: 0 }} exit={{ y: exitDirection === "up" ? "-100%" : "100%" }} transition={{ duration: 0.6, ease: "easeInOut" }}>
+      <NavBar
+        onBack={() => { setExitDirection("down"); setTimeout(() => navigate(previousPage, { state: { direction: "down", affiliation } }), 300); }}
+        onHome={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
+      />
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <NavBar
-          onBack={() => { setExitDirection("down"); setTimeout(() => navigate(previousPage, { state: { direction: "down", affiliation } }), 300); }}
-          onHome={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
-        />
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">Academy of Interdisciplinary Studies</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -98,7 +98,7 @@ export function Legacy2023AISLANG2062() {
           <a href="https://cle.hkust.edu.hk/courses/lang2062" target="_blank" rel="noopener noreferrer"
             className="block bg-gradient-to-b from-teal-50 to-cyan-100 border border-cyan-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-4xl font-semibold mb-4">LANG 2062</h3>
-            <p className="text-gray-700 text-lg mb-4">Required course (3 credits)</p>
+            <p className="text-gray-700 text-lg mb-4">Professional Speaking for the Workplace (3 credits)</p>
             <span className="text-cyan-700 font-medium">View Course Details</span>
           </a>
         </section>
@@ -126,11 +126,11 @@ export function Legacy2023AISChoiceCourses() {
 
   return (
     <motion.div className="min-h-screen bg-white text-black" initial={{ y: initialDirection }} animate={{ y: 0 }} exit={{ y: exitDirection === "up" ? "-100%" : "100%" }} transition={{ duration: 0.6, ease: "easeInOut" }}>
+      <NavBar
+        onBack={() => { setExitDirection("down"); setTimeout(() => navigate(previousPage, { state: { direction: "down", affiliation } }), 300); }}
+        onHome={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
+      />
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <NavBar
-          onBack={() => { setExitDirection("down"); setTimeout(() => navigate(previousPage, { state: { direction: "down", affiliation } }), 300); }}
-          onHome={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
-        />
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">Academy of Interdisciplinary Studies</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -143,13 +143,13 @@ export function Legacy2023AISChoiceCourses() {
           <a href="https://cle.hkust.edu.hk/courses/lang2061" target="_blank" rel="noopener noreferrer"
             className="block bg-gradient-to-b from-teal-50 to-cyan-100 border border-cyan-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-4xl font-semibold mb-4">LANG 2061</h3>
-            <p className="text-gray-700 text-lg mb-4">English for Communication (3 credits)</p>
+            <p className="text-gray-700 text-lg mb-4">Professional Writing for the Workplace (3 credits)</p>
             <span className="text-cyan-700 font-medium">View Course Details</span>
           </a>
           <a href="https://cle.hkust.edu.hk/courses/lang3060" target="_blank" rel="noopener noreferrer"
             className="block bg-gradient-to-b from-teal-50 to-cyan-100 border border-cyan-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
             <h3 className="text-4xl font-semibold mb-4">LANG 3060</h3>
-            <p className="text-gray-700 text-lg mb-4">Advanced English Communication (3 credits)</p>
+            <p className="text-gray-700 text-lg mb-4">Advanced Academic Writing (3 credits)</p>
             <span className="text-cyan-700 font-medium">View Course Details</span>
           </a>
         </section>
@@ -175,23 +175,23 @@ export function Legacy2023AISISDCourses() {
   const [exitDirection, setExitDirection] = useState("up");
 
   const isdCourses = [
-    { code: "LANG 4030", url: "https://cle.hkust.edu.hk/courses/lang4030" },
-    { code: "LANG 4031", url: "https://cle.hkust.edu.hk/courses/lang4031" },
-    { code: "LANG 4032", url: "https://cle.hkust.edu.hk/courses/lang4032" },
-    { code: "LANG 4034", url: "https://cle.hkust.edu.hk/courses/lang4034" },
+    { code: "LANG 4030", title: "Technical Communication II for CSE, CPEG & DSCT", url: "https://cle.hkust.edu.hk/courses/lang4030" },
+    { code: "LANG 4031", title: "Technical Communication II for ECE & CPEG", url: "https://cle.hkust.edu.hk/courses/lang4031" },
+    { code: "LANG 4032", title: "Technical Communication II for IEDA and ISDN", url: "https://cle.hkust.edu.hk/courses/lang4032" },
+    { code: "LANG 4034", title: "Technical Communication II for Mechanical and Aerospace Engineering", url: "https://cle.hkust.edu.hk/courses/lang4034" },
   ];
 
   return (
     <motion.div className="min-h-screen bg-white text-black" initial={{ y: initialDirection }} animate={{ y: 0 }} exit={{ y: exitDirection === "up" ? "-100%" : "100%" }} transition={{ duration: 0.6, ease: "easeInOut" }}>
+      <NavBar
+        onBack={() => { setExitDirection("down"); setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300); }}
+        onHome={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
+      />
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <NavBar
-          onBack={() => { setExitDirection("down"); setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300); }}
-          onHome={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
-        />
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">Academy of Interdisciplinary Studies</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            As an <span className="font-bold text-gray-800">ISD</span> student, you are required to take{" "}
+            As an <span className="font-bold text-gray-800">Integrative Systems and Design (ISD)</span> student, you are required to take{" "}
             <span className="font-bold text-gray-800">one</span> of the following courses (3 credits):
           </p>
         </section>
@@ -207,6 +207,7 @@ export function Legacy2023AISISDCourses() {
             <a key={c.code} href={c.url} target="_blank" rel="noopener noreferrer"
               className="block bg-gradient-to-b from-teal-50 to-cyan-100 border border-cyan-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
               <h3 className="text-4xl font-semibold mb-4">{c.code}</h3>
+              <p className="text-gray-700 text-lg mb-4">{c.title}</p>
               <span className="text-cyan-700 font-medium">View Course Details</span>
             </a>
           ))}

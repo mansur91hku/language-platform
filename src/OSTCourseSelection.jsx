@@ -29,67 +29,31 @@ export default function OSTCourseSelection() {
         ease: "easeInOut",
       }}
     >
+      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => {
+              navigate(previousPage, { state: { direction: "down" } });
+            }, 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Back
+        </button>
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => {
+              navigate("/", { state: { direction: "down" } });
+            }, 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Home
+        </button>
+      </div>
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <div className="pt-2 flex items-center justify-between">
-          <button
-            onClick={() => {
-              setExitDirection("down");
-
-              setTimeout(() => {
-                navigate(previousPage, {
-                    state: {
-                        direction: "down",
-                    },
-                });
-              }, 300);
-            }}
-            className="
-              inline-flex
-              items-center
-              px-6
-              py-3
-              rounded-full
-              bg-gray-100
-              text-gray-800
-              font-medium
-              shadow-sm
-              hover:bg-gray-200
-              hover:shadow-md
-              transition-all
-              duration-300
-            "
-          >
-            Back
-          </button>
-          <button
-            onClick={() => {
-              setExitDirection("down");
-
-              setTimeout(() => {
-                navigate("/", {
-                  state: { direction: "down" },
-                });
-              }, 300);
-            }}
-            className="
-              inline-flex
-              items-center
-              px-6
-              py-3
-              rounded-full
-              bg-gray-100
-              text-gray-800
-              font-medium
-              shadow-sm
-              hover:bg-gray-200
-              hover:shadow-md
-              transition-all
-              duration-300
-            "
-          >
-            Home
-          </button>
-        </div>
 
         <section className="text-center py-10">
           <p className="text-2xl text-gray-600 max-w-4xl mx-auto">

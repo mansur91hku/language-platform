@@ -20,28 +20,28 @@ function SingleExtraCourse({ title, courseCode, courseTitle, courseUrl, textColo
       exit={{ y: exitDirection === "up" ? "-100%" : "100%" }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      <main className="max-w-6xl mx-auto px-6 pt-4">
-        <div className="pt-2 flex items-center justify-between">
-          <button
-            onClick={() => {
-              setExitDirection("down");
-              setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300);
-            }}
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300"
-          >
-            Back
-          </button>
-          <button
-            onClick={() => {
-              setExitDirection("down");
-              setTimeout(() => navigate("/", { state: { direction: "down" } }), 300);
-            }}
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300"
-          >
-            Home
-          </button>
-        </div>
+      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Back
+        </button>
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => navigate("/", { state: { direction: "down" } }), 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Home
+        </button>
+      </div>
 
+      <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
             School of Science
@@ -93,7 +93,7 @@ export function Legacy2023SSCIOSTProg() {
     <SingleExtraCourse
       title="Ocean Science and Technology (OST)"
       courseCode="LANG 3025"
-      courseTitle="Academic English for Ocean Science (3 credits)"
+      courseTitle="Science Communication in English (3 credits)"
       courseUrl="https://cle.hkust.edu.hk/courses/lang3025"
       gradientClass="from-sky-50 to-blue-100"
       borderClass="border-blue-200"
@@ -151,35 +151,35 @@ export function Legacy2023SSCIMAECProg() {
       exit={{ y: exitDirection === "up" ? "-100%" : "100%" }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      <main className="max-w-6xl mx-auto px-6 pt-4">
-        <div className="pt-2 flex items-center justify-between">
-          <button
-            onClick={() => {
-              setExitDirection("down");
-              setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300);
-            }}
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300"
-          >
-            Back
-          </button>
-          <button
-            onClick={() => {
-              setExitDirection("down");
-              setTimeout(() => navigate("/", { state: { direction: "down" } }), 300);
-            }}
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300"
-          >
-            Home
-          </button>
-        </div>
+      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Back
+        </button>
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => navigate("/", { state: { direction: "down" } }), 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Home
+        </button>
+      </div>
 
+      <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
             School of Science
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Since you are on the{" "}
-            <span className="font-bold text-gray-800">Marine Environmental Chemistry (MAEC)</span>{" "}
+            <span className="font-bold text-gray-800">Mathematics and Economics (MAEC)</span>{" "}
             program, you are required to take the following additional course (3 credits):
           </p>
         </section>
@@ -192,7 +192,7 @@ export function Legacy2023SSCIMAECProg() {
             className="block bg-gradient-to-b from-sky-50 to-blue-100 border border-blue-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
           >
             <h3 className="text-4xl font-semibold mb-4">LANG 2062</h3>
-            <p className="text-gray-700 text-lg mb-4">Required course (3 credits)</p>
+            <p className="text-gray-700 text-lg mb-4">Professional Speaking for the Workplace (3 credits)</p>
             <span className="text-blue-700 font-medium">View Course Details</span>
           </a>
         </section>
@@ -239,28 +239,28 @@ export function Legacy2023SSCIMAECChoice() {
       exit={{ y: exitDirection === "up" ? "-100%" : "100%" }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      <main className="max-w-6xl mx-auto px-6 pt-4">
-        <div className="pt-2 flex items-center justify-between">
-          <button
-            onClick={() => {
-              setExitDirection("down");
-              setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300);
-            }}
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300"
-          >
-            Back
-          </button>
-          <button
-            onClick={() => {
-              setExitDirection("down");
-              setTimeout(() => navigate("/", { state: { direction: "down" } }), 300);
-            }}
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300"
-          >
-            Home
-          </button>
-        </div>
+      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Back
+        </button>
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => navigate("/", { state: { direction: "down" } }), 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Home
+        </button>
+      </div>
 
+      <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
             School of Science
@@ -280,7 +280,7 @@ export function Legacy2023SSCIMAECChoice() {
             className="block bg-gradient-to-b from-sky-50 to-blue-100 border border-blue-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
           >
             <h3 className="text-4xl font-semibold mb-4">LANG 2061</h3>
-            <p className="text-gray-700 text-lg mb-4">English for Science Communication (3 credits)</p>
+            <p className="text-gray-700 text-lg mb-4">Professional Writing for the Workplace (3 credits)</p>
             <span className="text-blue-700 font-medium">View Course Details</span>
           </a>
           <a
@@ -290,7 +290,7 @@ export function Legacy2023SSCIMAECChoice() {
             className="block bg-gradient-to-b from-sky-50 to-blue-100 border border-blue-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
           >
             <h3 className="text-4xl font-semibold mb-4">LANG 3060</h3>
-            <p className="text-gray-700 text-lg mb-4">Advanced Science Communication (3 credits)</p>
+            <p className="text-gray-700 text-lg mb-4">Advanced Academic Writing (3 credits)</p>
             <span className="text-blue-700 font-medium">View Course Details</span>
           </a>
         </section>
