@@ -1,0 +1,112 @@
+import { motion } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+
+export default function ChineseBackgroundSelection() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const initialDirection =
+    location.state?.direction === "down" ? "-100%" : "100%";
+
+  const [exitDirection, setExitDirection] = useState("up");
+
+  const options = [
+    {
+      title: "Chinese Language Background",
+      subtitle:
+        "I studied Chinese as a primary / first language (e.g. HKDSE Chinese, Gaokao Chinese, GSAT, or equivalent)",
+      cardClass: "from-rose-50 to-red-100 border-red-200",
+      path: "/chinese/background",
+    },
+    {
+      title: "Non-Chinese Language Background",
+      subtitle:
+        "I am learning Chinese as a foreign / second language (e.g. studied Chinese through HSK levels)",
+      cardClass: "from-orange-50 to-amber-100 border-amber-200",
+      path: "/chinese/non-background",
+    },
+  ];
+
+  return (
+    <motion.div
+      className="min-h-screen bg-white text-black"
+      initial={{ y: initialDirection }}
+      animate={{ y: 0 }}
+      exit={{
+        y: exitDirection === "up" ? "-100%" : "100%",
+      }}
+      transition={{
+        duration: 0.6,
+        ease: "easeInOut",
+      }}
+    >
+      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => {
+              navigate("/", { state: { direction: "down" } });
+            }, 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Back
+        </button>
+        <button
+          onClick={() => {
+            setExitDirection("down");
+            setTimeout(() => {
+              navigate("/", { state: { direction: "down" } });
+            }, 300);
+          }}
+          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
+        >
+          Home
+        </button>
+      </div>
+
+      <main className="max-w-6xl mx-auto px-6 pt-4">
+        <section className="flex flex-col items-center justify-center text-center py-16 md:py-20">
+          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
+            Chinese
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mb-8">
+            Please select your Chinese language background to find the right courses for you.
+          </p>
+          <a
+            href="https://cle.hkust.edu.hk/courses/common-core/chinese/selection-guideline"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-b from-rose-50 to-red-100 border border-red-200 text-red-700 font-medium shadow-sm hover:shadow-md transition-all duration-300"
+          >
+            Read the Chinese course selection guideline
+          </a>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-24">
+          {options.map((option) => (
+            <button
+              key={option.title}
+              onClick={() => {
+                setExitDirection("up");
+                setTimeout(() => {
+                  navigate(option.path, {
+                    state: { direction: "up" },
+                  });
+                }, 300);
+              }}
+              className={`group bg-gradient-to-b ${option.cardClass} border rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300`}
+            >
+              <h3 className="text-3xl font-semibold mb-3">{option.title}</h3>
+              <p className="text-gray-700 mb-6">{option.subtitle}</p>
+              <span className="text-red-700 font-medium group-hover:underline">
+                View courses
+              </span>
+            </button>
+          ))}
+        </section>
+      </main>
+    </motion.div>
+  );
+}

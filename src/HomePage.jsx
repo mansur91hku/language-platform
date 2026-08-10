@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function LanguageHomePage() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const options = [
     {
@@ -26,7 +27,7 @@ export default function LanguageHomePage() {
   return (
     <motion.div
       className="min-h-screen bg-white text-black"
-      initial={{ y: 0 }}
+      initial={{ y: location.state?.direction === "down" ? "-100%" : 0 }}
       animate={{ y: 0 }}
       exit={{ y: "-100%" }}
       transition={{
@@ -53,6 +54,12 @@ export default function LanguageHomePage() {
               onClick={() => {
                 if (option.title === "English") {
                   navigate("/english");
+                }
+                if (option.title === "Chinese") {
+                  navigate("/chinese");
+                }
+                if (option.title === "Third Languages") {
+                  navigate("/third-languages");
                 }
               }}
               className={`group bg-gradient-to-b ${option.cardClass} border rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300`}

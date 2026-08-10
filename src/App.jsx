@@ -3,6 +3,25 @@ import { AnimatePresence } from "framer-motion";
 
 import LanguageHomePage from "./HomePage";
 import EnglishYearSelection from "./EnglishYearSelection";
+import ChineseBackgroundSelection from "./ChineseBackgroundSelection";
+import ChineseBackgroundCourses from "./ChineseBackgroundCourses";
+import ChineseNonBackgroundCourses from "./ChineseNonBackgroundCourses";
+import ChineseGCSQuestion from "./ChineseGCSQuestion";
+import ChineseGCSLANG2170 from "./ChineseGCSLANG2170";
+import ChineseLANG1133Elective from "./ChineseLANG1133Elective";
+import ChineseNonBackgroundElectives from "./ChineseNonBackgroundElectives";
+
+// ── Third Languages ───────────────────────────────────────────────────────────
+import ThirdLanguageSelection from "./ThirdLanguageSelection";
+import JapaneseBeginner from "./JapaneseBeginner";
+import JapaneseUpperBeginner from "./JapaneseUpperBeginner";
+import KoreanBeginner from "./KoreanBeginner";
+import FrenchBeginner from "./FrenchBeginner";
+import SpanishBeginner from "./SpanishBeginner";
+import SpanishUpperBeginner from "./SpanishUpperBeginner";
+import CantoneseBackgroundQuestion from "./CantoneseBackgroundQuestion";
+import CantoneseChineseBackground from "./CantoneseChineseBackground";
+import CantoneseNonChineseBackground from "./CantoneseNonChineseBackground";
 import EnglishPathwaySelection from "./EnglishPathwaySelection";
 import EnglishPathway1 from "./EnglishPathway1";
 import EnglishPathway2 from "./EnglishPathway2";
@@ -68,6 +87,27 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         {/* ── Home ── */}
         <Route path="/" element={<LanguageHomePage />} />
+
+        {/* ── Chinese pathway ── */}
+        <Route path="/chinese" element={<ChineseBackgroundSelection />} />
+        <Route path="/chinese/background" element={<ChineseBackgroundCourses />} />
+        <Route path="/chinese/background/gcs" element={<ChineseGCSQuestion />} />
+        <Route path="/chinese/background/gcs/yes" element={<ChineseGCSLANG2170 />} />
+        <Route path="/chinese/background/lang1133" element={<ChineseLANG1133Elective />} />
+        <Route path="/chinese/non-background" element={<ChineseNonBackgroundCourses />} />
+        <Route path="/chinese/non-background/electives" element={<ChineseNonBackgroundElectives />} />
+
+        {/* ── Third Languages ── */}
+        <Route path="/third-languages" element={<ThirdLanguageSelection />} />
+        <Route path="/third-languages/japanese" element={<JapaneseBeginner />} />
+        <Route path="/third-languages/japanese/upper-beginner" element={<JapaneseUpperBeginner />} />
+        <Route path="/third-languages/korean" element={<KoreanBeginner />} />
+        <Route path="/third-languages/french" element={<FrenchBeginner />} />
+        <Route path="/third-languages/spanish" element={<SpanishBeginner />} />
+        <Route path="/third-languages/spanish/upper-beginner" element={<SpanishUpperBeginner />} />
+        <Route path="/third-languages/cantonese" element={<CantoneseBackgroundQuestion />} />
+        <Route path="/third-languages/cantonese/chinese-background" element={<CantoneseChineseBackground />} />
+        <Route path="/third-languages/cantonese/non-chinese-background" element={<CantoneseNonChineseBackground />} />
 
         {/* ── English year selection ── */}
         <Route path="/english" element={<EnglishYearSelection />} />
