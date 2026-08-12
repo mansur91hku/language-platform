@@ -1,21 +1,14 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import PageNavBar from "./components/PageNavBar";
+
 
 const advCommRoute = "/english/pathway1/science/advanced-communication";
 
 // ─── Nav bar helper ───────────────────────────────────────────────────────────
-function NavBar({ onBack, onHome }) {
-  return (
-    <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
-      <button onClick={onBack} className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto">
-        Back
-      </button>
-      <button onClick={onHome} className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto">
-        Home
-      </button>
-    </div>
-  );
+function NavBar({ onBack }) {
+  return <PageNavBar onBack={onBack} />;
 }
 
 // ─── AIS Core Choice: LANG 2010 / LANG 2030 / LANG 2070 ──────────────────────
@@ -175,10 +168,7 @@ export function Legacy2023AISISDCourses() {
   const [exitDirection, setExitDirection] = useState("up");
 
   const isdCourses = [
-    { code: "LANG 4030", title: "Technical Communication II for CSE, CPEG & DSCT", url: "https://cle.hkust.edu.hk/courses/lang4030" },
-    { code: "LANG 4031", title: "Technical Communication II for ECE & CPEG", url: "https://cle.hkust.edu.hk/courses/lang4031" },
     { code: "LANG 4032", title: "Technical Communication II for IEDA and ISDN", url: "https://cle.hkust.edu.hk/courses/lang4032" },
-    { code: "LANG 4034", title: "Technical Communication II for Mechanical and Aerospace Engineering", url: "https://cle.hkust.edu.hk/courses/lang4034" },
   ];
 
   return (
@@ -191,8 +181,7 @@ export function Legacy2023AISISDCourses() {
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">Academy of Interdisciplinary Studies</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            As an <span className="font-bold text-gray-800">Integrative Systems and Design (ISD)</span> student, you are required to take{" "}
-            <span className="font-bold text-gray-800">one</span> of the following courses (3 credits):
+            As an <span className="font-bold text-gray-800">Innovation, Design and Technology (ISD)</span> student, you are required to take the following course:
           </p>
         </section>
 
@@ -202,7 +191,7 @@ export function Legacy2023AISISDCourses() {
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="max-w-4xl mx-auto">
           {isdCourses.map((c) => (
             <a key={c.code} href={c.url} target="_blank" rel="noopener noreferrer"
               className="block bg-gradient-to-b from-teal-50 to-cyan-100 border border-cyan-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">

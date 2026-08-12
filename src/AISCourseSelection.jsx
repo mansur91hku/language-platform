@@ -1,17 +1,16 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import PageNavBar from "./components/PageNavBar";
+import { isPathway1_2026 } from "./utils/englishYear";
 
 export default function AISCourseSelection() {
   const navigate = useNavigate();
   const location = useLocation();
-
   const [exitDirection, setExitDirection] = useState("up");
-
   const initialDirection =
-    location.state?.direction === "down"
-      ? "-100%"
-      : "100%";
+    location.state?.direction === "down" ? "-100%" : "100%";
+  const showPreEnrolledHeader = isPathway1_2026();
 
   const courses = [
     {
@@ -49,115 +48,68 @@ export default function AISCourseSelection() {
       className="min-h-screen bg-white text-black"
       initial={{ y: initialDirection }}
       animate={{ y: 0 }}
-      exit={{
-        y: exitDirection === "up" ? "-100%" : "100%",
-      }}
-      transition={{
-        duration: 0.6,
-        ease: "easeInOut",
-      }}
+      exit={{ y: exitDirection === "up" ? "-100%" : "100%" }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
-        <button
-          onClick={() => {
-            setExitDirection("down");
-            setTimeout(() => {
-              navigate("/english/pathway1/school", { state: { direction: "down" } });
-            }, 300);
-          }}
-          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
-        >
-          Back
-        </button>
-        <button
-          onClick={() => {
-            setExitDirection("down");
-            setTimeout(() => {
-              navigate("/", { state: { direction: "down" } });
-            }, 300);
-          }}
-          className="inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto"
-        >
-          Home
-        </button>
-      </div>
+      <PageNavBar
+        onBack={() => {
+          setExitDirection("down");
+          setTimeout(() => {
+            navigate("/english/pathway1/school", { state: { direction: "down" } });
+          }, 300);
+        }}
+      />
+
       <main className="max-w-6xl mx-auto px-6 pt-4">
-
-        <section className="text-center py-10">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            Academy of Interdisciplinary Studies
+        <section className="py-10 text-center">
+          <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
+            {showPreEnrolledHeader
+              ? "Required course"
+              : "Academy of Interdisciplinary Studies"}
           </h2>
-
           <p className="text-xl text-gray-600">
-            You may select any of these four courses
+            {showPreEnrolledHeader
+              ? "You are pre-enrolled into this course."
+              : "You may select any of these four courses"}
           </p>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16">
-            {courses.map((course) => (
-                <a
-                  key={course.code}
-                  href={course.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block bg-gradient-to-b ${course.color} border rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300`}
-                >
-                <h3 className="text-4xl font-semibold mb-4">
-                    {course.code}
-                </h3>
-
-                <p className="text-gray-700 text-lg mb-4">
-                    {course.title}
-                </p>
-
-                <span className={`${course.textColor} font-medium`}>
-                    View Course Details
-                </span>
-                </a>
-            ))}
-        </section>
-        <section className="text-center mt-10 pb-16">
-            <p className="text-lg text-gray-600 mb-6">
-                Click on the button below to see what's next after this course.
-            </p>
-
-            <button
-              onClick={() => {
-                setExitDirection("up");
-
-                setTimeout(() => {
-                  navigate("/english/pathway1/ais/isd", {
-                    state: {
-                      direction: "up",
-                    },
-                  });
-                }, 300);
-              }}
-              className="
-                inline-flex
-                items-center
-                justify-center
-                min-w-[220px]
-                px-10
-                py-5
-                rounded-[32px]
-                bg-gradient-to-b
-                from-blue-50
-                to-indigo-100
-                border
-                border-blue-200
-                text-blue-700
-                text-lg
-                font-semibold
-                shadow-md
-                hover:shadow-2xl
-                hover:-translate-y-2
-                transition-all
-                duration-300
-              "
+        <section className="grid grid-cols-1 gap-8 pb-16 md:grid-cols-2">
+          {courses.map((course) => (
+            <a
+              key={course.code}
+              href={course.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block rounded-[32px] border bg-gradient-to-b ${course.color} p-10 text-left shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}
             >
-              Continue
-            </button>
+              <h3 className="mb-4 text-4xl font-semibold">{course.code}</h3>
+              <p className="mb-4 text-lg text-gray-700">{course.title}</p>
+              <span className={`${course.textColor} font-medium`}>
+                View Course Details
+              </span>
+            </a>
+          ))}
+        </section>
+
+        <section className="mt-10 pb-16 text-center">
+          <p className="mb-6 text-lg text-gray-600">
+            Click on the button below to see what's next after this course.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setExitDirection("up");
+              setTimeout(() => {
+                navigate("/english/pathway1/ais/isd", {
+                  state: { direction: "up" },
+                });
+              }, 300);
+            }}
+            className="inline-flex min-w-[220px] items-center justify-center rounded-[32px] border border-blue-200 bg-gradient-to-b from-blue-50 to-indigo-100 px-10 py-5 text-lg font-semibold text-blue-700 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            Continue
+          </button>
         </section>
       </main>
     </motion.div>

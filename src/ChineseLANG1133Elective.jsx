@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import PageNavBar from "./components/PageNavBar";
+
 
 export default function ChineseLANG1133Elective() {
   const navigate = useNavigate();
@@ -20,26 +22,10 @@ export default function ChineseLANG1133Elective() {
       exit={{ y: exitDirection === "up" ? "-100%" : "100%" }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
-        <button
-          onClick={() => {
+      <PageNavBar onBack={() => {
             setExitDirection("down");
             setTimeout(() => navigate(previousPage, { state: { direction: "down" } }), 300);
-          }}
-          className={navBtn}
-        >
-          Back
-        </button>
-        <button
-          onClick={() => {
-            setExitDirection("down");
-            setTimeout(() => navigate("/", { state: { direction: "down" } }), 300);
-          }}
-          className={navBtn}
-        >
-          Home
-        </button>
-      </div>
+          }} />
 
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="text-center py-10">

@@ -38,6 +38,11 @@ import IRECourseSelection from "./IRECourseSelection";
 import AdvancedCommunicationCourses from "./AdvancedCommunicationCourses";
 import ISDQuestion from "./ISDQuestion";
 import ISDCourseSelection from "./ISDCourseSelection";
+import OSTIREProgramQuestion from "./OSTIREProgramQuestion";
+import ScienceNeitherCourses from "./ScienceNeitherCourses";
+import BroadeningUxOPCourses from "./BroadeningUxOPCourses";
+import HAICCourses from "./HAICCourses";
+import FYPElectives from "./FYPElectives";
 
 // ── 2023-intake legacy flow ──────────────────────────────────────────────────
 import Legacy2023PathwaySelection from "./Legacy2023PathwaySelection";
@@ -87,6 +92,9 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         {/* ── Home ── */}
         <Route path="/" element={<LanguageHomePage />} />
+        <Route path="/broadening" element={<BroadeningUxOPCourses />} />
+        <Route path="/haic" element={<HAICCourses />} />
+        <Route path="/fyp" element={<FYPElectives />} />
 
         {/* ── Chinese pathway ── */}
         <Route path="/chinese" element={<ChineseBackgroundSelection />} />
@@ -123,6 +131,8 @@ function AnimatedRoutes() {
         <Route path="/english/pathway1/humanities" element={<HumanitiesCourseSelection />} />
         <Route path="/english/pathway1/ais" element={<AISCourseSelection />} />
         <Route path="/english/pathway1/science/ost" element={<OSTQuestion />} />
+        <Route path="/english/pathway1/science/program-selection" element={<OSTIREProgramQuestion />} />
+        <Route path="/english/pathway1/science/neither" element={<ScienceNeitherCourses />} />
         <Route path="/english/pathway1/science/ost/yes" element={<OSTCourseSelection />} />
         <Route path="/english/pathway1/science/ost/no" element={<IREQuestion />} />
         <Route path="/english/pathway1/science/ost/no/yes" element={<IRECourseSelection />} />

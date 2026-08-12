@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
+import PageNavBar from "./components/PageNavBar";
 
 export default function LanguageHomePage() {
   const navigate = useNavigate();
@@ -10,17 +11,39 @@ export default function LanguageHomePage() {
       title: "English",
       subtitle: "Explore English language courses",
       cardClass: "from-blue-50 to-indigo-100 border-blue-200",
+      path: "/english",
     },
     {
       title: "Chinese",
       subtitle: "Browse Chinese language offerings",
       cardClass: "from-red-50 to-rose-100 border-rose-200",
+      path: "/chinese",
     },
     {
-      title: "Third Languages",
+      title: "Other Languages",
       subtitle:
         "Discover Japanese, Cantonese, Spanish, French, and Korean course options",
       cardClass: "from-emerald-50 to-green-100 border-green-200",
+      path: "/third-languages",
+    },
+    {
+      title: "Broadening and UxOP",
+      subtitle:
+        "Browse Broadening (Humanities) and Undergraudate Experiential Opportunities (UxOP) course options",
+      cardClass: "from-violet-50 to-purple-100 border-violet-200",
+      path: "/broadening",
+    },
+    {
+      title: "HAIC",
+      subtitle: "Explore Human-AI Co-Creation and Data Literacy (HAIC) courses",
+      cardClass: "from-cyan-50 to-sky-100 border-cyan-200",
+      path: "/haic",
+    },
+    {
+      title: "FYP English Electives",
+      subtitle: "Browse Final Year Project (FYP) English elective options",
+      cardClass: "from-amber-50 to-orange-100 border-amber-200",
+      path: "/fyp",
     },
   ];
 
@@ -35,44 +58,34 @@ export default function LanguageHomePage() {
         ease: "easeInOut",
       }}
     >
-      
+      <PageNavBar showBack={false} onBack={() => {}} />
+
       <main className="max-w-7xl mx-auto px-6 pt-8">
-        <section className="flex flex-col items-center justify-center text-center py-24 md:py-32">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            Select language
+        <section className="flex flex-col items-center justify-center py-24 text-center md:py-32">
+          <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
+            What courses are you looking for?
           </h2>
 
-          <p className="text-xl text-gray-600 max-w-2xl">
+          <p className="max-w-2xl text-xl text-gray-600">
             Browse language course options and discover your learning path.
           </p>
         </section>
 
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-24">
+        <section className="grid grid-cols-1 gap-8 pb-24 md:grid-cols-2 lg:grid-cols-3">
           {options.map((option) => (
             <button
               key={option.title}
+              type="button"
               onClick={() => {
-                if (option.title === "English") {
-                  navigate("/english");
-                }
-                if (option.title === "Chinese") {
-                  navigate("/chinese");
-                }
-                if (option.title === "Third Languages") {
-                  navigate("/third-languages");
-                }
+                navigate(option.path, { state: { direction: "up" } });
               }}
-              className={`group bg-gradient-to-b ${option.cardClass} border rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300`}
+              className={`group rounded-[32px] border bg-gradient-to-b ${option.cardClass} p-10 text-left shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}
             >
-              <h3 className="text-3xl font-semibold mb-3">
-                {option.title}
-              </h3>
+              <h3 className="mb-3 text-3xl font-semibold">{option.title}</h3>
 
-              <p className="text-gray-700 mb-6">
-                {option.subtitle}
-              </p>
+              <p className="mb-6 text-gray-700">{option.subtitle}</p>
 
-              <span className="text-blue-600 font-medium group-hover:underline">
+              <span className="font-medium text-blue-600 group-hover:underline">
                 View courses
               </span>
             </button>

@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import PageNavBar from "./components/PageNavBar";
+
 
 const languages = [
   {
@@ -46,9 +48,6 @@ export default function ThirdLanguageSelection() {
   const initialDirection = location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
 
-  const navBtn =
-    "inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto";
-
   return (
     <motion.div
       className="min-h-screen bg-white text-black"
@@ -57,25 +56,12 @@ export default function ThirdLanguageSelection() {
       exit={{ y: exitDirection === "up" ? "-100%" : "100%" }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
-        <button
-          onClick={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
-          className={navBtn}
-        >
-          Back
-        </button>
-        <button
-          onClick={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
-          className={navBtn}
-        >
-          Home
-        </button>
-      </div>
+      <PageNavBar onBack={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }} />
 
       <main className="max-w-7xl mx-auto px-6 pt-4">
         <section className="flex flex-col items-center justify-center text-center py-16 md:py-20">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            Third Languages
+            Other Languages
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl">
             Discover language courses in Japanese, Korean, French, Spanish, and Cantonese.

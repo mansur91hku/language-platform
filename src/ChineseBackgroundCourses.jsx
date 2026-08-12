@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import PageNavBar from "./components/PageNavBar";
+
 
 const tabs = [
   {
@@ -68,20 +70,7 @@ export default function ChineseBackgroundCourses() {
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
       {/* Nav */}
-      <div className="fixed top-4 left-4 right-4 flex items-center justify-between z-50 pointer-events-none">
-        <button
-          onClick={() => { setExitDirection("down"); setTimeout(() => navigate("/chinese", { state: { direction: "down" } }), 300); }}
-          className={navBtn}
-        >
-          Back
-        </button>
-        <button
-          onClick={() => { setExitDirection("down"); setTimeout(() => navigate("/", { state: { direction: "down" } }), 300); }}
-          className={navBtn}
-        >
-          Home
-        </button>
-      </div>
+      <PageNavBar onBack={() => { setExitDirection("down"); setTimeout(() => navigate("/chinese", { state: { direction: "down" } }), 300); }} />
 
       <main className="max-w-7xl mx-auto px-6 pt-4">
         {/* Title */}

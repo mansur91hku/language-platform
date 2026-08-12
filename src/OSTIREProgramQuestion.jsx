@@ -1,0 +1,94 @@
+import { motion } from "framer-motion";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+import PageNavBar from "./components/PageNavBar";
+
+export default function OSTIREProgramQuestion() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const previousPage =
+    location.state?.previousPage || "/english/pathway1/science";
+  const [exitDirection, setExitDirection] = useState("up");
+  const initialDirection =
+    location.state?.direction === "down" ? "-100%" : "100%";
+
+  const options = [
+    {
+      label: "OST",
+      description: "Ocean Science and Technology (OST)",
+      path: "/english/pathway1/science/ost/yes",
+    },
+    {
+      label: "IRE",
+      description: "International Research Enrichment (IRE)",
+      path: "/english/pathway1/science/ost/no/yes",
+    },
+    {
+      label: "Neither",
+      description: "I am not in OST or IRE",
+      path: "/english/pathway1/science/neither",
+    },
+  ];
+
+  return (
+    <motion.div
+      className="min-h-screen bg-white text-black"
+      initial={{ y: initialDirection }}
+      animate={{ y: 0 }}
+      exit={{ y: exitDirection === "up" ? "-100%" : "100%" }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+    >
+      <PageNavBar
+        onBack={() => {
+          setExitDirection("down");
+          setTimeout(() => {
+            navigate(previousPage, { state: { direction: "down" } });
+          }, 300);
+        }}
+      />
+
+      <main className="max-w-5xl mx-auto px-6 pt-4">
+        <section className="py-16 text-center">
+          <h2 className="mb-8 text-5xl font-semibold tracking-tight md:text-7xl">
+            School of Science
+          </h2>
+          <p className="mx-auto max-w-3xl text-2xl text-gray-600">
+            Are you in the{" "}
+            <span className="font-bold text-gray-800">
+              Ocean Science and Technology (OST)
+            </span>{" "}
+            or{" "}
+            <span className="font-bold text-gray-800">
+              International Research Enrichment (IRE)
+            </span>{" "}
+            program?
+          </p>
+        </section>
+
+        <section className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-3">
+          {options.map((option) => (
+            <button
+              key={option.label}
+              type="button"
+              onClick={() => {
+                setExitDirection("up");
+                setTimeout(() => {
+                  navigate(option.path, {
+                    state: {
+                      direction: "up",
+                      previousPage: "/english/pathway1/science/program-selection",
+                    },
+                  });
+                }, 300);
+              }}
+              className="rounded-[32px] border border-blue-200 bg-gradient-to-b from-sky-50 to-blue-100 p-10 text-center shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+            >
+              <h3 className="mb-3 text-4xl font-semibold">{option.label}</h3>
+              <p className="text-base text-gray-600">{option.description}</p>
+            </button>
+          ))}
+        </section>
+      </main>
+    </motion.div>
+  );
+}
