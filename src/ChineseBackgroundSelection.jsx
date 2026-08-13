@@ -51,21 +51,13 @@ export default function ChineseBackgroundSelection() {
           }} />
 
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <section className="flex flex-col items-center justify-center text-center py-16 md:py-20">
-          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
+        <section className="flex flex-col items-center justify-center text-center py-10 md:py-14">
+          <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-5">
             Chinese
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mb-8">
+          <p className="text-xl text-gray-600 max-w-2xl mb-4">
             Please select your Chinese language background to find the right courses for you.
           </p>
-          <a
-            href="https://cle.hkust.edu.hk/courses/common-core/chinese/selection-guideline"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-b from-rose-50 to-red-100 border border-red-200 text-red-700 font-medium shadow-sm hover:shadow-md transition-all duration-300"
-          >
-            Read the Chinese course selection guideline
-          </a>
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-24">

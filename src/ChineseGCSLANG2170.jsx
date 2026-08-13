@@ -57,7 +57,7 @@ export default function ChineseGCSLANG2170() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/chinese/background/lang1133", {
+                navigate("/chinese/background/gcs/no", {
                   state: { direction: "up", previousPage: "/chinese/background/gcs/yes" },
                 });
               }, 300);

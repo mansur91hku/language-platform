@@ -20,11 +20,6 @@ const electives = [
     title: "Chinese Characters for Non-Chinese Language Background Students II",
     url: "https://cle.hkust.edu.hk/courses/lang1103",
   },
-  {
-    code: "LANG 1130",
-    title: "Cantonese for Non-Chinese Language Background Students I",
-    url: "https://cle.hkust.edu.hk/courses/lang1130",
-  },
 ];
 
 export default function ChineseNonBackgroundElectives() {

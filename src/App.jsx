@@ -8,7 +8,7 @@ import ChineseBackgroundCourses from "./ChineseBackgroundCourses";
 import ChineseNonBackgroundCourses from "./ChineseNonBackgroundCourses";
 import ChineseGCSQuestion from "./ChineseGCSQuestion";
 import ChineseGCSLANG2170 from "./ChineseGCSLANG2170";
-import ChineseLANG1133Elective from "./ChineseLANG1133Elective";
+import ChineseOtherCourses from "./ChineseOtherCourses";
 import ChineseNonBackgroundElectives from "./ChineseNonBackgroundElectives";
 
 // ── Third Languages ───────────────────────────────────────────────────────────
@@ -101,7 +101,7 @@ function AnimatedRoutes() {
         <Route path="/chinese/background" element={<ChineseBackgroundCourses />} />
         <Route path="/chinese/background/gcs" element={<ChineseGCSQuestion />} />
         <Route path="/chinese/background/gcs/yes" element={<ChineseGCSLANG2170 />} />
-        <Route path="/chinese/background/lang1133" element={<ChineseLANG1133Elective />} />
+        <Route path="/chinese/background/gcs/no" element={<ChineseOtherCourses />} />
         <Route path="/chinese/non-background" element={<ChineseNonBackgroundCourses />} />
         <Route path="/chinese/non-background/electives" element={<ChineseNonBackgroundElectives />} />
 
