@@ -73,7 +73,7 @@ export default function IRECourseSelection() {
                   navigate("/english/pathway1/science/advanced-communication", {
                     state: {
                       direction: "up",
-                      previousPage: "/english/pathway1/science/ost/no/yes",
+                      previousPage: location.pathname,
                     },
                   });
                 }, 300);

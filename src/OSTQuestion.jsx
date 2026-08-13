@@ -61,7 +61,7 @@ export default function OSTQuestion() {
                     navigate("/english/pathway1/science/ost/yes", {
                       state: {
                         direction: "up",
-                        previousPage: "/english/pathway1/science/ost",
+                        previousPage: location.pathname,
                       },
                     });
                 }, 300);
@@ -95,7 +95,7 @@ export default function OSTQuestion() {
                     navigate("/english/pathway1/science/ost/no", {
                       state: {
                         direction: "up",
-                        previousPage: "/english/pathway1/science/ost",
+                        previousPage: location.pathname,
                       },
                     });
                 }, 300);

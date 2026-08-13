@@ -78,14 +78,14 @@ export default function ScienceCourseSelection() {
                   navigate("/english/pathway1/science/program-selection", {
                     state: {
                       direction: "up",
-                      previousPage: "/english/pathway1/science",
+                      previousPage: location.pathname,
                     },
                   });
                 } else {
                   navigate("/english/pathway1/science/ost", {
                     state: {
                       direction: "up",
-                      previousPage: "/english/pathway1/science",
+                      previousPage: location.pathname,
                     },
                   });
                 }

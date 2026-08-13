@@ -77,7 +77,7 @@ export default function EngineeringCourseSelection() {
                 navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/pathway1/engineering",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);

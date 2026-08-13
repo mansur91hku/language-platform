@@ -57,7 +57,7 @@ export default function Legacy2023AISQuestion() {
                   navigate("/english/2023/ais/isd-question", {
                     state: {
                       direction: "up",
-                      previousPage: "/english/2023/ais",
+                      previousPage: location.pathname,
                       affiliation: option.affiliation,
                     },
                   });

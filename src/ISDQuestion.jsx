@@ -96,7 +96,7 @@ export default function ISDQuestion() {
                     navigate("/english/pathway1/science/advanced-communication", {
                         state: {
                             direction: "up",
-                            previousPage: "/english/pathway1/ais/isd",
+                            previousPage: location.pathname,
                         },
                     });
                 }, 300);

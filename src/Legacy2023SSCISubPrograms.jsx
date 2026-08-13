@@ -59,7 +59,7 @@ function SingleExtraCourse({ title, courseCode, courseTitle, courseUrl, textColo
               setExitDirection("up");
               setTimeout(() => {
                 navigate(advCommRoute, {
-                  state: { direction: "up", previousPage: selfRoute },
+                  state: { direction: "up", previousPage: location.pathname },
                 });
               }, 300);
             }}
@@ -290,7 +290,7 @@ export function Legacy2023SSCIMAECChoice() {
               setExitDirection("up");
               setTimeout(() => {
                 navigate(advCommRoute, {
-                  state: { direction: "up", previousPage: "/english/2023/ssci/maec/choice" },
+                  state: { direction: "up", previousPage: location.pathname },
                 });
               }, 300);
             }}

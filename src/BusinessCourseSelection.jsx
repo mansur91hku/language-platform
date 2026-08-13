@@ -79,7 +79,7 @@ export default function BusinessCourseSelection() {
                 navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/pathway1/business",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);

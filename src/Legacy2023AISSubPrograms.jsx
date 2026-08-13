@@ -149,7 +149,7 @@ export function Legacy2023AISChoiceCourses() {
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">After completing these courses, you may also take Advanced Communication courses.</p>
-          <button onClick={() => { setExitDirection("up"); setTimeout(() => navigate(advCommRoute, { state: { direction: "up", previousPage: "/english/2023/ais/choice" } }), 300); }}
+          <button onClick={() => { setExitDirection("up"); setTimeout(() => navigate(advCommRoute, { state: { direction: "up", previousPage: location.pathname } }), 300); }}
             className="inline-flex items-center justify-center min-w-[220px] px-10 py-5 rounded-[32px] bg-gradient-to-b from-blue-50 to-indigo-100 border border-blue-200 text-blue-700 text-lg font-semibold shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
             Continue
           </button>
@@ -204,7 +204,7 @@ export function Legacy2023AISISDCourses() {
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">After completing this course, you may also take Advanced Communication courses.</p>
-          <button onClick={() => { setExitDirection("up"); setTimeout(() => navigate(advCommRoute, { state: { direction: "up", previousPage: "/english/2023/ais/isd" } }), 300); }}
+          <button onClick={() => { setExitDirection("up"); setTimeout(() => navigate(advCommRoute, { state: { direction: "up", previousPage: location.pathname } }), 300); }}
             className="inline-flex items-center justify-center min-w-[220px] px-10 py-5 rounded-[32px] bg-gradient-to-b from-blue-50 to-indigo-100 border border-blue-200 text-blue-700 text-lg font-semibold shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
             Continue
           </button>

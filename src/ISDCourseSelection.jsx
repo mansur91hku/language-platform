@@ -67,7 +67,7 @@ export default function ISDCourseSelection() {
                 navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/pathway1/ais/isd/yes",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);

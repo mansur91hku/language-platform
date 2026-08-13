@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const otherCourseOptions = [
+const defaultCourseOptions = [
   {
     label: "Chinese",
     path: "/chinese",
@@ -28,8 +28,35 @@ const otherCourseOptions = [
   },
 ];
 
-export default function OtherCoursesSection() {
+const advancedCommunicationCourseOptions = [
+  {
+    label: "Chinese",
+    path: "/chinese",
+    cardClass: "from-red-50 to-rose-100 border-rose-200 text-rose-700",
+  },
+  {
+    label: "Other Languages",
+    path: "/third-languages",
+    cardClass: "from-emerald-50 to-green-100 border-green-200 text-emerald-700",
+  },
+  {
+    label: "HAIC",
+    path: "/haic",
+    cardClass: "from-cyan-50 to-sky-100 border-cyan-200 text-cyan-700",
+  },
+  {
+    label: "FYP English Electives",
+    path: "/fyp",
+    cardClass: "from-amber-50 to-orange-100 border-amber-200 text-amber-700",
+  },
+];
+
+export default function OtherCoursesSection({ variant = "default" }) {
   const navigate = useNavigate();
+  const options =
+    variant === "advancedCommunication"
+      ? advancedCommunicationCourseOptions
+      : defaultCourseOptions;
 
   return (
     <section className="mt-16 border-t border-gray-200 pt-12 pb-20">
@@ -37,8 +64,12 @@ export default function OtherCoursesSection() {
         See other courses you can take
       </h3>
 
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {otherCourseOptions.map((option) => (
+      <div
+        className={`mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 ${
+          variant === "advancedCommunication" ? "lg:grid-cols-4" : "lg:grid-cols-3"
+        }`}
+      >
+        {options.map((option) => (
           <button
             key={option.path}
             type="button"

@@ -62,7 +62,7 @@ export default function IREQuestion() {
                 navigate("/english/pathway1/science/ost/no/yes", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/pathway1/science/ost/no",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);
@@ -96,7 +96,7 @@ export default function IREQuestion() {
                 navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/pathway1/science/ost/no",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);

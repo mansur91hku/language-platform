@@ -79,7 +79,7 @@ export default function HumanitiesCourseSelection() {
                 navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/pathway1/humanities",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);

@@ -71,7 +71,7 @@ export default function Legacy2023SHSSCourses() {
                 navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/2023/shss",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);

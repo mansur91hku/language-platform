@@ -76,7 +76,7 @@ export default function OSTIREProgramQuestion() {
                   navigate(option.path, {
                     state: {
                       direction: "up",
-                      previousPage: "/english/pathway1/science/program-selection",
+                      previousPage: location.pathname,
                     },
                   });
                 }, 300);

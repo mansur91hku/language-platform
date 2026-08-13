@@ -72,7 +72,7 @@ export default function OSTCourseSelection() {
                   navigate("/english/pathway1/science/advanced-communication", {
                     state: {
                       direction: "up",
-                      previousPage: "/english/pathway1/science/ost/yes",
+                      previousPage: location.pathname,
                     },
                   });
                 }, 300);

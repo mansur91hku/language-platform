@@ -90,7 +90,7 @@ export default function Legacy2023SBMChoiceCourses() {
                 navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/2023/sbm/standard/choice",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);

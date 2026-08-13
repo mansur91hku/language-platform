@@ -27,7 +27,7 @@ export default function Legacy2023AISISDQuestion() {
         navigate("/english/2023/ssci/maec", {
           state: {
             direction: "up",
-            previousPage: "/english/2023/ais/isd-question",
+            previousPage: location.pathname,
             affiliation,
           },
         });
@@ -36,7 +36,7 @@ export default function Legacy2023AISISDQuestion() {
         navigate("/english/2023/ais/isd", {
           state: {
             direction: "up",
-            previousPage: "/english/2023/ais/isd-question",
+            previousPage: location.pathname,
             affiliation,
           },
         });
@@ -52,7 +52,7 @@ export default function Legacy2023AISISDQuestion() {
         navigate(advCommRoute, {
           state: {
             direction: "up",
-            previousPage: "/english/2023/ais/isd-question",
+            previousPage: location.pathname,
           },
         });
       } else {
@@ -60,7 +60,7 @@ export default function Legacy2023AISISDQuestion() {
         navigate("/english/2023/ais/core-choice", {
           state: {
             direction: "up",
-            previousPage: "/english/2023/ais/isd-question",
+            previousPage: location.pathname,
             affiliation,
           },
         });

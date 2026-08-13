@@ -72,7 +72,7 @@ export default function Legacy2023SBMRMBICourses2() {
                 navigate("/english/pathway1/science/advanced-communication", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/2023/sbm/rmbi/2",
+                    previousPage: location.pathname,
                   },
                 });
               }, 300);
