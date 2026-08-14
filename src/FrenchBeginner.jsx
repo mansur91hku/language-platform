@@ -3,15 +3,24 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
 
+const courses = [
+  {
+    code: "LANG 1310",
+    title: "French Language and Culture for Beginners I",
+    url: "https://cle.hkust.edu.hk/courses/lang1310",
+  },
+  {
+    code: "LANG 2310",
+    title: "French Language and Culture for Beginners II",
+    url: "https://cle.hkust.edu.hk/courses/lang2310",
+  },
+];
 
 export default function FrenchBeginner() {
   const navigate = useNavigate();
   const location = useLocation();
   const initialDirection = location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
-
-  const navBtn =
-    "inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto";
 
   return (
     <motion.div
@@ -29,20 +38,23 @@ export default function FrenchBeginner() {
           <p className="text-xl text-gray-600">Beginner Level</p>
         </section>
 
-        <section className="flex justify-center">
-          <a
-            href="https://cle.hkust.edu.hk/courses/lang1310"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full md:w-1/2 bg-gradient-to-b from-indigo-50 to-blue-100 border border-indigo-200 rounded-[32px] p-8 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
-          >
-            <h4 className="text-3xl font-semibold mb-3">LANG 1310</h4>
-            <p className="text-gray-700 mb-4">French Language and Culture for Beginners I</p>
-            <span className="text-indigo-700 font-medium">View Course Details</span>
-          </a>
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-8">
+          {courses.map((course) => (
+            <a
+              key={course.code}
+              href={course.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block bg-gradient-to-b from-indigo-50 to-blue-100 border border-indigo-200 rounded-[32px] p-8 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300"
+            >
+              <h4 className="text-3xl font-semibold mb-3">{course.code}</h4>
+              <p className="text-gray-700 mb-4">{course.title}</p>
+              <span className="text-indigo-700 font-medium">View Course Details</span>
+            </a>
+          ))}
         </section>
 
-        <section className="text-center mt-10 pb-20">
+        <section className="text-center pb-20">
           <button
             onClick={() => {
               setExitDirection("down");

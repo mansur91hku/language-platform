@@ -6,7 +6,7 @@ const SEGMENT_LABELS = {
   "third-languages": "Other Languages",
   broadening: "Broadening & UxOP",
   haic: "HAIC",
-  fyp: "FYP English Electives",
+  fyp: "Electives",
   pathways: "Pathways",
   pathway1: "Pathway 1",
   pathway2: "Pathway 2",

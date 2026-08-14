@@ -40,8 +40,8 @@ export default function LanguageHomePage() {
       path: "/haic",
     },
     {
-      title: "FYP English Electives",
-      subtitle: "Browse Final Year Project (FYP) English elective options",
+      title: "Electives",
+      subtitle: "Browse elective options and language study choices",
       cardClass: "from-amber-50 to-orange-100 border-amber-200",
       path: "/fyp",
     },

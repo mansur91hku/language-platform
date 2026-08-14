@@ -25,8 +25,9 @@ export default function ChineseNonBackgroundCourses() {
   const otherCourseOptions = [
     { label: "English", path: "/english", cardClass: "from-blue-50 to-indigo-100 border-blue-200 text-blue-700" },
     { label: "Other Languages", path: "/third-languages", cardClass: "from-emerald-50 to-green-100 border-green-200 text-emerald-700" },
+    { label: "Broadening and UxOP", path: "/broadening", cardClass: "from-violet-50 to-purple-100 border-violet-200 text-violet-700" },
     { label: "HAIC", path: "/haic", cardClass: "from-cyan-50 to-sky-100 border-cyan-200 text-cyan-700" },
-    { label: "FYP English Electives", path: "/fyp", cardClass: "from-amber-50 to-orange-100 border-amber-200 text-amber-700" },
+    { label: "Electives", path: "/fyp", cardClass: "from-amber-50 to-orange-100 border-amber-200 text-amber-700" },
   ];
 
   return (

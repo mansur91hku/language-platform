@@ -14,11 +14,9 @@ import ChineseNonBackgroundElectives from "./ChineseNonBackgroundElectives";
 // ── Third Languages ───────────────────────────────────────────────────────────
 import ThirdLanguageSelection from "./ThirdLanguageSelection";
 import JapaneseBeginner from "./JapaneseBeginner";
-import JapaneseUpperBeginner from "./JapaneseUpperBeginner";
 import KoreanBeginner from "./KoreanBeginner";
 import FrenchBeginner from "./FrenchBeginner";
 import SpanishBeginner from "./SpanishBeginner";
-import SpanishUpperBeginner from "./SpanishUpperBeginner";
 import CantoneseBackgroundQuestion from "./CantoneseBackgroundQuestion";
 import CantoneseChineseBackground from "./CantoneseChineseBackground";
 import CantoneseNonChineseBackground from "./CantoneseNonChineseBackground";
@@ -108,11 +106,11 @@ function AnimatedRoutes() {
         {/* ── Third Languages ── */}
         <Route path="/third-languages" element={<ThirdLanguageSelection />} />
         <Route path="/third-languages/japanese" element={<JapaneseBeginner />} />
-        <Route path="/third-languages/japanese/upper-beginner" element={<JapaneseUpperBeginner />} />
+        <Route path="/third-languages/japanese/upper-beginner" element={<JapaneseBeginner />} />
         <Route path="/third-languages/korean" element={<KoreanBeginner />} />
         <Route path="/third-languages/french" element={<FrenchBeginner />} />
         <Route path="/third-languages/spanish" element={<SpanishBeginner />} />
-        <Route path="/third-languages/spanish/upper-beginner" element={<SpanishUpperBeginner />} />
+        <Route path="/third-languages/spanish/upper-beginner" element={<SpanishBeginner />} />
         <Route path="/third-languages/cantonese" element={<CantoneseBackgroundQuestion />} />
         <Route path="/third-languages/cantonese/chinese-background" element={<CantoneseChineseBackground />} />
         <Route path="/third-languages/cantonese/non-chinese-background" element={<CantoneseNonChineseBackground />} />

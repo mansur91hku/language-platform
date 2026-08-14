@@ -43,7 +43,7 @@ const tabs = [
       { code: "LANG 1421", title: "Chinese Communication in the Digital Era", url: "https://cle.hkust.edu.hk/courses/lang1421" },
       { code: "LANG 1422", title: "Chinese for Workplace Applications", url: "https://cle.hkust.edu.hk/courses/lang1422" },
       { code: "LANG 1423", title: "Chinese Communication in Global Context", url: "https://cle.hkust.edu.hk/courses/lang1423" },
-      { code: "LANG 1424C/P", title: "Chinese Writing in Cultural Contexts", url: "https://cle.hkust.edu.hk/courses/lang1424" },
+      { code: "LANG 1424", title: "Chinese Writing in Cultural Contexts", url: "https://cle.hkust.edu.hk/courses/lang1424" },
       { code: "LANG 1425", title: "Chinese Communication in Interpersonal Relations", url: "https://cle.hkust.edu.hk/courses/lang1425" },
       { code: "LANG 1426", title: "Chinese Communication in Film and Literary Contexts", url: "https://cle.hkust.edu.hk/courses/lang1426" },
     ],

@@ -10,32 +10,47 @@ export default function BroadeningUxOPCourses() {
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
-  const [activeSection, setActiveSection] = useState("broadening");
+  const [activeSection, setActiveSection] = useState(null);
 
   const sections = [
     {
       key: "broadening",
       label: "Broadening (Humanities)",
       description:
-        "These courses can count towards the Common Core Broadening requirement.",
+        "You may choose to enroll in any of these 3 credit courses for your Broadening (Humanities) credits.",
       courses: broadeningCourses,
       cardClass:
         "block bg-gradient-to-b from-emerald-50 to-green-100 border border-green-200 rounded-[32px] p-8 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300",
       accent: "text-emerald-700",
+      buttonClass:
+        "bg-gradient-to-b from-emerald-50 to-green-100 border-green-200 text-emerald-700",
+      tabClass: "border-green-200 bg-gradient-to-b from-emerald-50 to-green-100 text-emerald-700",
+      activeTabClass: "border-green-300 bg-gradient-to-b from-green-200 to-emerald-200 text-emerald-900 shadow-lg",
     },
     {
       key: "uxop",
       label: "UxOP",
       description:
-        "These courses can count towards the Common Core Experiencing (UxOP) requirement.",
-      courses: uxopCourses,
+        "You may choose to enroll in this CLE course to substitute for Broadening credits, given that there are no required credits for Experiencing courses.",
+      courses: [uxopCourses.find((course) => course.code === "UTOP 2401")].filter(Boolean),
       cardClass:
         "block bg-gradient-to-b from-sky-50 to-blue-100 border border-blue-200 rounded-[32px] p-8 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300",
       accent: "text-blue-700",
+      buttonClass:
+        "bg-gradient-to-b from-sky-50 to-blue-100 border-blue-200 text-blue-700",
+      tabClass: "border-blue-200 bg-gradient-to-b from-sky-50 to-blue-100 text-blue-700",
+      activeTabClass: "border-blue-300 bg-gradient-to-b from-blue-200 to-sky-200 text-blue-900 shadow-lg",
     },
   ];
 
   const currentSection = sections.find((section) => section.key === activeSection);
+  const otherCourseOptions = [
+    { label: "English", path: "/english", cardClass: "from-blue-50 to-indigo-100 border-blue-200 text-blue-700" },
+    { label: "Chinese", path: "/chinese", cardClass: "from-red-50 to-rose-100 border-rose-200 text-rose-700" },
+    { label: "Other Languages", path: "/third-languages", cardClass: "from-emerald-50 to-green-100 border-green-200 text-emerald-700" },
+    { label: "HAIC", path: "/haic", cardClass: "from-cyan-50 to-sky-100 border-cyan-200 text-cyan-700" },
+    { label: "Electives", path: "/fyp", cardClass: "from-amber-50 to-orange-100 border-amber-200 text-amber-700" },
+  ];
 
   return (
     <motion.div
@@ -59,52 +74,84 @@ export default function BroadeningUxOPCourses() {
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
             Broadening (Humanities) and UxOP
           </h2>
-          <p className="mx-auto max-w-4xl text-xl text-gray-600">
-            Browse courses that fulfill Common Core Broadening and UxOP
-            requirements.
-          </p>
         </section>
 
         <section className="mb-10 flex flex-wrap justify-center gap-4">
-          {sections.map((section) => (
-            <button
-              key={section.key}
-              type="button"
-              onClick={() => setActiveSection(section.key)}
-              className={`rounded-full border px-8 py-4 text-base font-semibold transition-colors duration-300 ${
-                activeSection === section.key
-                  ? "border-blue-300 bg-blue-100 text-blue-900 shadow-lg"
-                  : "border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              {section.label}
-            </button>
-          ))}
+          {sections.map((section) => {
+            const isActive = activeSection === section.key;
+
+            return (
+              <motion.button
+                key={section.key}
+                type="button"
+                onClick={() => setActiveSection(section.key)}
+                animate={isActive ? { scale: 1 } : { scale: [1, 1.05, 1] }}
+                transition={
+                  isActive
+                    ? { duration: 0.2 }
+                    : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: section.key === "broadening" ? 0 : 0.5 }
+                }
+                className={`rounded-full border px-8 py-4 text-base font-semibold transition-colors duration-300 ${
+                  isActive ? section.activeTabClass : section.tabClass
+                }`}
+              >
+                {section.label}
+              </motion.button>
+            );
+          })}
         </section>
 
-        <section className="mx-auto mb-8 max-w-4xl px-2">
-          <p className="text-center text-base text-gray-500">
-            {currentSection.description}
-          </p>
-        </section>
+        {currentSection && (
+          <>
+            <section className="mx-auto mb-8 max-w-4xl px-2">
+              <p className="text-center text-base text-gray-500">
+                {currentSection.description}
+              </p>
+            </section>
 
-        <section className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {currentSection.courses.map((course) => (
-            <a
-              key={course.code}
-              href={course.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={currentSection.cardClass}
-            >
-              <h4 className="mb-3 text-3xl font-semibold">{course.code}</h4>
-              <p className="mb-4 text-gray-700">{course.title}</p>
-              <span className={`${currentSection.accent} font-medium`}>
-                View Course Details
-              </span>
-            </a>
-          ))}
-        </section>
+            <section className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              {currentSection.courses.map((course) => (
+                <a
+                  key={course.code}
+                  href={course.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={currentSection.cardClass}
+                >
+                  <h4 className="mb-3 text-3xl font-semibold">{course.code}</h4>
+                  <p className="mb-4 text-gray-700">{course.title}</p>
+                  <span className={`${currentSection.accent} font-medium`}>
+                    View Course Details
+                  </span>
+                </a>
+              ))}
+            </section>
+
+            <section className="pt-10 pb-20 text-center">
+              <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-gray-500">
+                See other courses you can take
+              </p>
+
+              <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {otherCourseOptions.map((option) => (
+                  <button
+                    key={option.path}
+                    type="button"
+                    onClick={() => {
+                      setExitDirection("up");
+                      setTimeout(() => {
+                        navigate(option.path, { state: { direction: "up" } });
+                      }, 300);
+                    }}
+                    className={`rounded-[24px] border bg-gradient-to-b p-6 text-left text-lg font-semibold shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${option.cardClass}`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </section>
+          </>
+        )}
       </main>
     </motion.div>
   );

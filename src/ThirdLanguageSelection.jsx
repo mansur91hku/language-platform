@@ -63,9 +63,6 @@ export default function ThirdLanguageSelection() {
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
             Other Languages
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl">
-            Discover language courses in Japanese, Korean, French, Spanish, and Cantonese.
-          </p>
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-24">

@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
-import { isPathway1_2026 } from "./utils/englishYear";
 
 export default function EnglishPathway1() {
   const navigate = useNavigate();
   const location = useLocation();
   const [exitDirection, setExitDirection] = useState("up");
-  const showPreEnrolledHeader = isPathway1_2026();
 
-  useEffect(() => {
-    sessionStorage.setItem("pathwayOrigin", "pathway1");
-  }, []);
+  // Write pathwayOrigin synchronously so downstream pages (SchoolSelection
+  // back-button, Science / IRE / OST navigation) can read it immediately.
+  sessionStorage.setItem("pathwayOrigin", "pathway1");
 
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
@@ -37,13 +35,11 @@ export default function EnglishPathway1() {
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="py-10 text-center">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
-            {showPreEnrolledHeader ? "Required course" : "Pathway 1"}
+            Required course
           </h2>
 
           <p className="text-xl text-gray-600">
-            {showPreEnrolledHeader
-              ? "You are pre-enrolled into this course."
-              : "Required course"}
+            You are pre-enrolled into this course.
           </p>
         </section>
 
