@@ -153,6 +153,7 @@ function AnimatedRoutes() {
         <Route path="/english/pathway1/science/neither" element={<RedirectToYearSpecific path="/english/pathway1/science/neither" />} />
         <Route path="/english/pathway1/science/ost/yes" element={<RedirectToYearSpecific path="/english/pathway1/science/ost/yes" />} />
         <Route path="/english/pathway1/science/ost/no" element={<RedirectToYearSpecific path="/english/pathway1/science/ost/no" />} />
+        <Route path="/english/pathway1/science/ire" element={<RedirectToYearSpecific path="/english/pathway1/science/ire" />} />
         <Route path="/english/pathway1/science/ost/no/yes" element={<RedirectToYearSpecific path="/english/pathway1/science/ost/no/yes" />} />
         <Route path="/english/pathway1/science/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway1/science/advanced-communication" />} />
         <Route path="/english/pathway1/ais/isd" element={<RedirectToYearSpecific path="/english/pathway1/ais/isd" />} />
@@ -162,18 +163,29 @@ function AnimatedRoutes() {
         <Route path="/english/2024/pathway1" element={<EnglishPathway1 />} />
         <Route path="/english/2024/pathway2" element={<EnglishPathway2 />} />
         <Route path="/english/2024/pathway1/school" element={<SchoolSelection />} />
+        <Route path="/english/2024/pathway2/school" element={<SchoolSelection />} />
         <Route path="/english/2024/pathway1/science" element={<ScienceCourseSelection />} />
+        <Route path="/english/2024/pathway2/science" element={<ScienceCourseSelection />} />
         <Route path="/english/2024/pathway1/engineering" element={<EngineeringCourseSelection />} />
         <Route path="/english/2024/pathway1/business" element={<BusinessCourseSelection />} />
         <Route path="/english/2024/pathway1/humanities" element={<HumanitiesCourseSelection />} />
         <Route path="/english/2024/pathway1/ais" element={<AISCourseSelection />} />
         <Route path="/english/2024/pathway1/science/ost" element={<OSTQuestion />} />
+        <Route path="/english/2024/pathway2/science/ost" element={<OSTQuestion />} />
         <Route path="/english/2024/pathway1/science/program-selection" element={<OSTIREProgramQuestion />} />
+        <Route path="/english/2024/pathway2/science/program-selection" element={<OSTIREProgramQuestion />} />
         <Route path="/english/2024/pathway1/science/neither" element={<ScienceNeitherCourses />} />
+        <Route path="/english/2024/pathway2/science/neither" element={<ScienceNeitherCourses />} />
         <Route path="/english/2024/pathway1/science/ost/yes" element={<OSTCourseSelection />} />
+        <Route path="/english/2024/pathway2/science/ost/yes" element={<OSTCourseSelection />} />
         <Route path="/english/2024/pathway1/science/ost/no" element={<IREQuestion />} />
+        <Route path="/english/2024/pathway2/science/ost/no" element={<IREQuestion />} />
+        <Route path="/english/2024/pathway1/science/ire" element={<IRECourseSelection />} />
+        <Route path="/english/2024/pathway2/science/ire" element={<IRECourseSelection />} />
         <Route path="/english/2024/pathway1/science/ost/no/yes" element={<IRECourseSelection />} />
+        <Route path="/english/2024/pathway2/science/ost/no/yes" element={<IRECourseSelection />} />
         <Route path="/english/2024/pathway1/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2024/pathway2/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2024/pathway1/ais/isd" element={<ISDQuestion />} />
         <Route path="/english/2024/pathway1/ais/isd/yes" element={<ISDCourseSelection />} />
 
@@ -181,18 +193,29 @@ function AnimatedRoutes() {
         <Route path="/english/2025/pathway1" element={<EnglishPathway1 />} />
         <Route path="/english/2025/pathway2" element={<EnglishPathway2 />} />
         <Route path="/english/2025/pathway1/school" element={<SchoolSelection />} />
+        <Route path="/english/2025/pathway2/school" element={<SchoolSelection />} />
         <Route path="/english/2025/pathway1/science" element={<ScienceCourseSelection />} />
+        <Route path="/english/2025/pathway2/science" element={<ScienceCourseSelection />} />
         <Route path="/english/2025/pathway1/engineering" element={<EngineeringCourseSelection />} />
         <Route path="/english/2025/pathway1/business" element={<BusinessCourseSelection />} />
         <Route path="/english/2025/pathway1/humanities" element={<HumanitiesCourseSelection />} />
         <Route path="/english/2025/pathway1/ais" element={<AISCourseSelection />} />
         <Route path="/english/2025/pathway1/science/ost" element={<OSTQuestion />} />
+        <Route path="/english/2025/pathway2/science/ost" element={<OSTQuestion />} />
         <Route path="/english/2025/pathway1/science/program-selection" element={<OSTIREProgramQuestion />} />
+        <Route path="/english/2025/pathway2/science/program-selection" element={<OSTIREProgramQuestion />} />
         <Route path="/english/2025/pathway1/science/neither" element={<ScienceNeitherCourses />} />
+        <Route path="/english/2025/pathway2/science/neither" element={<ScienceNeitherCourses />} />
         <Route path="/english/2025/pathway1/science/ost/yes" element={<OSTCourseSelection />} />
+        <Route path="/english/2025/pathway2/science/ost/yes" element={<OSTCourseSelection />} />
         <Route path="/english/2025/pathway1/science/ost/no" element={<IREQuestion />} />
+        <Route path="/english/2025/pathway2/science/ost/no" element={<IREQuestion />} />
+        <Route path="/english/2025/pathway1/science/ire" element={<IRECourseSelection />} />
+        <Route path="/english/2025/pathway2/science/ire" element={<IRECourseSelection />} />
         <Route path="/english/2025/pathway1/science/ost/no/yes" element={<IRECourseSelection />} />
+        <Route path="/english/2025/pathway2/science/ost/no/yes" element={<IRECourseSelection />} />
         <Route path="/english/2025/pathway1/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2025/pathway2/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2025/pathway1/ais/isd" element={<ISDQuestion />} />
         <Route path="/english/2025/pathway1/ais/isd/yes" element={<ISDCourseSelection />} />
 
@@ -200,18 +223,29 @@ function AnimatedRoutes() {
         <Route path="/english/2026/pathway1" element={<EnglishPathway1 />} />
         <Route path="/english/2026/pathway2" element={<EnglishPathway2 />} />
         <Route path="/english/2026/pathway1/school" element={<SchoolSelection />} />
+        <Route path="/english/2026/pathway2/school" element={<SchoolSelection />} />
         <Route path="/english/2026/pathway1/science" element={<ScienceCourseSelection />} />
+        <Route path="/english/2026/pathway2/science" element={<ScienceCourseSelection />} />
         <Route path="/english/2026/pathway1/engineering" element={<EngineeringCourseSelection />} />
         <Route path="/english/2026/pathway1/business" element={<BusinessCourseSelection />} />
         <Route path="/english/2026/pathway1/humanities" element={<HumanitiesCourseSelection />} />
         <Route path="/english/2026/pathway1/ais" element={<AISCourseSelection />} />
         <Route path="/english/2026/pathway1/science/ost" element={<OSTQuestion />} />
+        <Route path="/english/2026/pathway2/science/ost" element={<OSTQuestion />} />
         <Route path="/english/2026/pathway1/science/program-selection" element={<OSTIREProgramQuestion />} />
+        <Route path="/english/2026/pathway2/science/program-selection" element={<OSTIREProgramQuestion />} />
         <Route path="/english/2026/pathway1/science/neither" element={<ScienceNeitherCourses />} />
+        <Route path="/english/2026/pathway2/science/neither" element={<ScienceNeitherCourses />} />
         <Route path="/english/2026/pathway1/science/ost/yes" element={<OSTCourseSelection />} />
+        <Route path="/english/2026/pathway2/science/ost/yes" element={<OSTCourseSelection />} />
         <Route path="/english/2026/pathway1/science/ost/no" element={<IREQuestion />} />
+        <Route path="/english/2026/pathway2/science/ost/no" element={<IREQuestion />} />
+        <Route path="/english/2026/pathway1/science/ire" element={<IRECourseSelection />} />
+        <Route path="/english/2026/pathway2/science/ire" element={<IRECourseSelection />} />
         <Route path="/english/2026/pathway1/science/ost/no/yes" element={<IRECourseSelection />} />
+        <Route path="/english/2026/pathway2/science/ost/no/yes" element={<IRECourseSelection />} />
         <Route path="/english/2026/pathway1/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway2/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2026/pathway1/ais/isd" element={<ISDQuestion />} />
         <Route path="/english/2026/pathway1/ais/isd/yes" element={<ISDCourseSelection />} />
 

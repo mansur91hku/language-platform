@@ -89,7 +89,8 @@ export default function EnglishPathwaySelection() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                    navigate("/english/pathway1", {
+                    const year = sessionStorage.getItem("englishYear") || "2026";
+                    navigate(`/english/${year}/pathway1`, {
                         state: {
                             direction: "up",
                         },
@@ -127,7 +128,8 @@ export default function EnglishPathwaySelection() {
               setExitDirection("up");
 
               setTimeout(() => {
-                navigate("/english/pathway2", {
+                const year = sessionStorage.getItem("englishYear") || "2026";
+                navigate(`/english/${year}/pathway2`, {
                   state: {
                     direction: "up",
                   },

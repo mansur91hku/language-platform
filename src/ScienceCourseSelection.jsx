@@ -2,13 +2,15 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
-import { isPathway1_2026, isYear2026 } from "./utils/englishYear";
+import { getEnglishYear, isPathway1_2026, isYear2026, getPathwayOrigin } from "./utils/englishYear";
 
 export default function ScienceCourseSelection() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = getEnglishYear() || "2026";
+  const currentPathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
-    location.state?.previousPage || "/english/pathway1/school";
+    location.state?.previousPage || `/english/${year}/${currentPathway}/school`;
   const schoolSelectionPreviousPage =
     location.state?.schoolSelectionPreviousPage;
   const [exitDirection, setExitDirection] = useState("up");
@@ -28,10 +30,11 @@ export default function ScienceCourseSelection() {
         onBack={() => {
           setExitDirection("down");
           setTimeout(() => {
-            navigate(previousPage, {
+            const targetPage = previousPage || `/english/${year}/${currentPathway}/school`;
+            navigate(targetPage, {
               state: {
                 direction: "down",
-                previousPage: schoolSelectionPreviousPage,
+                previousPage: schoolSelectionPreviousPage || `/english/${year}/${currentPathway}/pathway2`,
               },
             });
           }, 300);
@@ -74,15 +77,18 @@ export default function ScienceCourseSelection() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                if (isPathway1_2026()) {
-                  navigate("/english/pathway1/science/program-selection", {
+                const year = getEnglishYear() || "2026";
+                const pathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
+
+                if (isYear2026() || isPathway1_2026()) {
+                  navigate(`/english/${year}/${pathway}/science/program-selection`, {
                     state: {
                       direction: "up",
                       previousPage: location.pathname,
                     },
                   });
                 } else {
-                  navigate("/english/pathway1/science/ost", {
+                  navigate(`/english/${year}/${pathway}/science/ost`, {
                     state: {
                       direction: "up",
                       previousPage: location.pathname,

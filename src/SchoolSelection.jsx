@@ -9,10 +9,11 @@ export default function SchoolSelection() {
   const location = useLocation();
 
   const pathwayOrigin = sessionStorage.getItem("pathwayOrigin");
+  const year = sessionStorage.getItem("englishYear") || "2026";
   const previousPage =
     pathwayOrigin === "pathway1"
-      ? "/english/pathway1"
-      : "/english/pathways";
+      ? `/english/${year}/pathway1`
+      : `/english/${year}/pathways`;
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -64,7 +65,12 @@ export default function SchoolSelection() {
       <PageNavBar onBack={() => {
             setExitDirection("down");
             setTimeout(() => {
-              navigate(previousPage, { state: { direction: "down" } });
+              const destination =
+                pathwayOrigin === "pathway2"
+                  ? `/english/${year}/pathways`
+                  : previousPage;
+
+              navigate(destination, { state: { direction: "down" } });
             }, 300);
           }} />
       <main className="max-w-6xl mx-auto px-6 pt-4">
@@ -89,8 +95,10 @@ export default function SchoolSelection() {
                 setTimeout(() => {
                   const schoolPath = location.pathname;
 
+                  const currentPathway = pathwayOrigin === "pathway2" ? "pathway2" : "pathway1";
+
                   if (school.name === "School of Science (SSCI)") {
-                    navigate("/english/pathway1/science", {
+                    navigate(`/english/${year}/${currentPathway}/science`, {
                       state: {
                         direction: "up",
                         previousPage: schoolPath,
@@ -100,7 +108,7 @@ export default function SchoolSelection() {
                   }
 
                   if (school.name === "School of Engineering (SENG)") {
-                    navigate("/english/pathway1/engineering", {
+                    navigate(`/english/${year}/${currentPathway}/engineering`, {
                       state: {
                         direction: "up",
                         previousPage: schoolPath,
@@ -110,7 +118,7 @@ export default function SchoolSelection() {
                   }
 
                   if (school.name === "School of Business and Management (SBM)") {
-                    navigate("/english/pathway1/business", {
+                    navigate(`/english/${year}/${currentPathway}/business`, {
                       state: {
                         direction: "up",
                         previousPage: schoolPath,
@@ -120,7 +128,7 @@ export default function SchoolSelection() {
                   }
 
                   if (school.name === "School of Humanities and Social Science (SHSS)") {
-                    navigate("/english/pathway1/humanities", {
+                    navigate(`/english/${year}/${currentPathway}/humanities`, {
                       state: {
                         direction: "up",
                         previousPage: schoolPath,
@@ -130,7 +138,7 @@ export default function SchoolSelection() {
                   }
 
                   if (school.name === "Academy of Interdisciplinary Studies (AIS)") {
-                    navigate("/english/pathway1/ais", {
+                    navigate(`/english/${year}/${currentPathway}/ais`, {
                       state: {
                         direction: "up",
                         previousPage: schoolPath,

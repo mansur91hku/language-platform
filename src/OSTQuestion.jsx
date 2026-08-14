@@ -2,14 +2,16 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
-
+import { getEnglishYear, getPathwayOrigin } from "./utils/englishYear";
 
 export default function OSTQuestion() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = getEnglishYear() || "2026";
+  const pathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
     location.state?.previousPage ||
-    "/english/pathway1/science";
+    `/english/${year}/${pathway}/science`;
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -58,7 +60,7 @@ export default function OSTQuestion() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                    navigate("/english/pathway1/science/ost/yes", {
+                    navigate(`/english/${year}/${pathway}/science/ost/yes`, {
                       state: {
                         direction: "up",
                         previousPage: location.pathname,
@@ -92,7 +94,7 @@ export default function OSTQuestion() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                    navigate("/english/pathway1/science/ost/no", {
+                    navigate(`/english/${year}/${pathway}/science/ost/no`, {
                       state: {
                         direction: "up",
                         previousPage: location.pathname,

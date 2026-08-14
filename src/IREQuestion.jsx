@@ -2,14 +2,16 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
-
+import { getEnglishYear, getPathwayOrigin } from "./utils/englishYear";
 
 export default function IREQuestion() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = getEnglishYear() || "2026";
+  const pathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
     location.state?.previousPage ||
-    "/english/pathway1/science/ost";
+    `/english/${year}/${pathway}/science/ost`;
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -59,7 +61,7 @@ export default function IREQuestion() {
               setExitDirection("up");
 
               setTimeout(() => {
-                navigate("/english/pathway1/science/ost/no/yes", {
+                navigate(`/english/${year}/${pathway}/science/ire`, {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,
@@ -93,7 +95,7 @@ export default function IREQuestion() {
               setExitDirection("up");
 
               setTimeout(() => {
-                navigate("/english/pathway1/science/advanced-communication", {
+                navigate(`/english/${year}/${pathway}/science/advanced-communication`, {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,

@@ -8,8 +8,10 @@ import { isPathway1_2026 } from "./utils/englishYear";
 export default function IRECourseSelection() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = sessionStorage.getItem("englishYear") || "2026";
+  const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
-    location.state?.previousPage || "/english/pathway1/science/program-selection";
+    location.state?.previousPage || `/english/${year}/${pathway}/science/program-selection`;
   const [exitDirection, setExitDirection] = useState("up");
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
@@ -70,7 +72,7 @@ export default function IRECourseSelection() {
               onClick={() => {
                 setExitDirection("up");
                 setTimeout(() => {
-                  navigate("/english/pathway1/science/advanced-communication", {
+                  navigate(`/english/${year}/${pathway}/science/advanced-communication`, {
                     state: {
                       direction: "up",
                       previousPage: location.pathname,

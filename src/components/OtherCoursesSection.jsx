@@ -40,6 +40,11 @@ const advancedCommunicationCourseOptions = [
     cardClass: "from-emerald-50 to-green-100 border-green-200 text-emerald-700",
   },
   {
+    label: "Broadening & UxOP",
+    path: "/broadening",
+    cardClass: "from-violet-50 to-purple-100 border-violet-200 text-violet-700",
+  },
+  {
     label: "HAIC",
     path: "/haic",
     cardClass: "from-cyan-50 to-sky-100 border-cyan-200 text-cyan-700",
@@ -66,7 +71,7 @@ export default function OtherCoursesSection({ variant = "default" }) {
 
       <div
         className={`mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2 ${
-          variant === "advancedCommunication" ? "lg:grid-cols-4" : "lg:grid-cols-3"
+          variant === "advancedCommunication" ? "lg:grid-cols-5" : "lg:grid-cols-3"
         }`}
       >
         {options.map((option) => (

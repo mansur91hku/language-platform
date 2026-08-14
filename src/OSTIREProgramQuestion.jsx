@@ -2,31 +2,39 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
+import { getEnglishYear, getPathwayOrigin } from "./utils/englishYear";
 
 export default function OSTIREProgramQuestion() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = getEnglishYear() || "2026";
+  const pathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
-    location.state?.previousPage || "/english/pathway1/science";
+    location.state?.previousPage || `/english/${year}/${pathway}/science`;
   const [exitDirection, setExitDirection] = useState("up");
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
+
+  const neitherPath =
+    year === "2026" && pathway === "pathway2"
+      ? `/english/${year}/${pathway}/science/advanced-communication`
+      : `/english/${year}/${pathway}/science/neither`;
 
   const options = [
     {
       label: "OST",
       description: "Ocean Science and Technology (OST)",
-      path: "/english/pathway1/science/ost/yes",
+      path: `/english/${year}/${pathway}/science/ost/yes`,
     },
     {
       label: "IRE",
       description: "International Research Enrichment (IRE)",
-      path: "/english/pathway1/science/ost/no/yes",
+      path: `/english/${year}/${pathway}/science/ire`,
     },
     {
       label: "Neither",
       description: "I am not in OST or IRE",
-      path: "/english/pathway1/science/neither",
+      path: neitherPath,
     },
   ];
 

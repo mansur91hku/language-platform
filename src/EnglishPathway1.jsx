@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
+import { getEnglishYear } from "./utils/englishYear";
 
 export default function EnglishPathway1() {
   const navigate = useNavigate();
@@ -27,7 +28,8 @@ export default function EnglishPathway1() {
         onBack={() => {
           setExitDirection("down");
           setTimeout(() => {
-            navigate("/english/pathways", { state: { direction: "down" } });
+            const year = getEnglishYear() || "2026";
+            navigate(`/english/${year}/pathways`, { state: { direction: "down" } });
           }, 300);
         }}
       />
@@ -68,10 +70,11 @@ export default function EnglishPathway1() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/school", {
+                const year = getEnglishYear() || "2026";
+                navigate(`/english/${year}/pathway1/school`, {
                   state: {
                     direction: "up",
-                    previousPage: "/english/pathway1",
+                    previousPage: `/english/${year}/pathway1`,
                   },
                 });
               }, 300);

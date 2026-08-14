@@ -12,7 +12,10 @@ import { sharedAdvancedCourses } from "./data/advancedCommunicationCourses";
 export default function AdvancedCommunicationCourses() {
   const navigate = useNavigate();
   const location = useLocation();
-  const previousPage = location.state?.previousPage || "/english/pathway1/school";
+  const year = sessionStorage.getItem("englishYear") || "2026";
+  const currentPathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
+  const previousPage =
+    location.state?.previousPage || `/english/${year}/${currentPathway}/school`;
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
@@ -44,11 +47,7 @@ export default function AdvancedCommunicationCourses() {
           </h2>
           <p className="mx-auto max-w-4xl text-xl text-gray-600">
             {isPathway2Flow ? (
-              <>
-                You must choose one of the following{" "}
-                <span className="font-bold text-gray-800">Advanced Communication</span>
-                {" "}courses. After completing the course, you can also take another course from this list, to substitute for CTDL or Experiencing credits.
-              </>
+              "You must choose one of the following Advanced Communication courses."
             ) : (
               "You may take one of the following Advanced Communication courses to substitute for CTDL or Experiencing credits."
             )}

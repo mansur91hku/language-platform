@@ -3,16 +3,25 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
 import OtherCoursesSection from "./components/OtherCoursesSection";
+import AdvancedCommunicationCourses from "./AdvancedCommunicationCourses";
 
 export default function ScienceNeitherCourses() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = sessionStorage.getItem("englishYear") || "2026";
+  const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
     location.state?.previousPage ||
-    "/english/pathway1/science/program-selection";
+    `/english/${year}/${pathway}/science/program-selection`;
   const [exitDirection, setExitDirection] = useState("up");
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
+
+  if (year === "2026" && pathway === "pathway2") {
+    return (
+      <AdvancedCommunicationCourses />
+    );
+  }
 
   return (
     <motion.div
