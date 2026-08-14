@@ -50,21 +50,19 @@ export default function EnglishYearSelection() {
                 setEnglishYear(year);
 
                 setTimeout(() => {
-                  if (year === "2023") {
-                    navigate("/english/2023/pathways", {
-                      state: {
-                        direction: "up",
-                        previousPage: "/english",
-                      },
-                    });
-                  } else {
-                    navigate("/english/pathways", {
-                      state: {
-                        direction: "up",
-                        previousPage: "/english",
-                      },
-                    });
-                  }
+                  const routeMap = {
+                    "2023": "/english/2023/pathways",
+                    "2024": "/english/2024/pathways",
+                    "2025": "/english/2025/pathways",
+                    "2026": "/english/2026/pathways",
+                  };
+
+                  navigate(routeMap[year], {
+                    state: {
+                      direction: "up",
+                      previousPage: "/english",
+                    },
+                  });
                 }, 300);
               }}
               className="group rounded-[32px] border border-blue-200 bg-gradient-to-b from-blue-50 to-indigo-100 p-8 text-left shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"

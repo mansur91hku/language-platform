@@ -49,6 +49,9 @@ const SEGMENT_LABELS = {
   "core-choice": "Core Choice",
   lang2062: "LANG 2062",
   2023: "2023",
+  2024: "2024",
+  2025: "2025",
+  2026: "2026",
 };
 
 function buildPath(prefix, segments) {
@@ -56,43 +59,34 @@ function buildPath(prefix, segments) {
 }
 
 export function buildBreadcrumbs(pathname) {
-  const crumbs = [{ label: "Home", path: "/" }];
-
   if (pathname === "/") {
-    return crumbs;
+    return [];
   }
 
   const parts = pathname.split("/").filter(Boolean);
+  const crumbs = [];
   let cumulativePath = "";
 
   for (let i = 0; i < parts.length; i += 1) {
     const part = parts[i];
-    cumulativePath = buildPath("", parts.slice(0, i + 1));
-
-    if (part === "english" && parts[i + 1] === "2023") {
-      crumbs.push({ label: "English", path: "/english" });
-      continue;
-    }
-
-    if (part === "2023") {
-      crumbs.push({ label: "2023", path: cumulativePath });
-      continue;
-    }
-
-    if (part === "english") {
-      crumbs.push({ label: "English", path: "/english" });
-      const year = getEnglishYear();
-      if (year && year !== "2023" && !parts.includes("2023")) {
-        crumbs.push({ label: year, path: "/english" });
-      }
-      continue;
-    }
 
     if (part === "yes" || part === "no") {
       continue;
     }
 
+    cumulativePath = buildPath("", parts.slice(0, i + 1));
     const label = SEGMENT_LABELS[part] || part.replace(/-/g, " ");
+
+    if (crumbs.length === 0) {
+      crumbs.push({ label, path: cumulativePath });
+      continue;
+    }
+
+    const lastLabel = crumbs[crumbs.length - 1].label;
+    if (lastLabel === label && crumbs[crumbs.length - 1].path === cumulativePath) {
+      continue;
+    }
+
     crumbs.push({ label, path: cumulativePath });
   }
 

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
-import PageNavBar from "./components/PageNavBar";
 
 export default function LanguageHomePage() {
   const navigate = useNavigate();
@@ -58,8 +57,6 @@ export default function LanguageHomePage() {
         ease: "easeInOut",
       }}
     >
-      <PageNavBar showBack={false} onBack={() => {}} />
-
       <main className="max-w-7xl mx-auto px-6 pt-8">
         <section className="flex flex-col items-center justify-center py-24 text-center md:py-32">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
