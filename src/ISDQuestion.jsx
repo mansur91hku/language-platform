@@ -47,7 +47,7 @@ export default function ISDQuestion() {
           <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
             Are you in the{" "}
             <span className="font-bold text-gray-800">
-              Innovation, Design and Technology (ISD)
+              Integrative Systems and Design (ISD)
             </span>{" "}
             program?
           </p>
@@ -59,10 +59,12 @@ export default function ISDQuestion() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                    navigate("/english/pathway1/ais/isd/yes", {
+                    const year = sessionStorage.getItem("englishYear") || "2026";
+                    const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
+                    navigate(`/english/${year}/${pathway}/ais/isd/yes`, {
                       state: {
                         direction: "up",
-                        previousPage: "/english/pathway1/ais/isd",
+                        previousPage: `/english/${year}/${pathway}/ais/isd`,
                       },
                     });
                 }, 300);
@@ -93,7 +95,14 @@ export default function ISDQuestion() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                    navigate("/english/pathway1/science/advanced-communication", {
+                    const year = sessionStorage.getItem("englishYear") || "2026";
+                    const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
+                    const nextRoute =
+                      year === "2025" && pathway === "pathway1"
+                        ? `/english/${year}/${pathway}/science/advanced-communication`
+                        : `/english/${year}/${pathway}/ais/other-courses`;
+
+                    navigate(nextRoute, {
                         state: {
                             direction: "up",
                             previousPage: location.pathname,

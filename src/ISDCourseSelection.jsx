@@ -36,7 +36,7 @@ export default function ISDCourseSelection() {
           <p className="mx-auto max-w-4xl text-2xl text-gray-600">
             Since you are in the{" "}
             <span className="font-bold text-gray-800">
-              Innovation, Design and Technology (ISD)
+              Integrative Systems and Design (ISD)
             </span>
             , you are required to take the following course:
           </p>
@@ -64,7 +64,9 @@ export default function ISDCourseSelection() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/science/advanced-communication", {
+                const year = sessionStorage.getItem("englishYear") || "2026";
+                const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
+                navigate(`/english/${year}/${pathway}/ais/other-courses`, {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,

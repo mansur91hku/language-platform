@@ -15,6 +15,9 @@ export default function EngineeringCourseSelection() {
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const showPreEnrolledHeader = isYear2026();
+  const isRequiredCoursePage =
+    sessionStorage.getItem("englishYear") === "2025" &&
+    sessionStorage.getItem("pathwayOrigin") === "pathway1";
 
   return (
     <motion.div
@@ -41,10 +44,12 @@ export default function EngineeringCourseSelection() {
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="py-10 text-center">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
-            {showPreEnrolledHeader ? "Required course" : "School of Engineering"}
+            {showPreEnrolledHeader || isRequiredCoursePage
+              ? "Required courses"
+              : "School of Engineering"}
           </h2>
           <p className="text-xl text-gray-600">
-            {showPreEnrolledHeader
+            {showPreEnrolledHeader || isRequiredCoursePage
               ? "You are pre-enrolled into this course."
               : "Required course"}
           </p>
@@ -74,7 +79,14 @@ export default function EngineeringCourseSelection() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/science/advanced-communication", {
+                const year = sessionStorage.getItem("englishYear") || "2026";
+                const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
+                const nextRoute =
+                  year === "2025" && pathway === "pathway1"
+                    ? `/english/${year}/${pathway}/science/advanced-communication`
+                    : `/english/${year}/${pathway}/engineering/other-courses`;
+
+                navigate(nextRoute, {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,

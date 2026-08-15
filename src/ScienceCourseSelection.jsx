@@ -17,6 +17,8 @@ export default function ScienceCourseSelection() {
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const showPreEnrolledHeader = isYear2026();
+  const isProgramSelectionFlow =
+    (year === "2025" && pathway === "pathway1") || isYear2026() || isPathway1_2026();
 
   return (
     <motion.div
@@ -44,10 +46,12 @@ export default function ScienceCourseSelection() {
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="py-10 text-center">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
-            {showPreEnrolledHeader ? "Required course" : "School of Science"}
+            {showPreEnrolledHeader || (year === "2025" && pathway === "pathway1")
+              ? "Required courses"
+              : "School of Science"}
           </h2>
           <p className="text-xl text-gray-600">
-            {showPreEnrolledHeader
+            {showPreEnrolledHeader || (year === "2025" && pathway === "pathway1")
               ? "You are pre-enrolled into this course."
               : "Required course"}
           </p>
@@ -80,7 +84,7 @@ export default function ScienceCourseSelection() {
                 const year = getEnglishYear() || "2026";
                 const pathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
 
-                if (isYear2026() || isPathway1_2026()) {
+                if (isProgramSelectionFlow) {
                   navigate(`/english/${year}/${pathway}/science/program-selection`, {
                     state: {
                       direction: "up",

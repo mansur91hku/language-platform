@@ -39,6 +39,7 @@ import ISDQuestion from "./ISDQuestion";
 import ISDCourseSelection from "./ISDCourseSelection";
 import OSTIREProgramQuestion from "./OSTIREProgramQuestion";
 import ScienceNeitherCourses from "./ScienceNeitherCourses";
+import SchoolOtherCourses from "./SchoolOtherCourses";
 import BroadeningUxOPCourses from "./BroadeningUxOPCourses";
 import HAICCourses from "./HAICCourses";
 import FYPElectives from "./FYPElectives";
@@ -156,6 +157,10 @@ function AnimatedRoutes() {
         <Route path="/english/pathway1/science/ire" element={<RedirectToYearSpecific path="/english/pathway1/science/ire" />} />
         <Route path="/english/pathway1/science/ost/no/yes" element={<RedirectToYearSpecific path="/english/pathway1/science/ost/no/yes" />} />
         <Route path="/english/pathway1/science/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway1/science/advanced-communication" />} />
+        <Route path="/english/pathway1/engineering/other-courses" element={<RedirectToYearSpecific path="/english/pathway1/engineering/other-courses" />} />
+        <Route path="/english/pathway1/business/other-courses" element={<RedirectToYearSpecific path="/english/pathway1/business/other-courses" />} />
+        <Route path="/english/pathway1/humanities/other-courses" element={<RedirectToYearSpecific path="/english/pathway1/humanities/other-courses" />} />
+        <Route path="/english/pathway1/ais/other-courses" element={<RedirectToYearSpecific path="/english/pathway1/ais/other-courses" />} />
         <Route path="/english/pathway1/ais/isd" element={<RedirectToYearSpecific path="/english/pathway1/ais/isd" />} />
         <Route path="/english/pathway1/ais/isd/yes" element={<RedirectToYearSpecific path="/english/pathway1/ais/isd/yes" />} />
 
@@ -246,8 +251,26 @@ function AnimatedRoutes() {
         <Route path="/english/2026/pathway2/science/ost/no/yes" element={<IRECourseSelection />} />
         <Route path="/english/2026/pathway1/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2026/pathway2/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway1/engineering" element={<EngineeringCourseSelection />} />
+        <Route path="/english/2026/pathway2/engineering" element={<EngineeringCourseSelection />} />
+        <Route path="/english/2026/pathway1/business" element={<BusinessCourseSelection />} />
+        <Route path="/english/2026/pathway2/business" element={<BusinessCourseSelection />} />
+        <Route path="/english/2026/pathway1/humanities" element={<HumanitiesCourseSelection />} />
+        <Route path="/english/2026/pathway2/humanities" element={<HumanitiesCourseSelection />} />
+        <Route path="/english/2026/pathway1/ais" element={<AISCourseSelection />} />
+        <Route path="/english/2026/pathway2/ais" element={<AISCourseSelection />} />
+        <Route path="/english/2026/pathway1/engineering/other-courses" element={<SchoolOtherCourses />} />
+        <Route path="/english/2026/pathway2/engineering/other-courses" element={<SchoolOtherCourses />} />
+        <Route path="/english/2026/pathway1/business/other-courses" element={<SchoolOtherCourses />} />
+        <Route path="/english/2026/pathway2/business/other-courses" element={<SchoolOtherCourses />} />
+        <Route path="/english/2026/pathway1/humanities/other-courses" element={<SchoolOtherCourses />} />
+        <Route path="/english/2026/pathway2/humanities/other-courses" element={<SchoolOtherCourses />} />
+        <Route path="/english/2026/pathway1/ais/other-courses" element={<SchoolOtherCourses />} />
+        <Route path="/english/2026/pathway2/ais/other-courses" element={<SchoolOtherCourses />} />
         <Route path="/english/2026/pathway1/ais/isd" element={<ISDQuestion />} />
+        <Route path="/english/2026/pathway2/ais/isd" element={<ISDQuestion />} />
         <Route path="/english/2026/pathway1/ais/isd/yes" element={<ISDCourseSelection />} />
+        <Route path="/english/2026/pathway2/ais/isd/yes" element={<ISDCourseSelection />} />
 
         {/* ── 2023 legacy flow ── */}
         <Route path="/english/2023/pathways" element={<Legacy2023PathwaySelection />} />

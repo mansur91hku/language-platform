@@ -16,7 +16,8 @@ export default function OSTIREProgramQuestion() {
     location.state?.direction === "down" ? "-100%" : "100%";
 
   const neitherPath =
-    year === "2026" && pathway === "pathway2"
+    (year === "2025" && pathway === "pathway1") ||
+    (year === "2026" && pathway === "pathway2")
       ? `/english/${year}/${pathway}/science/advanced-communication`
       : `/english/${year}/${pathway}/science/neither`;
 

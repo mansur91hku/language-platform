@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
-import { isPathway1_2026 } from "./utils/englishYear";
+import { getPathwayOrigin, isPathway1_2026, isYear2026 } from "./utils/englishYear";
 
 export default function AISCourseSelection() {
   const navigate = useNavigate();
@@ -10,7 +10,12 @@ export default function AISCourseSelection() {
   const [exitDirection, setExitDirection] = useState("up");
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
-  const showPreEnrolledHeader = isPathway1_2026();
+  const isPathway1_2025RequiredCoursePage =
+    getEnglishYear() === "2025" && getPathwayOrigin() === "pathway1";
+  const isPathway2RequiredCoursePage =
+    isYear2026() && getPathwayOrigin() === "pathway2";
+  const showPreEnrolledHeader =
+    isPathway1_2026() || isPathway2RequiredCoursePage || isPathway1_2025RequiredCoursePage;
 
   const courses = [
     {
@@ -64,12 +69,14 @@ export default function AISCourseSelection() {
         <section className="py-10 text-center">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
             {showPreEnrolledHeader
-              ? "Required course"
+              ? isPathway2RequiredCoursePage || isPathway1_2025RequiredCoursePage
+                ? "Required course"
+                : "Required course"
               : "Academy of Interdisciplinary Studies"}
           </h2>
           <p className="text-xl text-gray-600">
             {showPreEnrolledHeader
-              ? "You are pre-enrolled into this course."
+              ? "You are pre-enrolled into one of these courses."
               : "You may select any of these four courses"}
           </p>
         </section>
@@ -101,8 +108,20 @@ export default function AISCourseSelection() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/ais/isd", {
-                  state: { direction: "up" },
+                const year = sessionStorage.getItem("englishYear") || "2026";
+                const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
+                const nextRoute =
+                  year === "2025" && pathway === "pathway1"
+                    ? `/english/${year}/${pathway}/ais/isd`
+                    : isPathway1_2026()
+                      ? `/english/${year}/${pathway}/ais/isd`
+                      : `/english/${year}/${pathway}/ais/other-courses`;
+
+                navigate(nextRoute, {
+                  state: {
+                    direction: "up",
+                    previousPage: location.pathname,
+                  },
                 });
               }, 300);
             }}
