@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
 
 
-const advCommRoute = "/english/pathway1/science/advanced-communication";
+const advCommRoute = "/english/2023/pathway1/advanced-communication";
 
 // ─── Nav bar helper ───────────────────────────────────────────────────────────
 function NavBar({ onBack }) {

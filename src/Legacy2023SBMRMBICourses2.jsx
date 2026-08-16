@@ -69,7 +69,7 @@ export default function Legacy2023SBMRMBICourses2() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/pathway1/science/advanced-communication", {
+                navigate("/english/2023/pathway1/advanced-communication", {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,

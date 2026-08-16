@@ -16,9 +16,9 @@ export default function ScienceCourseSelection() {
   const [exitDirection, setExitDirection] = useState("up");
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
-  const showPreEnrolledHeader = isYear2026();
+  const showPreEnrolledHeader = isYear2026() || ((year === "2025" || year === "2024") && currentPathway === "pathway2");
   const isProgramSelectionFlow =
-    (year === "2025" && pathway === "pathway1") || isYear2026() || isPathway1_2026();
+    ((year === "2025" || year === "2024") && currentPathway === "pathway1") || ((year === "2025" || year === "2024") && currentPathway === "pathway2") || isYear2026() || isPathway1_2026();
 
   return (
     <motion.div
@@ -46,14 +46,14 @@ export default function ScienceCourseSelection() {
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="py-10 text-center">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
-            {showPreEnrolledHeader || (year === "2025" && pathway === "pathway1")
-              ? "Required courses"
+            {showPreEnrolledHeader || ((year === "2025" || year === "2024") && currentPathway === "pathway1") || ((year === "2025" || year === "2024") && currentPathway === "pathway2")
+              ? "Required course"
               : "School of Science"}
           </h2>
           <p className="text-xl text-gray-600">
-            {showPreEnrolledHeader || (year === "2025" && pathway === "pathway1")
+            {showPreEnrolledHeader || ((year === "2025" || year === "2024") && currentPathway === "pathway1") || ((year === "2025" || year === "2024") && currentPathway === "pathway2")
               ? "You are pre-enrolled into this course."
-              : "Required course"}
+              : "Required courses"}
           </p>
         </section>
 

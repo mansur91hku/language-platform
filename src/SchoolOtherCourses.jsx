@@ -9,8 +9,10 @@ import { getPathwayOrigin } from "./utils/englishYear";
 export default function SchoolOtherCourses() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = sessionStorage.getItem("englishYear") || "2026";
+  const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
-    location.state?.previousPage || "/english/2026/pathway1/school";
+    location.state?.previousPage || `/english/${year}/${pathway}/school`;
   const [exitDirection, setExitDirection] = useState("up");
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";

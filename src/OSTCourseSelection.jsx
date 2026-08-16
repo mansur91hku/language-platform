@@ -17,6 +17,7 @@ export default function OSTCourseSelection() {
     location.state?.direction === "down" ? "-100%" : "100%";
   const ostCourse = getOSTCourse();
   const showOtherCourses = isPathway1_2026();
+  const isPathway2_2025 = (year === "2025" || year === "2024") && pathway === "pathway2";
 
   return (
     <motion.div
@@ -59,7 +60,7 @@ export default function OSTCourseSelection() {
           </a>
         </section>
 
-        {showOtherCourses ? (
+        {showOtherCourses && !isPathway2_2025 ? (
           <OtherCoursesSection />
         ) : (
           <section className="mt-10 text-center">

@@ -2,18 +2,22 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
-import { getPathwayOrigin, isPathway1_2026, isYear2026 } from "./utils/englishYear";
+import { getPathwayOrigin, isPathway1_2026, isYear2026, getEnglishYear } from "./utils/englishYear";
 
 export default function AISCourseSelection() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = getEnglishYear() || "2026";
+  const pathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
+  const previousPage =
+    location.state?.previousPage || `/english/${year}/${pathway}/school`;
   const [exitDirection, setExitDirection] = useState("up");
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const isPathway1_2025RequiredCoursePage =
-    getEnglishYear() === "2025" && getPathwayOrigin() === "pathway1";
+    (year === "2025" || year === "2024") && pathway === "pathway1";
   const isPathway2RequiredCoursePage =
-    isYear2026() && getPathwayOrigin() === "pathway2";
+    (isYear2026() || year === "2025" || year === "2024") && pathway === "pathway2";
   const showPreEnrolledHeader =
     isPathway1_2026() || isPathway2RequiredCoursePage || isPathway1_2025RequiredCoursePage;
 
@@ -60,7 +64,7 @@ export default function AISCourseSelection() {
         onBack={() => {
           setExitDirection("down");
           setTimeout(() => {
-            navigate("/english/pathway1/school", { state: { direction: "down" } });
+            navigate(previousPage, { state: { direction: "down" } });
           }, 300);
         }}
       />
@@ -108,10 +112,8 @@ export default function AISCourseSelection() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                const year = sessionStorage.getItem("englishYear") || "2026";
-                const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
                 const nextRoute =
-                  year === "2025" && pathway === "pathway1"
+                  ((year === "2025" || year === "2024") && pathway === "pathway1") || ((year === "2025" || year === "2024") && pathway === "pathway2")
                     ? `/english/${year}/${pathway}/ais/isd`
                     : isPathway1_2026()
                       ? `/english/${year}/${pathway}/ais/isd`

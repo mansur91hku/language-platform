@@ -43,11 +43,13 @@ export default function AdvancedCommunicationCourses() {
       <main className="max-w-7xl mx-auto px-6 pt-4">
         <section className="py-10 text-center">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
-            {isPathway2Flow ? "Required Course" : "Optional Advanced Communication courses"}
+            {isPathway2Flow && year !== "2023" ? "Required Course" : "Optional Advanced Communication courses"}
           </h2>
           <p className="mx-auto max-w-4xl text-xl text-gray-600">
-            {isPathway2Flow ? (
-              "You must choose one of the following Advanced Communication courses."
+            {isPathway2Flow && year !== "2023" ? (
+              year === "2026"
+                ? "You must choose one of the following Advanced Communication courses."
+                : "You must choose one of the following Advanced Communication courses. After completing the course, you can also take another course from this list, to substitute for CTDL or Experiencing credits."
             ) : (
               "You may take one of the following Advanced Communication courses to substitute for CTDL or Experiencing credits."
             )}

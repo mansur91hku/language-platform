@@ -7,8 +7,10 @@ import { getISDCourse } from "./utils/englishYear";
 export default function ISDCourseSelection() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = sessionStorage.getItem("englishYear") || "2026";
+  const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
-    location.state?.previousPage || "/english/pathway1/ais/isd";
+    location.state?.previousPage || `/english/${year}/${pathway}/ais/isd`;
   const [exitDirection, setExitDirection] = useState("up");
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
@@ -66,7 +68,12 @@ export default function ISDCourseSelection() {
               setTimeout(() => {
                 const year = sessionStorage.getItem("englishYear") || "2026";
                 const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
-                navigate(`/english/${year}/${pathway}/ais/other-courses`, {
+                const nextRoute =
+                  (year === "2025" || year === "2024") && pathway === "pathway1"
+                    ? `/english/${year}/${pathway}/ais/advanced-communication`
+                    : `/english/${year}/${pathway}/ais/other-courses`;
+
+                navigate(nextRoute, {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,

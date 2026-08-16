@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
 
 
-const advCommRoute = "/english/pathway1/science/advanced-communication";
+const advCommRoute = "/english/2023/pathway1/advanced-communication";
 
 // ─── Shared single-extra-course page for OST, IRE and BTB ────────────────────
 function SingleExtraCourse({ title, courseCode, courseTitle, courseUrl, textColorClass, gradientClass, borderClass, selfRoute }) {

@@ -20,7 +20,7 @@ export default function Legacy2023SSCIProgramQuestion() {
     { label: "International Research Enrichment (IRE)", route: "/english/2023/ssci/ire" },
     { label: "Biotechnology and Business (BTB)", route: "/english/2023/ssci/btb" },
     { label: "Mathematics and Economics (MAEC)", route: "/english/2023/ssci/maec" },
-    { label: "None of these", route: "/english/pathway1/science/advanced-communication" },
+    { label: "None of these", route: "/english/2023/pathway1/advanced-communication" },
   ];
 
   return (

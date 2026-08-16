@@ -7,9 +7,11 @@ import PageNavBar from "./components/PageNavBar";
 export default function ISDQuestion() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = sessionStorage.getItem("englishYear") || "2026";
+  const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
     location.state?.previousPage ||
-    "/english/pathway1/ais";
+    `/english/${year}/${pathway}/ais`;
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -98,8 +100,8 @@ export default function ISDQuestion() {
                     const year = sessionStorage.getItem("englishYear") || "2026";
                     const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
                     const nextRoute =
-                      year === "2025" && pathway === "pathway1"
-                        ? `/english/${year}/${pathway}/science/advanced-communication`
+                      (year === "2025" || year === "2024") && pathway === "pathway1"
+                        ? `/english/${year}/${pathway}/ais/advanced-communication`
                         : `/english/${year}/${pathway}/ais/other-courses`;
 
                     navigate(nextRoute, {

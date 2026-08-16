@@ -7,8 +7,10 @@ import { isYear2026 } from "./utils/englishYear";
 export default function EngineeringCourseSelection() {
   const navigate = useNavigate();
   const location = useLocation();
+  const year = sessionStorage.getItem("englishYear") || "2026";
+  const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
   const previousPage =
-    location.state?.previousPage || "/english/pathway1/school";
+    location.state?.previousPage || `/english/${year}/${pathway}/school`;
   const schoolSelectionPreviousPage =
     location.state?.schoolSelectionPreviousPage;
   const [exitDirection, setExitDirection] = useState("up");
@@ -16,8 +18,8 @@ export default function EngineeringCourseSelection() {
     location.state?.direction === "down" ? "-100%" : "100%";
   const showPreEnrolledHeader = isYear2026();
   const isRequiredCoursePage =
-    sessionStorage.getItem("englishYear") === "2025" &&
-    sessionStorage.getItem("pathwayOrigin") === "pathway1";
+    (sessionStorage.getItem("englishYear") === "2025" || sessionStorage.getItem("englishYear") === "2024") &&
+    (sessionStorage.getItem("pathwayOrigin") === "pathway1" || sessionStorage.getItem("pathwayOrigin") === "pathway2");
 
   return (
     <motion.div
@@ -45,13 +47,13 @@ export default function EngineeringCourseSelection() {
         <section className="py-10 text-center">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
             {showPreEnrolledHeader || isRequiredCoursePage
-              ? "Required courses"
+              ? "Required course"
               : "School of Engineering"}
           </h2>
           <p className="text-xl text-gray-600">
             {showPreEnrolledHeader || isRequiredCoursePage
               ? "You are pre-enrolled into this course."
-              : "Required course"}
+              : "Required courses"}
           </p>
         </section>
 
@@ -82,8 +84,8 @@ export default function EngineeringCourseSelection() {
                 const year = sessionStorage.getItem("englishYear") || "2026";
                 const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
                 const nextRoute =
-                  year === "2025" && pathway === "pathway1"
-                    ? `/english/${year}/${pathway}/science/advanced-communication`
+                  (year === "2025" || year === "2024") && pathway === "pathway1"
+                    ? `/english/${year}/${pathway}/engineering/advanced-communication`
                     : `/english/${year}/${pathway}/engineering/other-courses`;
 
                 navigate(nextRoute, {
