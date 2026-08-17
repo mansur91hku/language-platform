@@ -7,8 +7,16 @@ import PageNavBar from "./components/PageNavBar";
 export default function ISDQuestion() {
   const navigate = useNavigate();
   const location = useLocation();
-  const year = sessionStorage.getItem("englishYear") || "2026";
-  const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
+  // Prefer deriving year and pathway from the URL when present so direct links work
+  const urlYearMatch = location.pathname.match(/^\/english\/(\d{4})\//);
+  const year = urlYearMatch ? urlYearMatch[1] : sessionStorage.getItem("englishYear") || "2026";
+  const urlPathwayMatch = location.pathname.match(/^\/english\/\d{4}\/(pathway1|pathway2)(?:\/|$)/);
+  const pathway = urlPathwayMatch
+    ? urlPathwayMatch[1]
+    : sessionStorage.getItem("pathwayOrigin") === "pathway2"
+    ? "pathway2"
+    : "pathway1";
+
   const previousPage =
     location.state?.previousPage ||
     `/english/${year}/${pathway}/ais`;
@@ -61,15 +69,13 @@ export default function ISDQuestion() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                    const year = sessionStorage.getItem("englishYear") || "2026";
-                    const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
-                    navigate(`/english/${year}/${pathway}/ais/isd/yes`, {
-                      state: {
-                        direction: "up",
-                        previousPage: `/english/${year}/${pathway}/ais/isd`,
-                      },
-                    });
-                }, 300);
+                                    navigate(`/english/${year}/${pathway}/ais/isd/yes`, {
+                                      state: {
+                                        direction: "up",
+                                        previousPage: `/english/${year}/${pathway}/ais/isd`,
+                                      },
+                                    });
+                                }, 300);
             }}
             className="
               bg-gradient-to-b
@@ -97,20 +103,17 @@ export default function ISDQuestion() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                    const year = sessionStorage.getItem("englishYear") || "2026";
-                    const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
-                    const nextRoute =
-                      (year === "2025" || year === "2024") && pathway === "pathway1"
-                        ? `/english/${year}/${pathway}/ais/advanced-communication`
-                        : `/english/${year}/${pathway}/ais/other-courses`;
+                                    const nextRoute = pathway === "pathway1"
+                                      ? `/english/${year}/${pathway}/ais/other-courses`
+                                      : `/english/${year}/${pathway}/ais/advanced-communication`;
 
-                    navigate(nextRoute, {
-                        state: {
-                            direction: "up",
-                            previousPage: location.pathname,
-                        },
-                    });
-                }, 300);
+                                    navigate(nextRoute, {
+                                        state: {
+                                            direction: "up",
+                                            previousPage: location.pathname,
+                                        },
+                                    });
+                                }, 300);
             }}
             className="
               bg-gradient-to-b

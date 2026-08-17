@@ -67,10 +67,11 @@ export default function Legacy2023SSCICourses() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/2023/ssci/program", {
+                navigate("/english/2023/ais/lang2062", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/2023/ssci",
+                    previousPage: location.pathname,
+                    affiliation: "SSCI",
                   },
                 });
               }, 300);

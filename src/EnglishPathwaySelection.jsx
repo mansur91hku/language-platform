@@ -49,10 +49,6 @@ export default function EnglishPathwaySelection() {
             English qualifications on admission.
           </p>
 
-          <p className="text-lg text-gray-600 mb-6">
-            Click below to read the details of the streaming criteria.
-          </p>
-
           <a
             href="https://cle.hkust.edu.hk/sites/default/files/E-Comm%20Streaming%20Table_2024-25_CLE%20Website_Updated.pdf"
             target="_blank"
@@ -119,7 +115,7 @@ export default function EnglishPathwaySelection() {
             </h3>
 
             <p className="text-gray-700">
-              for students who have met the English admission requirement
+              standard stream
             </p>
           </button>
 
@@ -158,7 +154,7 @@ export default function EnglishPathwaySelection() {
             </h3>
 
             <p className="text-gray-700">
-              for students whose proficiency level is beyond the English language admission requirement
+              for students whose proficiency level is beyond the English language admission requirement – see Streaming Criteria
             </p>
           </button>
         </section>

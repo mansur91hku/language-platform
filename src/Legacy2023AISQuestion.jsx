@@ -48,31 +48,46 @@ export default function Legacy2023AISQuestion() {
         </section>
 
         <section className="grid grid-cols-1 gap-6 max-w-3xl mx-auto pb-16">
-          {options.map((option) => (
-            <button
-              key={option.affiliation}
-              onClick={() => {
-                setExitDirection("up");
-                setTimeout(() => {
-                  navigate("/english/2023/ais/isd-question", {
-                    state: {
-                      direction: "up",
-                      previousPage: location.pathname,
-                      affiliation: option.affiliation,
-                    },
-                  });
-                }, 300);
-              }}
-              className="
-                bg-gradient-to-b from-teal-50 to-cyan-100
-                border border-cyan-200 rounded-[32px] px-10 py-8
-                text-center shadow-md hover:shadow-2xl hover:-translate-y-2
-                transition-all duration-300
-              "
-            >
-              <h3 className="text-2xl font-semibold">{option.label}</h3>
-            </button>
-          ))}
+          {options.map((option) => {
+            const nextRoute = (() => {
+              if (option.affiliation === "SENG") {
+                return "/english/2023/ais/lang2030";
+              }
+              if (option.affiliation === "SHSS") {
+                return "/english/2023/ais/lang2070";
+              }
+              if (option.affiliation === "SSCI") {
+                return "/english/2023/ais/isd-question";
+              }
+              return "/english/2023/ais/lang2062";
+            })();
+
+            return (
+              <button
+                key={option.affiliation}
+                onClick={() => {
+                  setExitDirection("up");
+                  setTimeout(() => {
+                    navigate(nextRoute, {
+                      state: {
+                        direction: "up",
+                        previousPage: location.pathname,
+                        affiliation: option.affiliation,
+                      },
+                    });
+                  }, 300);
+                }}
+                className="
+                  bg-gradient-to-b from-teal-50 to-cyan-100
+                  border border-cyan-200 rounded-[32px] px-10 py-8
+                  text-center shadow-md hover:shadow-2xl hover:-translate-y-2
+                  transition-all duration-300
+                "
+              >
+                <h3 className="text-2xl font-semibold">{option.label}</h3>
+              </button>
+            );
+          })}
         </section>
       </main>
     </motion.div>

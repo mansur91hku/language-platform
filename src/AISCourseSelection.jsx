@@ -80,7 +80,7 @@ export default function AISCourseSelection() {
           </h2>
           <p className="text-xl text-gray-600">
             {showPreEnrolledHeader
-              ? "You are pre-enrolled into one of these courses."
+              ? "You take one of these courses."
               : "You may select any of these four courses"}
           </p>
         </section>
@@ -112,12 +112,7 @@ export default function AISCourseSelection() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                const nextRoute =
-                  ((year === "2025" || year === "2024") && pathway === "pathway1") || ((year === "2025" || year === "2024") && pathway === "pathway2")
-                    ? `/english/${year}/${pathway}/ais/isd`
-                    : isPathway1_2026()
-                      ? `/english/${year}/${pathway}/ais/isd`
-                      : `/english/${year}/${pathway}/ais/other-courses`;
+                const nextRoute = `/english/${year}/${pathway}/ais/isd`;
 
                 navigate(nextRoute, {
                   state: {

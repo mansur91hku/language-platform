@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
 
 
-const advCommRoute = "/english/2023/pathway1/advanced-communication";
+const advCommRoute = "/english/2023/ais/advanced-communication";
 
 // ─── Nav bar helper ───────────────────────────────────────────────────────────
 function NavBar({ onBack }) {
@@ -54,7 +54,7 @@ export function Legacy2023AISCoreChoice() {
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">Click the button below to see what comes next.</p>
-          <button onClick={() => { setExitDirection("up"); setTimeout(() => navigate("/english/2023/ais/lang2062", { state: { direction: "up", previousPage: "/english/2023/ais/core-choice", affiliation } }), 300); }}
+          <button onClick={() => { setExitDirection("up"); setTimeout(() => navigate("/english/2023/ais/lang2062", { state: { direction: "up", previousPage: "/english/2023/ais", affiliation } }), 300); }}
             className="inline-flex items-center justify-center min-w-[220px] px-10 py-5 rounded-[32px] bg-gradient-to-b from-blue-50 to-indigo-100 border border-blue-200 text-blue-700 text-lg font-semibold shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
             Continue
           </button>
@@ -68,7 +68,7 @@ export function Legacy2023AISCoreChoice() {
 export function Legacy2023AISLANG2062() {
   const navigate = useNavigate();
   const location = useLocation();
-  const previousPage = location.state?.previousPage || "/english/2023/ais/core-choice";
+  const previousPage = location.state?.previousPage || "/english/2023/ais";
   const affiliation = location.state?.affiliation || "none";
   const initialDirection = location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
@@ -168,7 +168,10 @@ export function Legacy2023AISISDCourses() {
   const [exitDirection, setExitDirection] = useState("up");
 
   const isdCourses = [
+    { code: "LANG 4030", title: "Technical Communication II for CSE, CPEG & DSCT", url: "https://cle.hkust.edu.hk/courses/lang4030" },
+    { code: "LANG 4031", title: "Technical Communication II for ECE & CPEG", url: "https://cle.hkust.edu.hk/courses/lang4031" },
     { code: "LANG 4032", title: "Technical Communication II for IEDA and ISDN", url: "https://cle.hkust.edu.hk/courses/lang4032" },
+    { code: "LANG 4034", title: "Technical Communication II for Mechanical and Aerospace Engineering", url: "https://cle.hkust.edu.hk/courses/lang4034" },
   ];
 
   return (
@@ -181,7 +184,7 @@ export function Legacy2023AISISDCourses() {
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">Academy of Interdisciplinary Studies</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            As an <span className="font-bold text-gray-800">Innovation, Design and Technology (ISD)</span> student, you are required to take the following course:
+            As an <span className="font-bold text-gray-800">Innovation, Design and Technology (ISD)</span> student, you are required to take one of the following courses:
           </p>
         </section>
 
@@ -191,7 +194,7 @@ export function Legacy2023AISISDCourses() {
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto">
+        <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {isdCourses.map((c) => (
             <a key={c.code} href={c.url} target="_blank" rel="noopener noreferrer"
               className="block bg-gradient-to-b from-teal-50 to-cyan-100 border border-cyan-200 rounded-[32px] p-10 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">

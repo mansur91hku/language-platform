@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
 
 
-const advCommRoute = "/english/2023/pathway1/advanced-communication";
+const advCommRoute = "/english/2023/ais/advanced-communication";
 
 // ─── Shared single-extra-course page for OST, IRE and BTB ────────────────────
 function SingleExtraCourse({ title, courseCode, courseTitle, courseUrl, textColorClass, gradientClass, borderClass, selfRoute }) {
@@ -58,8 +58,8 @@ function SingleExtraCourse({ title, courseCode, courseTitle, courseUrl, textColo
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate(advCommRoute, {
-                  state: { direction: "up", previousPage: location.pathname },
+                navigate("/english/2023/ais/advanced-communication", {
+                  state: { direction: "up", previousPage: location.pathname, affiliation: "SSCI" },
                 });
               }, 300);
             }}
@@ -191,10 +191,11 @@ export function Legacy2023SSCIMAECProg() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/2023/ssci/maec/choice", {
+                navigate("/english/2023/ais/choice", {
                   state: {
                     direction: "up",
-                    previousPage: "/english/2023/ssci/maec",
+                    previousPage: location.pathname,
+                    affiliation: "SSCI",
                   },
                 });
               }, 300);
@@ -289,8 +290,8 @@ export function Legacy2023SSCIMAECChoice() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate(advCommRoute, {
-                  state: { direction: "up", previousPage: location.pathname },
+                navigate("/english/2023/ais/advanced-communication", {
+                  state: { direction: "up", previousPage: location.pathname, affiliation: "SSCI" },
                 });
               }, 300);
             }}

@@ -35,7 +35,7 @@ export default function Legacy2023Pathway2() {
             Pathway 2
           </h2>
           <p className="text-xl text-gray-600">
-            Required Common Core courses (3 credits each)
+            You must enroll in one of these courses.
           </p>
         </section>
 

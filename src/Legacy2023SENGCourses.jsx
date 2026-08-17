@@ -68,10 +68,11 @@ export default function Legacy2023SENGCourses() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/2023/pathway1/advanced-communication", {
+                navigate("/english/2023/ais/isd-question", {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,
+                    affiliation: "SENG",
                   },
                 });
               }, 300);

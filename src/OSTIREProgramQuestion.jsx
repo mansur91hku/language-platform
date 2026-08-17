@@ -63,15 +63,7 @@ export default function OSTIREProgramQuestion() {
             School of Science
           </h2>
           <p className="mx-auto max-w-3xl text-2xl text-gray-600">
-            Are you in the{" "}
-            <span className="font-bold text-gray-800">
-              Ocean Science and Technology (OST)
-            </span>{" "}
-            or{" "}
-            <span className="font-bold text-gray-800">
-              International Research Enrichment (IRE)
-            </span>{" "}
-            program?
+            Are you in either of these programs?
           </p>
         </section>
 

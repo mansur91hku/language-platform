@@ -68,10 +68,11 @@ export default function Legacy2023SHSSCourses() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/2023/pathway1/advanced-communication", {
+                navigate("/english/2023/ais/lang2062", {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,
+                    affiliation: "SHSS",
                   },
                 });
               }, 300);

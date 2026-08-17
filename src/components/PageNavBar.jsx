@@ -38,21 +38,11 @@ export default function PageNavBar({ onBack, showBack = true }) {
                       ›
                     </span>
                   )}
-                  {isLast ? (
-                    <span className="truncate font-medium text-gray-900">
-                      {crumb.label}
-                    </span>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() =>
-                        navigate(crumb.path, { state: { direction: "down" } })
-                      }
-                      className="truncate rounded-full px-2 py-1 transition-colors hover:bg-white/50 hover:text-blue-700"
-                    >
-                      {crumb.label}
-                    </button>
-                  )}
+                  <span
+                    className={`truncate ${isLast ? "font-medium text-gray-900" : "text-gray-700"}`}
+                  >
+                    {crumb.label}
+                  </span>
                 </li>
               );
             })

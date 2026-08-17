@@ -41,16 +41,6 @@ export default function ScienceNeitherCourses() {
       />
 
       <main className="max-w-6xl mx-auto px-6 pt-4">
-        <section className="py-16 text-center">
-          <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
-            School of Science
-          </h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
-            You are not in the OST or IRE program. Explore other course options
-            below.
-          </p>
-        </section>
-
         <OtherCoursesSection />
       </main>
     </motion.div>

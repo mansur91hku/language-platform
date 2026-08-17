@@ -4,7 +4,7 @@ import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
 
 
-const advCommRoute = "/english/pathway1/science/advanced-communication";
+const advCommRoute = "/english/2023/ais/advanced-communication";
 
 export default function Legacy2023AISISDQuestion() {
   const navigate = useNavigate();
@@ -23,24 +23,23 @@ export default function Legacy2023AISISDQuestion() {
     setExitDirection("up");
     setTimeout(() => {
       if (isSSCI) {
-        // SSCI → MAEC flow
-        navigate("/english/2023/ssci/maec", {
+        navigate("/english/2023/ais/maec", {
           state: {
             direction: "up",
             previousPage: location.pathname,
             affiliation,
           },
         });
-      } else {
-        // SENG / SHSS / none → ISD courses
-        navigate("/english/2023/ais/isd", {
-          state: {
-            direction: "up",
-            previousPage: location.pathname,
-            affiliation,
-          },
-        });
+        return;
       }
+
+      navigate("/english/2023/ais/isd", {
+        state: {
+          direction: "up",
+          previousPage: location.pathname,
+          affiliation,
+        },
+      });
     }, 300);
   };
 
@@ -48,23 +47,45 @@ export default function Legacy2023AISISDQuestion() {
     setExitDirection("up");
     setTimeout(() => {
       if (affiliation === "none") {
-        // No school-level required course — go straight to Advanced Communication
-        navigate(advCommRoute, {
-          state: {
-            direction: "up",
-            previousPage: location.pathname,
-          },
-        });
-      } else {
-        // SENG / SHSS / SSCI — show school-required course choice page
-        navigate("/english/2023/ais/core-choice", {
+        navigate("/english/2023/ais/lang2062", {
           state: {
             direction: "up",
             previousPage: location.pathname,
             affiliation,
           },
         });
+        return;
       }
+
+      if (affiliation === "SSCI") {
+        navigate("/english/2023/ais/lang2010", {
+          state: {
+            direction: "up",
+            previousPage: location.pathname,
+            affiliation,
+          },
+        });
+        return;
+      }
+
+      if (affiliation === "SENG") {
+        navigate("/english/2023/ais/advanced-communication", {
+          state: {
+            direction: "up",
+            previousPage: location.pathname,
+            affiliation,
+          },
+        });
+        return;
+      }
+
+      navigate("/english/2023/ais/advanced-communication", {
+        state: {
+          direction: "up",
+          previousPage: location.pathname,
+          affiliation,
+        },
+      });
     }, 300);
   };
 

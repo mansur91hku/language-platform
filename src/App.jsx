@@ -78,7 +78,6 @@ import {
 import Legacy2023AISQuestion from "./Legacy2023AISQuestion";
 import Legacy2023AISISDQuestion from "./Legacy2023AISISDQuestion";
 import {
-  Legacy2023AISCoreChoice,
   Legacy2023AISLANG2062,
   Legacy2023AISChoiceCourses,
   Legacy2023AISISDCourses,
@@ -157,12 +156,21 @@ function AnimatedRoutes() {
         <Route path="/english/pathway1/science/ire" element={<RedirectToYearSpecific path="/english/pathway1/science/ire" />} />
         <Route path="/english/pathway1/science/ost/no/yes" element={<RedirectToYearSpecific path="/english/pathway1/science/ost/no/yes" />} />
         <Route path="/english/pathway1/science/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway1/science/advanced-communication" />} />
+        <Route path="/english/pathway2/science/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway2/science/advanced-communication" />} />
+        <Route path="/english/pathway1/engineering/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway1/engineering/advanced-communication" />} />
+        <Route path="/english/pathway1/business/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway1/business/advanced-communication" />} />
+        <Route path="/english/pathway1/humanities/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway1/humanities/advanced-communication" />} />
+        <Route path="/english/pathway1/ais/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway1/ais/advanced-communication" />} />
         <Route path="/english/pathway1/engineering/other-courses" element={<RedirectToYearSpecific path="/english/pathway1/engineering/other-courses" />} />
         <Route path="/english/pathway1/business/other-courses" element={<RedirectToYearSpecific path="/english/pathway1/business/other-courses" />} />
         <Route path="/english/pathway1/humanities/other-courses" element={<RedirectToYearSpecific path="/english/pathway1/humanities/other-courses" />} />
         <Route path="/english/pathway1/ais/other-courses" element={<RedirectToYearSpecific path="/english/pathway1/ais/other-courses" />} />
         <Route path="/english/pathway1/ais/isd" element={<RedirectToYearSpecific path="/english/pathway1/ais/isd" />} />
         <Route path="/english/pathway1/ais/isd/yes" element={<RedirectToYearSpecific path="/english/pathway1/ais/isd/yes" />} />
+        <Route path="/english/pathway2/engineering/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway2/engineering/advanced-communication" />} />
+        <Route path="/english/pathway2/business/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway2/business/advanced-communication" />} />
+        <Route path="/english/pathway2/humanities/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway2/humanities/advanced-communication" />} />
+        <Route path="/english/pathway2/ais/advanced-communication" element={<RedirectToYearSpecific path="/english/pathway2/ais/advanced-communication" />} />
 
         <Route path="/english/2024/pathways" element={<EnglishPathwaySelection />} />
         <Route path="/english/2024/pathway1" element={<EnglishPathway1 />} />
@@ -295,6 +303,14 @@ function AnimatedRoutes() {
         <Route path="/english/2026/pathway2/science/ost/no/yes" element={<IRECourseSelection />} />
         <Route path="/english/2026/pathway1/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2026/pathway2/science/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway1/engineering/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway2/engineering/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway1/business/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway2/business/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway1/humanities/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway2/humanities/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway1/ais/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway2/ais/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2026/pathway1/engineering" element={<EngineeringCourseSelection />} />
         <Route path="/english/2026/pathway2/engineering" element={<EngineeringCourseSelection />} />
         <Route path="/english/2026/pathway1/business" element={<BusinessCourseSelection />} />
@@ -319,6 +335,14 @@ function AnimatedRoutes() {
         {/* ── 2023 legacy flow ── */}
         <Route path="/english/2023/pathway1/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2023/pathway2/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2023/ais/lang2030" element={<Legacy2023SENGCourses />} />
+        <Route path="/english/2023/ais/lang2070" element={<Legacy2023SHSSCourses />} />
+        <Route path="/english/2023/ais/lang2010" element={<Legacy2023SSCICourses />} />
+        <Route path="/english/2023/ais/lang2062" element={<Legacy2023AISLANG2062 />} />
+        <Route path="/english/2023/ais/choice" element={<Legacy2023AISChoiceCourses />} />
+        <Route path="/english/2023/ais/maec" element={<Legacy2023SSCIMAECProg />} />
+        <Route path="/english/2023/ais/maec/choice" element={<Legacy2023SSCIMAECChoice />} />
+        <Route path="/english/2023/ais/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2023/pathways" element={<Legacy2023PathwaySelection />} />
         <Route path="/english/2023/pathway1" element={<Legacy2023Pathway1 />} />
         <Route path="/english/2023/pathway1/lang1403" element={<Legacy2023Pathway1LANG1403 />} />
@@ -349,7 +373,6 @@ function AnimatedRoutes() {
         {/* AIS */}
         <Route path="/english/2023/ais" element={<Legacy2023AISQuestion />} />
         <Route path="/english/2023/ais/isd-question" element={<Legacy2023AISISDQuestion />} />
-        <Route path="/english/2023/ais/core-choice" element={<Legacy2023AISCoreChoice />} />
         <Route path="/english/2023/ais/lang2062" element={<Legacy2023AISLANG2062 />} />
         <Route path="/english/2023/ais/choice" element={<Legacy2023AISChoiceCourses />} />
         <Route path="/english/2023/ais/isd" element={<Legacy2023AISISDCourses />} />
