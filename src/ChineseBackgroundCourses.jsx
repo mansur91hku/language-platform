@@ -59,6 +59,8 @@ export default function ChineseBackgroundCourses() {
   const [exitDirection, setExitDirection] = useState("up");
   const [activeTab, setActiveTab] = useState(null);
   const currentTab = tabs.find((t) => t.key === activeTab);
+  const tabButtonCommonClass =
+    "cursor-pointer select-none px-8 py-4 rounded-full border text-lg font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2";
   const navBtn = "inline-flex items-center px-6 py-3 rounded-full bg-gray-100 text-gray-800 font-medium shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-300 pointer-events-auto";
 
   return (
@@ -88,25 +90,35 @@ export default function ChineseBackgroundCourses() {
           {tabs.map((tab, i) => {
             const isActive = activeTab === tab.key;
             return (
-              <motion.button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                animate={
-                  isActive
-                    ? { scale: 1 }
-                    : { scale: [1, 1.05, 1] }
-                }
-                transition={
-                  isActive
-                    ? { duration: 0.2 }
-                    : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: breatheDelays[i] }
-                }
-                className={`px-8 py-4 rounded-full border text-lg font-semibold transition-colors duration-300 ${
-                  isActive ? tab.activeClass : tab.baseClass
-                }`}
-              >
-                {tab.label}
-              </motion.button>
+              <div key={tab.key} className="relative">
+                {i === 0 && activeTab === null && (
+                  <motion.span
+                    className="pointer-events-none absolute right-full top-1/2 mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-full bg-white/95 px-3 py-1 text-sm font-semibold text-gray-600 shadow-sm ring-1 ring-gray-200 md:inline-flex"
+                    animate={{ x: [0, 6, 0], opacity: [0.75, 1, 0.75] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    Click here 👉
+                  </motion.span>
+                )}
+                <motion.button
+                  onClick={() => setActiveTab(tab.key)}
+                  animate={
+                    isActive
+                      ? { scale: 1 }
+                      : { scale: [1, 1.05, 1] }
+                  }
+                  transition={
+                    isActive
+                      ? { duration: 0.2 }
+                      : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: breatheDelays[i] }
+                  }
+                  className={`${tabButtonCommonClass} ${
+                    isActive ? tab.activeClass : tab.baseClass
+                  }`}
+                >
+                  {tab.label}
+                </motion.button>
+              </div>
             );
           })}
         </section>

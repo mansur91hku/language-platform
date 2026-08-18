@@ -68,6 +68,8 @@ export default function FYPElectives() {
     location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
   const [activeTab, setActiveTab] = useState(null);
+  const tabButtonCommonClass =
+    "cursor-pointer select-none rounded-full border px-8 py-4 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2";
   const currentTab = tabs.find((tab) => tab.key === activeTab) ?? null;
   const otherCourseOptions = [
     { label: "English", path: "/english", cardClass: "from-blue-50 to-indigo-100 border-blue-200 text-blue-700" },
@@ -106,22 +108,32 @@ export default function FYPElectives() {
             const isActive = activeTab === tab.key;
 
             return (
-              <motion.button
-                key={tab.key}
-                type="button"
-                onClick={() => setActiveTab(tab.key)}
-                animate={isActive ? { scale: 1 } : { scale: [1, 1.05, 1] }}
-                transition={
-                  isActive
-                    ? { duration: 0.2 }
-                    : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }
-                }
-                className={`rounded-full border px-8 py-4 text-base font-semibold transition-colors duration-300 ${
-                  isActive ? tab.activeTabClass : tab.tabClass
-                }`}
-              >
-                {tab.label}
-              </motion.button>
+              <div key={tab.key} className="relative">
+                {index === 0 && activeTab === null && (
+                  <motion.span
+                    className="pointer-events-none absolute right-full top-1/2 mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-full bg-white/95 px-3 py-1 text-sm font-semibold text-gray-600 shadow-sm ring-1 ring-gray-200 md:inline-flex"
+                    animate={{ x: [0, 6, 0], opacity: [0.75, 1, 0.75] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    Click here 👉
+                  </motion.span>
+                )}
+                <motion.button
+                  type="button"
+                  onClick={() => setActiveTab(tab.key)}
+                  animate={isActive ? { scale: 1 } : { scale: [1, 1.05, 1] }}
+                  transition={
+                    isActive
+                      ? { duration: 0.2 }
+                      : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }
+                  }
+                  className={`${tabButtonCommonClass} ${
+                    isActive ? tab.activeTabClass : tab.tabClass
+                  }`}
+                >
+                  {tab.label}
+                </motion.button>
+              </div>
             );
           })}
         </section>

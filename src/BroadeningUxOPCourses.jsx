@@ -11,6 +11,8 @@ export default function BroadeningUxOPCourses() {
     location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
   const [activeSection, setActiveSection] = useState(null);
+  const tabButtonCommonClass =
+    "cursor-pointer select-none rounded-full border px-8 py-4 text-base font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2";
 
   const sections = [
     {
@@ -81,22 +83,32 @@ export default function BroadeningUxOPCourses() {
             const isActive = activeSection === section.key;
 
             return (
-              <motion.button
-                key={section.key}
-                type="button"
-                onClick={() => setActiveSection(section.key)}
-                animate={isActive ? { scale: 1 } : { scale: [1, 1.05, 1] }}
-                transition={
-                  isActive
-                    ? { duration: 0.2 }
-                    : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: section.key === "broadening" ? 0 : 0.5 }
-                }
-                className={`rounded-full border px-8 py-4 text-base font-semibold transition-colors duration-300 ${
-                  isActive ? section.activeTabClass : section.tabClass
-                }`}
-              >
-                {section.label}
-              </motion.button>
+              <div key={section.key} className="relative">
+                {section.key === "broadening" && activeSection === null && (
+                  <motion.span
+                    className="pointer-events-none absolute right-full top-1/2 mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-full bg-white/95 px-3 py-1 text-sm font-semibold text-gray-600 shadow-sm ring-1 ring-gray-200 md:inline-flex"
+                    animate={{ x: [0, 6, 0], opacity: [0.75, 1, 0.75] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    Click here 👉
+                  </motion.span>
+                )}
+                <motion.button
+                  type="button"
+                  onClick={() => setActiveSection(section.key)}
+                  animate={isActive ? { scale: 1 } : { scale: [1, 1.05, 1] }}
+                  transition={
+                    isActive
+                      ? { duration: 0.2 }
+                      : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: section.key === "broadening" ? 0 : 0.5 }
+                  }
+                  className={`${tabButtonCommonClass} ${
+                    isActive ? section.activeTabClass : section.tabClass
+                  }`}
+                >
+                  {section.label}
+                </motion.button>
+              </div>
             );
           })}
         </section>

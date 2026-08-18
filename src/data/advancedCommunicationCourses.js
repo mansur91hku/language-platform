@@ -16,8 +16,7 @@ export const sharedAdvancedCourses = [
   },
   {
     code: "LANG 2066",
-    title:
-      "Dynamic Science Communication: Engaging Audiences with Science Busking",
+    title: "Dynamic Communication for STEAM Topics",
     url: "https://cle.hkust.edu.hk/courses/lang2066",
   },
   {

@@ -12,9 +12,9 @@ const tabs = [
     cardClass: "block bg-gradient-to-b from-rose-50 to-pink-100 border border-pink-200 rounded-[32px] p-8 text-left shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300",
     accent: "text-pink-700",
     courses: [
+      { code: "LANG 1210", title: "Japanese Language and Culture for Beginners I", url: "https://cle.hkust.edu.hk/courses/lang1210" },
       { code: "LANG 1211", title: "Communicative Japanese for Beginners I", url: "https://cle.hkust.edu.hk/courses/lang1211" },
       { code: "LANG 1212", title: "Japanese Vocabulary and Grammar Essentials I", url: "https://cle.hkust.edu.hk/courses/lang1212" },
-      { code: "LANG 1210", title: "Japanese Language and Culture for Beginners I", url: "https://cle.hkust.edu.hk/courses/lang1210" },
     ],
   },
   {
@@ -42,6 +42,8 @@ export default function JapaneseBeginner() {
   const [activeTab, setActiveTab] = useState(
     location.pathname.endsWith("/upper-beginner") ? "upper-beginner" : null
   );
+  const tabButtonCommonClass =
+    "cursor-pointer select-none px-8 py-4 rounded-full border text-lg font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2";
   const currentTab = tabs.find((tab) => tab.key === activeTab) ?? null;
 
   return (
@@ -67,24 +69,34 @@ export default function JapaneseBeginner() {
             const isActive = activeTab === tab.key;
 
             return (
-              <motion.button
-                key={tab.key}
-                type="button"
-                onClick={() => setActiveTab(tab.key)}
-                animate={
-                  isActive ? { scale: 1 } : { scale: [1, 1.05, 1] }
-                }
-                transition={
-                  isActive
-                    ? { duration: 0.2 }
-                    : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: breatheDelays[i] }
-                }
-                className={`px-8 py-4 rounded-full border text-lg font-semibold transition-colors duration-300 ${
-                  isActive ? tab.activeClass : tab.baseClass
-                }`}
-              >
-                {tab.label}
-              </motion.button>
+              <div key={tab.key} className="relative">
+                {i === 0 && activeTab === null && (
+                  <motion.span
+                    className="pointer-events-none absolute right-full top-1/2 mr-3 hidden -translate-y-1/2 whitespace-nowrap rounded-full bg-white/95 px-3 py-1 text-sm font-semibold text-gray-600 shadow-sm ring-1 ring-gray-200 md:inline-flex"
+                    animate={{ x: [0, 6, 0], opacity: [0.75, 1, 0.75] }}
+                    transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    Click here 👉
+                  </motion.span>
+                )}
+                <motion.button
+                  type="button"
+                  onClick={() => setActiveTab(tab.key)}
+                  animate={
+                    isActive ? { scale: 1 } : { scale: [1, 1.05, 1] }
+                  }
+                  transition={
+                    isActive
+                      ? { duration: 0.2 }
+                      : { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: breatheDelays[i] }
+                  }
+                  className={`${tabButtonCommonClass} ${
+                    isActive ? tab.activeClass : tab.baseClass
+                  }`}
+                >
+                  {tab.label}
+                </motion.button>
+              </div>
             );
           })}
         </section>
