@@ -8,7 +8,7 @@ export default function Legacy2023SBMChoiceCourses() {
   const navigate = useNavigate();
   const location = useLocation();
   const previousPage =
-    location.state?.previousPage || "/english/2023/sbm/standard";
+    location.state?.previousPage || "/english/2023/sbm";
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -33,16 +33,14 @@ export default function Legacy2023SBMChoiceCourses() {
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            School of Business and Management
+            Required Course
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            After <span className="font-bold text-gray-800">LANG 2062</span>, you
-            are required to take <span className="font-bold text-gray-800">one</span> of
-            the following courses (3 credits):
+            You must enrol in this course.
           </p>
         </section>
 
-        <section className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section className="max-w-4xl mx-auto">
           <a
             href="https://cle.hkust.edu.hk/courses/lang2061"
             target="_blank"
@@ -59,23 +57,6 @@ export default function Legacy2023SBMChoiceCourses() {
             </p>
             <span className="text-green-700 font-medium">View Course Details</span>
           </a>
-
-          <a
-            href="https://cle.hkust.edu.hk/courses/lang3060"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              block bg-gradient-to-b from-emerald-50 to-green-100
-              border border-green-200 rounded-[32px] p-10 text-left
-              shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
-            "
-          >
-            <h3 className="text-4xl font-semibold mb-4">LANG 3060</h3>
-            <p className="text-gray-700 text-lg mb-4">
-              Advanced Academic Writing (3 credits)
-            </p>
-            <span className="text-green-700 font-medium">View Course Details</span>
-          </a>
         </section>
 
         <section className="text-center mt-10 pb-16">
@@ -87,7 +68,7 @@ export default function Legacy2023SBMChoiceCourses() {
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/2023/pathway1/advanced-communication", {
+                navigate("/english/2023/sbm/advanced-communication", {
                   state: {
                     direction: "up",
                     previousPage: location.pathname,

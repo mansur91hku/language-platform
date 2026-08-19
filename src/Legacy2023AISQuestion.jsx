@@ -19,7 +19,7 @@ export default function Legacy2023AISQuestion() {
     { label: "SENG (School of Engineering)", affiliation: "SENG" },
     { label: "SHSS (School of Humanities and Social Science)", affiliation: "SHSS" },
     { label: "SSCI (School of Science)", affiliation: "SSCI" },
-    { label: "None of the above", affiliation: "none" },
+    { label: "SBM (School of Business and Management)", affiliation: "SBM" },
   ];
 
   return (
@@ -57,9 +57,9 @@ export default function Legacy2023AISQuestion() {
                 return "/english/2023/ais/lang2070";
               }
               if (option.affiliation === "SSCI") {
-                return "/english/2023/ais/isd-question";
+                return "/english/2023/ais/lang2010";
               }
-              return "/english/2023/ais/lang2062";
+              return "/english/2023/ais/choice";
             })();
 
             return (

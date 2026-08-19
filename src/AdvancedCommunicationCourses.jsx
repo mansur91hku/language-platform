@@ -14,14 +14,50 @@ export default function AdvancedCommunicationCourses() {
   const location = useLocation();
   const year = sessionStorage.getItem("englishYear") || "2026";
   const currentPathway = getPathwayOrigin() === "pathway2" ? "pathway2" : "pathway1";
+  const isSBM2023 = location.pathname === "/english/2023/sbm/advanced-communication";
+  const isSSCI2023 = location.pathname === "/english/2023/ssci/advanced-communication";
+  const isSSCIMAEC2023 = location.pathname === "/english/2023/ssci/maec/advanced-communication";
+  const isSENG2023 = location.pathname === "/english/2023/seng/advanced-communication";
+  const isSHSS2023 = location.pathname === "/english/2023/shss/advanced-communication";
+  const isAIS2023 = location.pathname === "/english/2023/ais/advanced-communication";
+  const isAISISD2023 = location.pathname === "/english/2023/ais/isd/advanced-communication";
+  const isAISChoice2023 = location.pathname === "/english/2023/ais/choice/advanced-communication";
+  const isAISSHSS2023 = location.pathname === "/english/2023/ais/shss/advanced-communication";
+  const isAIS2023SSCI = location.pathname === "/english/2023/ais/ssci/advanced-communication";
+  const isAISSBM2023 = location.pathname === "/english/2023/ais/sbm/advanced-communication";
+  const isAISAffiliateSixCourse = isAISSHSS2023 || isAIS2023SSCI || isAISSBM2023;
   const previousPage =
-    location.state?.previousPage || `/english/${year}/${currentPathway}/school`;
+    location.state?.previousPage ||
+    (isSBM2023
+      ? "/english/2023/sbm/standard/choice"
+      : isSSCIMAEC2023
+        ? "/english/2023/ssci/maec"
+        : isSSCI2023
+          ? "/english/2023/ssci/program"
+          : isSENG2023
+            ? "/english/2023/seng"
+            : isSHSS2023
+              ? "/english/2023/shss"
+              : isAISISD2023
+                ? "/english/2023/ais/isd"
+                : isAISChoice2023 || isAISAffiliateSixCourse
+                  ? "/english/2023/ais/choice"
+                  : isAIS2023
+                    ? "/english/2023/ais"
+                    : `/english/${year}/${currentPathway}/school`);
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
   const isPathway2Year2026 = isPathway2_2026();
   const isPathway2Flow = isPathway2Year2026 || getPathwayOrigin() === "pathway2";
-  const courses = sharedAdvancedCourses;
+  const courses =
+    isSBM2023 || isSSCIMAEC2023 || isAISChoice2023 || isAISAffiliateSixCourse
+      ? sharedAdvancedCourses.filter((course) =>
+          ["LANG 2065", "LANG 2066", "LANG 2067", "LANG 2068", "LANG 2069", "LANG 2071"].includes(
+            course.code,
+          ),
+        )
+      : sharedAdvancedCourses;
 
   return (
     <motion.div
@@ -72,7 +108,7 @@ export default function AdvancedCommunicationCourses() {
           ))}
         </section>
 
-        <OtherCoursesSection variant="advancedCommunication" />
+        <OtherCoursesSection variant="advancedCommunication" hideHAIC={isSBM2023 || isSSCI2023 || isSSCIMAEC2023 || isSENG2023 || isSHSS2023 || isAIS2023 || isAISISD2023 || isAISChoice2023 || isAISAffiliateSixCourse} />
       </main>
     </motion.div>
   );

@@ -51,7 +51,7 @@ export default function EnglishYearSelection() {
 
                 setTimeout(() => {
                   const routeMap = {
-                    "2023": "/english/2023/pathways",
+                    "2023": "/english/2023/pathway1",
                     "2024": "/english/2024/pathways",
                     "2025": "/english/2025/pathways",
                     "2026": "/english/2026/pathways",

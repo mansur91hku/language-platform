@@ -8,7 +8,7 @@ export default function Legacy2023SBMStandardCourses() {
   const navigate = useNavigate();
   const location = useLocation();
   const previousPage =
-    location.state?.previousPage || "/english/2023/sbm";
+    location.state?.previousPage || "/english/2023/school";
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -33,10 +33,10 @@ export default function Legacy2023SBMStandardCourses() {
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            School of Business and Management
+            Required Course
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            You are required to take the following school-required course (3 credits):
+            You must enrol in this course.
           </p>
         </section>
 

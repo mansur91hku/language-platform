@@ -7,8 +7,10 @@ import PageNavBar from "./components/PageNavBar";
 export default function Legacy2023SHSSCourses() {
   const navigate = useNavigate();
   const location = useLocation();
+  const isAISFlow = location.pathname === "/english/2023/ais/lang2070";
   const previousPage =
-    location.state?.previousPage || "/english/2023/school";
+    location.state?.previousPage ||
+    (isAISFlow ? "/english/2023/ais" : "/english/2023/school");
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -26,17 +28,21 @@ export default function Legacy2023SHSSCourses() {
       <PageNavBar onBack={() => {
             setExitDirection("down");
             setTimeout(() => {
-              navigate(previousPage, { state: { direction: "down" } });
+              navigate(previousPage, {
+                state: isAISFlow
+                  ? { direction: "down", affiliation: "SHSS", previousPage: "/english/2023/ais" }
+                  : { direction: "down" },
+              });
             }, 300);
           }} />
 
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            School of Humanities and Social Science
+            Required course
           </h2>
           <p className="text-xl text-gray-600">
-            Required school course (3 credits)
+            You are pre-enrolled in this course.
           </p>
         </section>
 
@@ -61,20 +67,25 @@ export default function Legacy2023SHSSCourses() {
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">
-            After completing this course, you may also take Advanced
-            Communication courses.
+            Click the button to see what courses are next.
           </p>
           <button
             onClick={() => {
               setExitDirection("up");
+              const isAISFlow = location.pathname === "/english/2023/ais/lang2070";
               setTimeout(() => {
-                navigate("/english/2023/ais/lang2062", {
-                  state: {
-                    direction: "up",
-                    previousPage: location.pathname,
-                    affiliation: "SHSS",
+                navigate(
+                  isAISFlow
+                    ? "/english/2023/ais/choice"
+                    : "/english/2023/shss/advanced-communication",
+                  {
+                    state: {
+                      direction: "up",
+                      previousPage: location.pathname,
+                      ...(isAISFlow ? { affiliation: "SHSS" } : {}),
+                    },
                   },
-                });
+                );
               }, 300);
             }}
             className="

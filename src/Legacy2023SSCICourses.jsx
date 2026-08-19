@@ -7,8 +7,10 @@ import PageNavBar from "./components/PageNavBar";
 export default function Legacy2023SSCICourses() {
   const navigate = useNavigate();
   const location = useLocation();
+  const isAISFlow = location.pathname === "/english/2023/ais/lang2010";
   const previousPage =
-    location.state?.previousPage || "/english/2023/school";
+    location.state?.previousPage ||
+    (isAISFlow ? "/english/2023/ais" : "/english/2023/school");
 
   const [exitDirection, setExitDirection] = useState("up");
 
@@ -26,17 +28,21 @@ export default function Legacy2023SSCICourses() {
       <PageNavBar onBack={() => {
             setExitDirection("down");
             setTimeout(() => {
-              navigate(previousPage, { state: { direction: "down" } });
+              navigate(previousPage, {
+                state: isAISFlow
+                  ? { direction: "down", affiliation: "SSCI", previousPage: "/english/2023/ais" }
+                  : { direction: "down" },
+              });
             }, 300);
           }} />
 
       <main className="max-w-6xl mx-auto px-6 pt-4">
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            School of Science
+            Required course
           </h2>
           <p className="text-xl text-gray-600">
-            Required school course (3 credits)
+            You are pre-enrolled in this course.
           </p>
         </section>
 
@@ -61,19 +67,25 @@ export default function Legacy2023SSCICourses() {
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">
-            Click the button below to answer a few questions about your program.
+            Click the button to see what courses are next.
           </p>
           <button
             onClick={() => {
               setExitDirection("up");
+              const isAISFlow = location.pathname === "/english/2023/ais/lang2010";
               setTimeout(() => {
-                navigate("/english/2023/ais/lang2062", {
-                  state: {
-                    direction: "up",
-                    previousPage: location.pathname,
-                    affiliation: "SSCI",
+                navigate(
+                  isAISFlow
+                    ? "/english/2023/ais/choice"
+                    : "/english/2023/ssci/program",
+                  {
+                    state: {
+                      direction: "up",
+                      previousPage: location.pathname,
+                      ...(isAISFlow ? { affiliation: "SSCI" } : {}),
+                    },
                   },
-                });
+                );
               }, 300);
             }}
             className="

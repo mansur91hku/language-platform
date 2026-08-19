@@ -23,7 +23,7 @@ export default function Legacy2023Pathway1() {
       <PageNavBar onBack={() => {
             setExitDirection("down");
             setTimeout(() => {
-              navigate("/english/2023/pathways", {
+              navigate("/english", {
                 state: { direction: "down" },
               });
             }, 300);
@@ -32,10 +32,10 @@ export default function Legacy2023Pathway1() {
 
         <section className="text-center py-10">
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
-            Pathway 1
+            Required course(s)
           </h2>
-          <p className="text-xl text-gray-600">
-            You must enroll in one of these courses.
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            You will be pre-enrolled in 1 or 2 of the following courses, depending on your proficiency level.
           </p>
         </section>
 
@@ -73,18 +73,55 @@ export default function Legacy2023Pathway1() {
             </p>
             <span className="text-blue-600 font-medium">View Course Details</span>
           </a>
+
+          <a
+            href="https://cle.hkust.edu.hk/courses/lang1403"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              block bg-gradient-to-b from-blue-50 to-indigo-100
+              border border-blue-200 rounded-[32px] p-10 text-left
+              shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
+            "
+          >
+            <h3 className="text-4xl font-semibold mb-4">LANG 1403</h3>
+            <p className="text-gray-700 text-lg mb-4">
+              English for Professional Communication (3 credits)
+            </p>
+            <span className="text-blue-600 font-medium">View Course Details</span>
+          </a>
+
+          <a
+            href="https://cle.hkust.edu.hk/courses/lang1404"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              block bg-gradient-to-b from-blue-50 to-indigo-100
+              border border-blue-200 rounded-[32px] p-10 text-left
+              shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300
+            "
+          >
+            <h3 className="text-4xl font-semibold mb-4">LANG 1404</h3>
+            <p className="text-gray-700 text-lg mb-4">
+              English for University Studies III (3 credits)
+            </p>
+            <span className="text-blue-600 font-medium">View Course Details</span>
+          </a>
         </section>
 
         <section className="text-center mt-10 pb-16">
           <p className="text-lg text-gray-600 mb-6">
-            Click the button below to see what comes next.
+            Click the button below to select your school and see what's required next.
           </p>
           <button
             onClick={() => {
               setExitDirection("up");
               setTimeout(() => {
-                navigate("/english/2023/pathway1/lang1403", {
-                  state: { direction: "up" },
+                navigate("/english/2023/school", {
+                  state: {
+                    direction: "up",
+                    previousPage: "/english/2023/pathway1",
+                  },
                 });
               }, 300);
             }}

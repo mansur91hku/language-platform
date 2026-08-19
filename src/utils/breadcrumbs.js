@@ -75,7 +75,11 @@ export function buildBreadcrumbs(pathname) {
     }
 
     cumulativePath = buildPath("", parts.slice(0, i + 1));
-    const label = SEGMENT_LABELS[part] || part.replace(/-/g, " ");
+    let label = SEGMENT_LABELS[part] || part.replace(/-/g, " ");
+
+    if (parts[0] === "english" && parts[1] === "2023" && part === "pathway1") {
+      label = "Required course(s)";
+    }
 
     if (crumbs.length === 0) {
       crumbs.push({ label, path: cumulativePath });

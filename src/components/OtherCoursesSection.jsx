@@ -56,12 +56,15 @@ const advancedCommunicationCourseOptions = [
   },
 ];
 
-export default function OtherCoursesSection({ variant = "default" }) {
+export default function OtherCoursesSection({ variant = "default", hideHAIC = false }) {
   const navigate = useNavigate();
-  const options =
+  const baseOptions =
     variant === "advancedCommunication"
       ? advancedCommunicationCourseOptions
       : defaultCourseOptions;
+  const options = hideHAIC
+    ? baseOptions.filter((option) => option.label !== "HAIC")
+    : baseOptions;
 
   return (
     <section className="mt-16 border-t border-gray-200 pt-12 pb-20">

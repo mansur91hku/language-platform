@@ -4,35 +4,20 @@ import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
 
 
-const advCommRoute = "/english/2023/ais/advanced-communication";
 
 export default function Legacy2023AISISDQuestion() {
   const navigate = useNavigate();
   const location = useLocation();
-  const previousPage = location.state?.previousPage || "/english/2023/ais";
-  const affiliation = location.state?.affiliation || "none";
+  const previousPage = location.state?.previousPage || "/english/2023/ais/lang2030";
+  const affiliation = location.state?.affiliation || "SENG";
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
 
   const [exitDirection, setExitDirection] = useState("up");
 
-  // When affiliation is SSCI, ask about MAEC; otherwise ask about ISD
-  const isSSCI = affiliation === "SSCI";
-
   const handleYes = () => {
     setExitDirection("up");
     setTimeout(() => {
-      if (isSSCI) {
-        navigate("/english/2023/ais/maec", {
-          state: {
-            direction: "up",
-            previousPage: location.pathname,
-            affiliation,
-          },
-        });
-        return;
-      }
-
       navigate("/english/2023/ais/isd", {
         state: {
           direction: "up",
@@ -46,44 +31,12 @@ export default function Legacy2023AISISDQuestion() {
   const handleNo = () => {
     setExitDirection("up");
     setTimeout(() => {
-      if (affiliation === "none") {
-        navigate("/english/2023/ais/lang2062", {
-          state: {
-            direction: "up",
-            previousPage: location.pathname,
-            affiliation,
-          },
-        });
-        return;
-      }
-
-      if (affiliation === "SSCI") {
-        navigate("/english/2023/ais/lang2010", {
-          state: {
-            direction: "up",
-            previousPage: location.pathname,
-            affiliation,
-          },
-        });
-        return;
-      }
-
-      if (affiliation === "SENG") {
-        navigate("/english/2023/ais/advanced-communication", {
-          state: {
-            direction: "up",
-            previousPage: location.pathname,
-            affiliation,
-          },
-        });
-        return;
-      }
-
-      navigate("/english/2023/ais/advanced-communication", {
+      navigate("/english/2023/ais/choice", {
         state: {
           direction: "up",
           previousPage: location.pathname,
           affiliation,
+          from: "isd-no",
         },
       });
     }, 300);
@@ -101,7 +54,11 @@ export default function Legacy2023AISISDQuestion() {
             setExitDirection("down");
             setTimeout(() => {
               navigate(previousPage, {
-                state: { direction: "down", affiliation },
+                state: {
+                  direction: "down",
+                  affiliation,
+                  previousPage: "/english/2023/ais",
+                },
               });
             }, 300);
           }} />
@@ -111,23 +68,12 @@ export default function Legacy2023AISISDQuestion() {
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-8">
             Academy of Interdisciplinary Studies
           </h2>
-          {isSSCI ? (
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
-              Are you on the{" "}
-              <span className="font-bold text-gray-800">
-                Mathematics and Economics (MAEC)
-              </span>{" "}
-              program?
-            </p>
-          ) : (
-            <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
-              Are you on the{" "}
-              <span className="font-bold text-gray-800">
-                Integrative Systems and Design (ISD)
-              </span>{" "}
-              program?
-            </p>
-          )}
+          <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
+            Are you in the following program?{" "}
+            <span className="font-bold text-gray-800">
+              Integrative Systems and Design (ISD)
+            </span>
+          </p>
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto pb-16">

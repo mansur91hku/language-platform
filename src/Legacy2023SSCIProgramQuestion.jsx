@@ -20,7 +20,7 @@ export default function Legacy2023SSCIProgramQuestion() {
     { label: "International Research Enrichment (IRE)", route: "/english/2023/ssci/ire" },
     { label: "Biotechnology and Business (BTB)", route: "/english/2023/ssci/btb" },
     { label: "Mathematics and Economics (MAEC)", route: "/english/2023/ssci/maec" },
-    { label: "None of these", route: "/english/2023/pathway1/advanced-communication" },
+    { label: "None (I am in a different program)", route: "/english/2023/ssci/advanced-communication" },
   ];
 
   return (
@@ -44,7 +44,7 @@ export default function Legacy2023SSCIProgramQuestion() {
             School of Science
           </h2>
           <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
-            Are you on any of the following programs?
+            Are you in one of the following programs?
           </p>
         </section>
 
