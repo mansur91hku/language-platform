@@ -303,6 +303,7 @@ function AnimatedRoutes() {
         <Route path="/english/2026/pathway2/humanities/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2026/pathway1/ais/advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2026/pathway2/ais/advanced-communication" element={<AdvancedCommunicationCourses />} />
+        <Route path="/english/2026/pathway2/optional-advanced-communication" element={<AdvancedCommunicationCourses />} />
         <Route path="/english/2026/pathway1/engineering" element={<EngineeringCourseSelection />} />
         <Route path="/english/2026/pathway2/engineering" element={<EngineeringCourseSelection />} />
         <Route path="/english/2026/pathway1/business" element={<BusinessCourseSelection />} />

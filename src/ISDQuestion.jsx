@@ -103,10 +103,11 @@ export default function ISDQuestion() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                                    const isPathway1_2024_2025 =
-                                      pathway === "pathway1" && (year === "2024" || year === "2025");
+                                    const isPathway1_ACYears =
+                                      pathway === "pathway1" &&
+                                      (year === "2024" || year === "2025" || year === "2026");
                                     const nextRoute =
-                                      pathway === "pathway1" && !isPathway1_2024_2025
+                                      pathway === "pathway1" && !isPathway1_ACYears
                                         ? `/english/${year}/${pathway}/ais/other-courses`
                                         : `/english/${year}/${pathway}/ais/advanced-communication`;
 

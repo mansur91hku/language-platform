@@ -82,7 +82,7 @@ export default function BusinessCourseSelection() {
               setExitDirection("up");
               setTimeout(() => {
                 const nextRoute =
-                  (year === "2025" || year === "2024") && pathway === "pathway1"
+                  (year === "2024" || year === "2025" || year === "2026") && pathway === "pathway1"
                     ? `/english/${year}/${pathway}/business/advanced-communication`
                     : `/english/${year}/${pathway}/business/other-courses`;
 

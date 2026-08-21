@@ -84,7 +84,7 @@ export default function EngineeringCourseSelection() {
                 const year = sessionStorage.getItem("englishYear") || "2026";
                 const pathway = sessionStorage.getItem("pathwayOrigin") === "pathway2" ? "pathway2" : "pathway1";
                 const nextRoute =
-                  (year === "2025" || year === "2024") && pathway === "pathway1"
+                  (year === "2024" || year === "2025" || year === "2026") && pathway === "pathway1"
                     ? `/english/${year}/${pathway}/engineering/advanced-communication`
                     : `/english/${year}/${pathway}/engineering/other-courses`;
 

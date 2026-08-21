@@ -33,27 +33,33 @@ export default function AdvancedCommunicationCourses() {
   );
   const isPathway1_2026_OtherCourses = Boolean(pathway1_2026_otherCoursesMatch);
 
+  // Detect new 2026 pathway2 "Optional Advanced Communication" page
+  const isPathway2_2026_OptionalAC =
+    location.pathname === "/english/2026/pathway2/optional-advanced-communication";
+
   const previousPage =
     location.state?.previousPage ||
-    (isPathway1_2026_OtherCourses
-      ? `/english/2026/pathway1/${pathway1_2026_otherCoursesMatch[1]}`
-      : isSBM2023
-        ? "/english/2023/sbm/standard/choice"
-        : isSSCIMAEC2023
-          ? "/english/2023/ssci/maec"
-          : isSSCI2023
-            ? "/english/2023/ssci/program"
-            : isSENG2023
-              ? "/english/2023/seng"
-              : isSHSS2023
-                ? "/english/2023/shss"
-                : isAISISD2023
-                  ? "/english/2023/ais/isd"
-                  : isAISChoice2023 || isAISAffiliateSixCourse
-                    ? "/english/2023/ais/choice"
-                    : isAIS2023
-                      ? "/english/2023/ais"
-                      : `/english/${year}/${currentPathway}/school`);
+    (isPathway2_2026_OptionalAC
+      ? `/english/2026/pathway2/school`
+      : isPathway1_2026_OtherCourses
+        ? `/english/2026/pathway1/${pathway1_2026_otherCoursesMatch[1]}`
+        : isSBM2023
+          ? "/english/2023/sbm/standard/choice"
+          : isSSCIMAEC2023
+            ? "/english/2023/ssci/maec"
+            : isSSCI2023
+              ? "/english/2023/ssci/program"
+              : isSENG2023
+                ? "/english/2023/seng"
+                : isSHSS2023
+                  ? "/english/2023/shss"
+                  : isAISISD2023
+                    ? "/english/2023/ais/isd"
+                    : isAISChoice2023 || isAISAffiliateSixCourse
+                      ? "/english/2023/ais/choice"
+                      : isAIS2023
+                        ? "/english/2023/ais"
+                        : `/english/${year}/${currentPathway}/school`);
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
@@ -74,8 +80,14 @@ export default function AdvancedCommunicationCourses() {
     location.pathname.startsWith("/english/2024/") ||
     location.pathname.startsWith("/english/2025/");
 
-  // Heading and subtitle
-  const isRequiredCourseFlow = isPathway2Flow && year !== "2023" && !isPathway1_2026_OtherCourses;
+  // The Pathway 2 2026 optional-AC page should behave like the pathway 1 optional AC page
+  // (heading "Optional Advanced Communication courses" + same subtitle as pathway 1 2026).
+  const isRequiredCourseFlow =
+    isPathway2Flow &&
+    year !== "2023" &&
+    !isPathway1_2026_OtherCourses &&
+    !isPathway2_2026_OptionalAC;
+
   const heading = isRequiredCourseFlow
     ? "Required Course"
     : "Optional Advanced Communication courses";
@@ -85,7 +97,9 @@ export default function AdvancedCommunicationCourses() {
       ? (year === "2026"
           ? "You must choose one of the following Advanced Communication courses."
           : "You must choose one of the following Advanced Communication courses. After completing the course, you can also take another course from this list, to substitute for CTDL or Experiencing credits.")
-      : "You may take one of the following Advanced Communication courses to substitute for CTDL or Experiencing credits.";
+      : year === "2026"
+        ? "You may take one of the following Advanced Communication courses as electives to fulfil your graduation requirements."
+        : "You may take one of the following Advanced Communication courses to substitute for CTDL or Experiencing credits.";
 
   return (
     <motion.div
@@ -130,7 +144,32 @@ export default function AdvancedCommunicationCourses() {
           ))}
         </section>
 
-        <OtherCoursesSection variant="advancedCommunication" hideHAIC={is2023_2024_2025} />
+        {isRequiredCourseFlow ? (
+          <section className="mt-16 pt-12 pb-20 text-center">
+            <p className="mb-6 text-lg text-gray-600">
+              Click on the button below to see what's next.
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setExitDirection("up");
+                setTimeout(() => {
+                  navigate("/english/2026/pathway2/optional-advanced-communication", {
+                    state: {
+                      direction: "up",
+                      previousPage: location.pathname,
+                    },
+                  });
+                }, 300);
+              }}
+              className="inline-flex min-w-[220px] items-center justify-center rounded-[32px] border border-blue-200 bg-gradient-to-b from-blue-50 to-indigo-100 px-10 py-5 text-lg font-semibold text-blue-700 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+            >
+              Continue
+            </button>
+          </section>
+        ) : (
+          <OtherCoursesSection variant="advancedCommunication" hideHAIC={is2023_2024_2025} />
+        )}
       </main>
     </motion.div>
   );

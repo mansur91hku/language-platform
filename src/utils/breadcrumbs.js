@@ -21,6 +21,7 @@ const SEGMENT_LABELS = {
   ire: "IRE Program",
   neither: "Other Courses",
   "advanced-communication": "Advanced Communication",
+  "optional-advanced-communication": "Optional Advanced Communication",
   isd: "ISD Program",
   background: "Background",
   "non-background": "Non-Background",
