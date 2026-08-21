@@ -18,7 +18,8 @@ export default function OSTIREProgramQuestion() {
   const neitherPath =
     ((year === "2025" || year === "2024") && pathway === "pathway1") ||
     ((year === "2025" || year === "2024") && pathway === "pathway2") ||
-    (year === "2026" && pathway === "pathway2")
+    (year === "2026" && pathway === "pathway2") ||
+    (year === "2026" && pathway === "pathway1")
       ? `/english/${year}/${pathway}/science/advanced-communication`
       : `/english/${year}/${pathway}/science/neither`;
 

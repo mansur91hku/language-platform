@@ -31,9 +31,6 @@ function SingleExtraCourse({ courseCode, courseTitle, courseUrl, textColorClass,
           <h2 className="text-5xl md:text-7xl font-semibold tracking-tight mb-6">
             Required course
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            You are pre-enrolled in this course.
-          </p>
         </section>
 
         <section className="max-w-4xl mx-auto">

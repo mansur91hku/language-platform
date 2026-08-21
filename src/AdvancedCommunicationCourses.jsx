@@ -26,25 +26,34 @@ export default function AdvancedCommunicationCourses() {
   const isAIS2023SSCI = location.pathname === "/english/2023/ais/ssci/advanced-communication";
   const isAISSBM2023 = location.pathname === "/english/2023/ais/sbm/advanced-communication";
   const isAISAffiliateSixCourse = isAISSHSS2023 || isAIS2023SSCI || isAISSBM2023;
+
+  // Detect 2026 pathway1 "other-courses" variant
+  const pathway1_2026_otherCoursesMatch = location.pathname.match(
+    /^\/english\/2026\/pathway1\/([^/]+)\/other-courses$/
+  );
+  const isPathway1_2026_OtherCourses = Boolean(pathway1_2026_otherCoursesMatch);
+
   const previousPage =
     location.state?.previousPage ||
-    (isSBM2023
-      ? "/english/2023/sbm/standard/choice"
-      : isSSCIMAEC2023
-        ? "/english/2023/ssci/maec"
-        : isSSCI2023
-          ? "/english/2023/ssci/program"
-          : isSENG2023
-            ? "/english/2023/seng"
-            : isSHSS2023
-              ? "/english/2023/shss"
-              : isAISISD2023
-                ? "/english/2023/ais/isd"
-                : isAISChoice2023 || isAISAffiliateSixCourse
-                  ? "/english/2023/ais/choice"
-                  : isAIS2023
-                    ? "/english/2023/ais"
-                    : `/english/${year}/${currentPathway}/school`);
+    (isPathway1_2026_OtherCourses
+      ? `/english/2026/pathway1/${pathway1_2026_otherCoursesMatch[1]}`
+      : isSBM2023
+        ? "/english/2023/sbm/standard/choice"
+        : isSSCIMAEC2023
+          ? "/english/2023/ssci/maec"
+          : isSSCI2023
+            ? "/english/2023/ssci/program"
+            : isSENG2023
+              ? "/english/2023/seng"
+              : isSHSS2023
+                ? "/english/2023/shss"
+                : isAISISD2023
+                  ? "/english/2023/ais/isd"
+                  : isAISChoice2023 || isAISAffiliateSixCourse
+                    ? "/english/2023/ais/choice"
+                    : isAIS2023
+                      ? "/english/2023/ais"
+                      : `/english/${year}/${currentPathway}/school`);
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const [exitDirection, setExitDirection] = useState("up");
@@ -58,6 +67,25 @@ export default function AdvancedCommunicationCourses() {
           ),
         )
       : sharedAdvancedCourses;
+
+  // Hide HAIC on all 2023/2024/2025 Advanced Communication pages
+  const is2023_2024_2025 =
+    location.pathname.startsWith("/english/2023/") ||
+    location.pathname.startsWith("/english/2024/") ||
+    location.pathname.startsWith("/english/2025/");
+
+  // Heading and subtitle
+  const isRequiredCourseFlow = isPathway2Flow && year !== "2023" && !isPathway1_2026_OtherCourses;
+  const heading = isRequiredCourseFlow
+    ? "Required Course"
+    : "Optional Advanced Communication courses";
+  const subtitle = isPathway1_2026_OtherCourses
+    ? "You may also take any of these courses as free electives, after completing your required courses."
+    : isRequiredCourseFlow
+      ? (year === "2026"
+          ? "You must choose one of the following Advanced Communication courses."
+          : "You must choose one of the following Advanced Communication courses. After completing the course, you can also take another course from this list, to substitute for CTDL or Experiencing credits.")
+      : "You may take one of the following Advanced Communication courses to substitute for CTDL or Experiencing credits.";
 
   return (
     <motion.div
@@ -79,16 +107,10 @@ export default function AdvancedCommunicationCourses() {
       <main className="max-w-7xl mx-auto px-6 pt-4">
         <section className="py-10 text-center">
           <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-7xl">
-            {isPathway2Flow && year !== "2023" ? "Required Course" : "Optional Advanced Communication courses"}
+            {heading}
           </h2>
           <p className="mx-auto max-w-4xl text-xl text-gray-600">
-            {isPathway2Flow && year !== "2023" ? (
-              year === "2026"
-                ? "You must choose one of the following Advanced Communication courses."
-                : "You must choose one of the following Advanced Communication courses. After completing the course, you can also take another course from this list, to substitute for CTDL or Experiencing credits."
-            ) : (
-              "You may take one of the following Advanced Communication courses to substitute for CTDL or Experiencing credits."
-            )}
+            {subtitle}
           </p>
         </section>
 
@@ -108,7 +130,7 @@ export default function AdvancedCommunicationCourses() {
           ))}
         </section>
 
-        <OtherCoursesSection variant="advancedCommunication" hideHAIC={isSBM2023 || isSSCI2023 || isSSCIMAEC2023 || isSENG2023 || isSHSS2023 || isAIS2023 || isAISISD2023 || isAISChoice2023 || isAISAffiliateSixCourse} />
+        <OtherCoursesSection variant="advancedCommunication" hideHAIC={is2023_2024_2025} />
       </main>
     </motion.div>
   );

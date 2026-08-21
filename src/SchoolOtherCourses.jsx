@@ -17,7 +17,7 @@ export default function SchoolOtherCourses() {
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
 
-  if (getPathwayOrigin() === "pathway2") {
+  if (getPathwayOrigin() === "pathway2" || (year === "2026" && pathway === "pathway1")) {
     return <AdvancedCommunicationCourses />;
   }
 

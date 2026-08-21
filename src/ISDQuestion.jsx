@@ -103,9 +103,12 @@ export default function ISDQuestion() {
                 setExitDirection("up");
 
                 setTimeout(() => {
-                                    const nextRoute = pathway === "pathway1"
-                                      ? `/english/${year}/${pathway}/ais/other-courses`
-                                      : `/english/${year}/${pathway}/ais/advanced-communication`;
+                                    const isPathway1_2024_2025 =
+                                      pathway === "pathway1" && (year === "2024" || year === "2025");
+                                    const nextRoute =
+                                      pathway === "pathway1" && !isPathway1_2024_2025
+                                        ? `/english/${year}/${pathway}/ais/other-courses`
+                                        : `/english/${year}/${pathway}/ais/advanced-communication`;
 
                                     navigate(nextRoute, {
                                         state: {

@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import PageNavBar from "./components/PageNavBar";
-import OtherCoursesSection from "./components/OtherCoursesSection";
-import { getOSTCourse, isPathway1_2026 } from "./utils/englishYear";
+import { getOSTCourse } from "./utils/englishYear";
 
 export default function OSTCourseSelection() {
   const navigate = useNavigate();
@@ -16,7 +15,6 @@ export default function OSTCourseSelection() {
   const initialDirection =
     location.state?.direction === "down" ? "-100%" : "100%";
   const ostCourse = getOSTCourse();
-  const showOtherCourses = isPathway1_2026();
   const isPathway2_2025 = (year === "2025" || year === "2024") && pathway === "pathway2";
 
   return (
@@ -60,32 +58,28 @@ export default function OSTCourseSelection() {
           </a>
         </section>
 
-        {showOtherCourses && !isPathway2_2025 ? (
-          <OtherCoursesSection />
-        ) : (
-          <section className="mt-10 text-center">
-            <p className="mb-6 text-lg text-gray-600">
-              Click on the button below to see what's next after this course.
-            </p>
-            <button
-              type="button"
-              onClick={() => {
-                setExitDirection("up");
-                setTimeout(() => {
-                  navigate(`/english/${year}/${pathway}/science/advanced-communication`, {
-                    state: {
-                      direction: "up",
-                      previousPage: location.pathname,
-                    },
-                  });
-                }, 300);
-              }}
-              className="inline-flex min-w-[220px] items-center justify-center rounded-[32px] border border-blue-200 bg-gradient-to-b from-blue-50 to-indigo-100 px-10 py-5 text-lg font-semibold text-blue-700 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-            >
-              Continue
-            </button>
-          </section>
-        )}
+        <section className="mt-10 text-center">
+          <p className="mb-6 text-lg text-gray-600">
+            Click on the button below to see what's next after this course.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setExitDirection("up");
+              setTimeout(() => {
+                navigate(`/english/${year}/${pathway}/science/advanced-communication`, {
+                  state: {
+                    direction: "up",
+                    previousPage: location.pathname,
+                  },
+                });
+              }, 300);
+            }}
+            className="inline-flex min-w-[220px] items-center justify-center rounded-[32px] border border-blue-200 bg-gradient-to-b from-blue-50 to-indigo-100 px-10 py-5 text-lg font-semibold text-blue-700 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+          >
+            Continue
+          </button>
+        </section>
       </main>
     </motion.div>
   );
